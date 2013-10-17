@@ -1,8 +1,8 @@
 <?php
-
-class Model_Listing extends Model_Table {
+namespace listing;
+class Model_Listing extends \Model_Table {
 	var $table= "listing";
-	function init(l{
+	function init(){
 		parent::init();
 
 		$this->hasOne('Category','category_id');

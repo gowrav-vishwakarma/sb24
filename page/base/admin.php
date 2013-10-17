@@ -11,6 +11,7 @@ class page_base_admin extends Page {
 		$this->api->menu
 					->addMenuItem('admin_index','Dashboard')
 					->addMenuItem('admin_master','Masters')
+					->addMenuItem($this->api->url('addonpage',array('addon_page'=>'listing\manager')),'Listing')
 					->addMenuItem('logout')
 					;
 	}

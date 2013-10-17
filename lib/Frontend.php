@@ -15,6 +15,14 @@ class Frontend extends ApiFrontend {
         // in atk4-addons subdirectory.
 
         $this->addLocation('.',array('addons'=>'sb24-addons'));
+        $this->addLocation('sb24-addons',array(
+                    'page'=>array(
+                        'page',
+                        'misc/lib',
+                        )
+                    ))
+            ->setParent($this->pathfinder->base_location);
+
         $this->addLocation('atk4-addons',array(
                     'php'=>array(
                         'mvc',
