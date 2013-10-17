@@ -4,6 +4,7 @@
  */
 class Frontend extends ApiFrontend {
     var $menu;
+    
     function init(){
         parent::init();
         // Keep this if you are going to use database on all pages
