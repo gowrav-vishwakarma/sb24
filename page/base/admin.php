@@ -10,6 +10,7 @@ class page_base_admin extends Page {
 	function setUpMenus(){
 		$this->api->menu
 					->addMenuItem('admin_index','Dashboard')
+					->addMenuItem('admin_master','Masters')
 					->addMenuItem('logout')
 					;
 	}
