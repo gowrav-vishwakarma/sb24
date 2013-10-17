@@ -7,6 +7,7 @@ class Model_Tehsil extends Model_Table {
 		$this->hasOne('City','city_id');
 		$this->addField('name');
 		$this->hasMany('Area','tehsil_id');
+		$this->hasMany('Directory_Core','tehsil_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 }

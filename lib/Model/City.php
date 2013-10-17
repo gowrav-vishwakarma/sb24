@@ -7,6 +7,7 @@ class Model_City extends Model_Table {
 
 		$this->hasOne('State','state_id');
 		$this->addField('name');
+		$this->hasMany('Directory_Core','city_id');
 		$this->hasMany('Tehsil','city_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

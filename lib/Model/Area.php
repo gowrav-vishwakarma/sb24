@@ -7,6 +7,7 @@ class Model_Area extends Model_Table {
 
 		$this->hasOne('Tehsil','tehsil_id');
 		$this->addField('name');
+		$this->hasMany('Directory_Core','tehsil_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 }

@@ -27,6 +27,8 @@ class page_admin_master extends page_base_admin{
 		$area_crud=$area_tabs->add('CRUD');
 		$area_crud->setModel('Area');
 
+		$this->add('CRUD')->setModel('listing/Listing');
+
 
 	}
 }
