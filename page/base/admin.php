@@ -11,7 +11,7 @@ class page_base_admin extends Page {
 		$this->api->menu
 					->addMenuItem('admin_index','Dashboard')
 					->addMenuItem('admin_master','Masters')
-					->addMenuItem('directory_manager','Directory')
+					->addMenuItem('admin_modules_index','Site Modules')
 					->addMenuItem('logout')
 					;
 	}

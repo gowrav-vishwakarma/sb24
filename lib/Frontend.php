@@ -4,7 +4,8 @@
  */
 class Frontend extends ApiFrontend {
     var $menu;
-    
+    protected $pathfinder_class='MyPathFinder';
+
     function init(){
         parent::init();
         // Keep this if you are going to use database on all pages
@@ -14,14 +15,12 @@ class Frontend extends ApiFrontend {
         // This will add some resources from atk4-addons, which would be located
         // in atk4-addons subdirectory.
 
-        // $this->addLocation('.',array('addons'=>'sb24-addons'));
-        // $this->addLocation('sb24-addons',array(
-        //             'page'=>array(
-        //                 'page',
-        //                 'misc/lib',
-        //                 )
-        //             ))
-        //     ->setParent($this->pathfinder->base_location);
+        $this->addLocation('.',array('addons'=>'sb24-addons'));
+        $this->addLocation('sb24-addons',array(
+                    'page'=>array("."),
+                    
+                    ))
+            ->setParent($this->pathfinder->base_location);
 
         $this->addLocation('atk4-addons',array(
                     'php'=>array(
