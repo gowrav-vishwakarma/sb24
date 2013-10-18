@@ -1,6 +1,6 @@
 <?php
 
-class page_admin_modules_history_index extends page_base_admin {
+class page_history_page_index extends page_base_admin {
 	function init(){
 		parent::init();
 
@@ -9,10 +9,10 @@ class page_admin_modules_history_index extends page_base_admin {
 		$place_tab = $tabs->addTab('Manage Places');
 
 		$placetype_crud=$placetype_tab->add('CRUD');
-		$placetype_crud->setModel('History_PlaceType');
+		$placetype_crud->setModel('history/PlaceType');
 
 		$place__crud=$place_tab->add('CRUD');
-		$place__crud->setModel('History_Place');
+		$place__crud->setModel('history/Place');
 
 	}
 }

@@ -5,8 +5,10 @@ class page_admin_modules_index extends page_base_admin {
 		parent::init();
 
 		$modules = array(
-				'admin_modules_history_index' => 'History',
-				'admin_modules_socialdirectory_index' => 'Social Directory'
+				'history/page_index' => 'History',
+				'socialdirectory/page_index' => 'Social Directory',
+				'businessdirectory/page_index' => 'Business Directory',
+				'jobandvacancy/page_index' => 'Job And Vacancy Directory'
 			);
 
 		$tabs=$this->add('Tabs');

@@ -1,6 +1,8 @@
 <?php
 
-class Model_History_PlaceType extends Model_Table {
+namespace history;
+
+class Model_PlaceType extends \Model_Table {
 	var $table= "placetype";
 	function init(){
 		parent::init();
@@ -16,6 +18,7 @@ class Model_History_PlaceType extends Model_Table {
 	function beforeSave(){
 		$old_model=$this->add('Model_History_PlaceType');
 		$old_model->addCondition('name',$this['name']);
+		$old_model->addCondition('id','<>',$this->id);
 		$old_model->tryLoadAny();
 		if($old_model->loaded())
 			throw $this->exception("This Type is Allready Exist, Take Another.. ",'ValidityCheck')->setField('name');
@@ -25,6 +28,9 @@ class Model_History_PlaceType extends Model_Table {
 	}
 
 	function beforeDelete(){
+		if($this->ref('History_Place')->count()->getOne()> 0)
+			throw $this->exception("You Can't Delete, It contain places...");
+			
 
 	}
 }

@@ -1,12 +1,15 @@
 <?php
-class Model_Directory_Core extends Model_Table {
-	var $table= "directory";
+
+namespace socialdirectory;
+
+class Model_Listing extends \Model_Table {
+	var $table= "social_listing";
 	function init(){
 		parent::init();
 
-		$this->hasOne('Directory_Religion','religion_id')->display(array('form'=>'autocomplete/PlusCrud'))->mandatory(true);
-		$this->hasOne('Directory_Cast','cast_id')->display(array('form'=>'autocomplete/Plus'))->mandatory('This is Must');
-		$this->hasOne('Directory_SubCast','subcast_id')->display(array('form'=>'autocomplete/Plus'));
+		$this->hasOne('socialdirectory/Religion','religion_id')->display(array('form'=>'autocomplete/PlusCrud'))->mandatory(true);
+		$this->hasOne('socialdirectory/Cast','cast_id')->display(array('form'=>'autocomplete/Plus'))->mandatory('This is Must');
+		$this->hasOne('socialdirectory/SubCast','subcast_id')->display(array('form'=>'autocomplete/Plus'));
 		$this->hasOne('State','state_id')->display(array('form'=>'autocomplete/Plus'))->mandatory('This is Must');
 		$this->hasOne('City','city_id')->display(array('form'=>'autocomplete/Plus'))->mandatory('This is Must');
 		$this->hasOne('Tehsil','tehsil_id')->display(array('form'=>'autocomplete/Plus'));
@@ -17,6 +20,9 @@ class Model_Directory_Core extends Model_Table {
 		$this->addField('pincode');
 		$this->addField('ph_no')->mandatory('This is Must');
 		$this->addField('email_id')->mandatory('This is Must');
+		$this->addField('created_on')->type('date')->defaultVAlue(date('Y-m-d'));
+		$this->addField('valid_till')->type('date');
+		$this->addField('renewed_on')->type('date');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 }

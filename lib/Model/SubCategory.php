@@ -6,7 +6,7 @@ class Model_SubCategory extends Model_Table {
 
 		$this->hasOne('Category','category_id');
 		$this->addField('name');
-
+		$this->hasMany('businessdirectory/Listing','subcategory_id');
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

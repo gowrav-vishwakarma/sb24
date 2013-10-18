@@ -4,7 +4,6 @@
  */
 class Frontend extends ApiFrontend {
     var $menu;
-    protected $pathfinder_class='MyPathFinder';
 
     function init(){
         parent::init();
@@ -17,8 +16,7 @@ class Frontend extends ApiFrontend {
 
         $this->addLocation('.',array('addons'=>'sb24-addons'));
         $this->addLocation('sb24-addons',array(
-                    'page'=>array("."),
-                    
+                    'page'=>array(".")
                     ))
             ->setParent($this->pathfinder->base_location);
 
