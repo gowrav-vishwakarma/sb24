@@ -1,11 +1,11 @@
 <?php
-class page_base_site extends Page {
+class page_base_site extends page_base_null {
 	function init(){
 		parent::init();
-		$this->setUpMenus();
+		$this->setUpSiteMenus();
 	}
 
-	function setUpMenus(){
+	function setUpSiteMenus(){
 		$this->api->menu
 					->addMenuItem('index','Home')
 					->addMenuItem('businessdirectory_page_freelisting','Free Listing')

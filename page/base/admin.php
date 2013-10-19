@@ -8,10 +8,10 @@ class page_base_admin extends Page {
 		$this->api->template->trySet('page_title','SabKuch 24 :: Admin Panel');
 		$this->api->template->trySet('page',$this->api->url('base_admin'));
 
-		$this->setUpMenus();
+		$this->setUpAdminMenus();
 	}
 
-	function setUpMenus(){
+	function setUpAdminMenus(){
 		$this->api->menu
 					->addMenuItem('admin_index','Dashboard')
 					->addMenuItem('admin_master','Masters')

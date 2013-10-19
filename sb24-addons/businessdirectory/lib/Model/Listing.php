@@ -35,7 +35,6 @@ class Model_Listing extends \Model_Table {
 		$this->add("filestore/Field_Image","image3")->type('image');
 		$this->add("filestore/Field_Image","image4")->type('image');
 		$this->add("filestore/Field_Image","image5")->type('image');
-		$this->add("filestore/Field_Image","image3")->type('image');
 		$this->addField('about_us')->type('text');
 		$this->addField('created_on')->type('date')->defaultVAlue(date('Y-m-d'));
 		$this->addField('valid_till')->type('date');

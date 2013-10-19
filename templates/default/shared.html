@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-		<title><?page_title?>Sab Kuch 24<?/?></title>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="shortcut icon" href="<?template?>images/favicon.ico<?/?>" type="image/x-icon" />
-		<link rel="stylesheet" type="text/css" href="<?template?>css/jquery-ui.css<?/?>" />
-		<link rel="stylesheet" type="text/css" href="<?template?>css/atk-main.css<?/?>" />
-		<link rel="stylesheet" type="text/css" href="<?template?>css/atk-custom.css<?/?>" />
-		<?$js_include?>
-		<!--[if IE 8]>
-			<link rel="stylesheet" type="text/css" href="<?template?>css/ie8.css<?/?>"/>
-			<script type="text/javascript" src="<?template?>css/ie8.js<?/?>"></script>
-		<![endif]-->
-		<script type="text/javascript">
-			$(function(){
-				<?$document_ready?>
-			});
-		</script>
-	</head>
-	<body>
-		<div id="atk-layout" class="atk-wrapper">
-			<?top_advert?>
-				<div id="top_advert" class="atk-wrapper">
-					<?$advertising?>
-				</div>
-			<?/top_advert?>
-			<div id="header">
-				<?logo?><div id="atk-logo" class="ui-widget-header float-left"><a 
-                                    href="<?page?>index<?/?>"><img src="<?template?>images/logo.png<?/?>" /></a></div><?/logo?>
-				<div id="header-right">
-					<?Menu?>
-                            <div class="atk-menu atk-menu-horizontal ui-widget">
-                                <ul>
-								    <li class="ui-state-default"><a href="javascript:void(0)">Menu is not defined</a></li>
-                                </ul>
-							</div>
-					<?/?>
-					<div id="atk-version"><b><?name?>Agile Toolkit™<?/?></b><br/><i><?$version?></i></div>
-				</div>
-			</div>
-			<?$Content?>
-			<div id="atk-footer-guard"></div>
-		</div>
-		<?Footer?>
-		<div id="footer" class="atk-wrapper">
-			<?footer_text?>
-			This system is implemented using <a href="http://agiletoolkit.org/">Agile Toolkit</a>. &copy; 1999–2012. <a href="http://agiletoolkit.org/about/license">See License</a>
-			<?/?>
-		</div>
-		<?/?>
-		<div id="atk-growl-holder" class="atk-growl"></div>
-	</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><?page_title?>Sab Kuch 24<?/page_title?></title>
+
+  
+    <link rel="stylesheet" type="text/css" href="<?template?>css/jquery-ui.css<?/?>" />
+    <link rel="stylesheet" type="text/css" href="<?template?>css/atk-main.css<?/?>" />
+    <link rel="stylesheet" type="text/css" href="<?template?>css/atk-custom.css<?/?>" />
+    <!-- Bootstrap core CSS -->
+    <link href="<?template?>css/bootstrap.css<?/template?>" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="<?template?>css/modern-business.css<?/template?>" rel="stylesheet">
+    <link href="<?template?>font-awesome/css/font-awesome.min.css<?/template?>" rel="stylesheet">
+    <?$js_include?>
+    <!--[if IE 8]>
+      <link rel="stylesheet" type="text/css" href="<?template?>css/ie8.css<?/?>"/>
+      <script type="text/javascript" src="<?template?>css/ie8.js<?/?>"></script>
+    <![endif]-->
+    <script type="text/javascript">
+      $(function(){
+        <?$document_ready?>
+      });
+    </script>
+
+    <style type="text/css">
+      body{
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <?$Menu?>
+    <!-- Top Adertising Spot Begin -->
+    <?top_advert_position?>
+      <div class="container">
+        <div class="row well"><?$top_advert_spot?></div>
+      </div>
+    <?/top_advert_position?>
+    <!-- Top Advertising Spot end-->
+    <div class="row-fluid">
+      <?left_advert_position?>
+        <div class="col-md-2 well"><?$left?></div>
+      <?/left_advert_position?>
+      <?center_position?>
+        <div class="col-md-<?center_span?>8<?/center_span?>"><?$Content?></div>
+      <?/center_position?>
+      <?right_advert_position?>
+        <div class="col-md-2 well"><?$right?></div>
+      <?/right_advert_position?>
+    </div>
+    <script src="<?template?>js/bootstrap.js<?/?>"></script>
+    <script src="<?template?>js/modern-business.js<?/?>"></script>
+  </body>
 </html>
