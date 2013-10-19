@@ -3,7 +3,7 @@
 class page_businessdirectory_page_freelisting extends page_base_site {
 	function page_index(){
 		$a=$this->add('View')->setElement('a')
-				->setAttr('href','#')->set('Free Registration')->addClass('ui-button');
+				->setAttr('href','#')->set('Free Registration')->addClass('ui-widget ui-widget-header ui-corener-all ui-button');
 		$a->js('click')->univ()->frameURL('Free Listing',$this->api->url('./form'));
 	}
 
