@@ -8,7 +8,7 @@ class page_admin_master extends page_base_admin{
 		$category_tab=$tabs->addTab('Business Categories');
 		$category_crud=$category_tab->add('CRUD');
 		$category_crud->setModel('Category');
-		$category_crud->addRef('SubCategory');
+		// $category_crud->addRef('businessdirectory/RegisteredCategory');
 
 		$state_tab=$tabs->addTab('States');
 		$state_crud=$state_tab->add('CRUD');

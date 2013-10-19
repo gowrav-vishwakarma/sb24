@@ -7,14 +7,12 @@ class Model_Listing extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('Category','category_id')->display(array('form'=>'autocomplete/PlusCrud'))->mandatory(true);;
-		$this->hasOne('SubCategory','sub_category_id')->display(array('form'=>'autocomplete/PlusCrud'));
 		$this->hasOne('State','state_id')->display(array('form'=>'autocomplete/PlusCrud'));
 		$this->hasOne('City','city_id')->display(array('form'=>'autocomplete/PlusCrud'));
 		$this->hasOne('Area','area_id')->display(array('form'=>'autocomplete/PlusCrud'));
 		$this->addField('name')->caption('Name Of Company');
 		$this->addField('company_address')->type('text');
-		$this->addField('company_mobile_no');
+		$this->addField('mobile_no');
 		$this->addField('company_ph_no');
 		$this->addField('type_of_work')->type('text');
 		$this->add("filestore/Field_Image","company_logo")->type('image');
@@ -41,6 +39,11 @@ class Model_Listing extends \Model_Table {
 		$this->addField('valid_till')->type('date');
 		$this->addField('renewed_on')->type('date');
 
+
+		$this->hasMany('businessdirectory/RegisteredCategory','listing_id');
+		// $this->hasOne('RegisteredCategory','category_id');
+		// $this->hasOne('SubCategory','subcategory_id')->display(array('form'=>'autocomplete/PlusCrud'));
+		$this->add('Controller_MobileActivation');
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

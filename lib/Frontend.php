@@ -16,7 +16,7 @@ class Frontend extends ApiFrontend {
 
         $this->addLocation('.',array('addons'=>'sb24-addons'));
         $this->addLocation('sb24-addons',array(
-                    'page'=>array(".")
+                    'page'=>array("."),
                     ))
             ->setParent($this->pathfinder->base_location);
 
@@ -42,12 +42,11 @@ class Frontend extends ApiFrontend {
 
         // If you wish to restrict access to your pages, use BasicAuth class
         $this->auth=$this->add('BasicAuth');
-        $this->auth->setModel('Staff','username','password')
+        $this->auth->setModel('Staff','username','password');
 
             // ->allow('demo','demo')
             // use check() and allowPage for white-list based auth checking
             // ->check()
-            ;
 
         // This method is executed for ALL the pages you are going to add,
         // before the page class is loaded. You can put additional checks
@@ -59,10 +58,7 @@ class Frontend extends ApiFrontend {
             $this->menu=$this->add('Menu',null,'Menu');
 
         // If you are using a complex menu, you can re-define
-        // it and place in a separate class
-
-
         
-
     }
+
 }

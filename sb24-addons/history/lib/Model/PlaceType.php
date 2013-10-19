@@ -8,7 +8,7 @@ class Model_PlaceType extends \Model_Table {
 		parent::init();
 
 		$this->addField('name')->caption('Type Of Place');
-		$this->hasMany('History_Place','placetype_id');
+		$this->hasMany('history/Place','placetype_id');
 
 		$this->addHook('beforeSave',$this);
 		$this->addHook('beforeDelete',$this);
@@ -16,7 +16,7 @@ class Model_PlaceType extends \Model_Table {
 	}
 
 	function beforeSave(){
-		$old_model=$this->add('Model_History_PlaceType');
+		$old_model=$this->add('history/Model_PlaceType');
 		$old_model->addCondition('name',$this['name']);
 		$old_model->addCondition('id','<>',$this->id);
 		$old_model->tryLoadAny();

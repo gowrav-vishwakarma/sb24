@@ -7,8 +7,9 @@ class page_admin_modules_index extends page_base_admin {
 		$modules = array(
 				'history/page_index' => 'History',
 				'socialdirectory/page_index' => 'Social Directory',
-				'businessdirectory/page_index' => 'Business Directory',
-				'jobandvacancy/page_index' => 'Job And Vacancy Directory'
+				'businessdirectory/page_admin_index' => 'Business Directory',
+				'jobandvacancy/page_index' => 'Job And Vacancy Directory',
+				'distance/page_index' => 'Distances'
 			);
 
 		$tabs=$this->add('Tabs');
