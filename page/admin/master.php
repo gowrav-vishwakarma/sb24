@@ -5,10 +5,10 @@ class page_admin_master extends page_base_admin{
 
 		$tabs=$this->add('Tabs');
 
-		$category_tab=$tabs->addTab('Categories');
+		$category_tab=$tabs->addTab('Business Categories');
 		$category_crud=$category_tab->add('CRUD');
 		$category_crud->setModel('Category');
-		$category_crud->addRef('SubCategory');
+		// $category_crud->addRef('businessdirectory/RegisteredCategory');
 
 		$state_tab=$tabs->addTab('States');
 		$state_crud=$state_tab->add('CRUD');
@@ -26,9 +26,6 @@ class page_admin_master extends page_base_admin{
 		$area_tabs=$tabs->addTab('Area');
 		$area_crud=$area_tabs->add('CRUD');
 		$area_crud->setModel('Area');
-
-		$this->add('CRUD')->setModel('listing/Listing');
-
 
 	}
 }

@@ -2,7 +2,11 @@
 class page_base_admin extends Page {
 	function init(){
 		parent::init();
+		$this->api->auth->setModel('Staff','username','password');
 		$this->api->auth->check();
+
+		$this->api->template->trySet('page_title','SabKuch 24 :: Admin Panel');
+		$this->api->template->trySet('page',$this->api->url('base_admin'));
 
 		$this->setUpMenus();
 	}
@@ -11,10 +15,10 @@ class page_base_admin extends Page {
 		$this->api->menu
 					->addMenuItem('admin_index','Dashboard')
 					->addMenuItem('admin_master','Masters')
-					->addMenuItem($this->api->url('addonpage',array('addon_page'=>'listing\manager')),'Listing')
-					->addMenuItem($this->api->url('addonpage',array('addon_page'=>'history\manager')),'History')
-					->addMenuItem($this->api->url('addonpage',array('addon_page'=>'emergency\manager')),'Emergency')
+					->addMenuItem('admin_modules_index','Site Modules')
 					->addMenuItem('logout')
 					;
 	}
+
+	
 }
