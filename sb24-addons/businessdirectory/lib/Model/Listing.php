@@ -18,7 +18,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('mobile_no');
 		$this->addField('company_ph_no');
 		$this->addField('type_of_work')->type('text');
-		$this->add("filestore/Field_Image","company_logo")->type('image');
+		$this->add("filestore/Field_Image","company_logo_id")->type('image');
 		$this->addField('email_id');
 		$this->addField('website');
 		$this->addField('contact_person');
