@@ -8,7 +8,7 @@ class Model_Ad extends \Model_Table {
 		parent::init();
 
 		$this->hasOne('adds/AdBlock');
-		$this->add('filestore/Image','ad_image_id');
+		$this->add('filestore/Field_Image','ad_image_id');//->display(array('grid'=>'picture'));
 		$this->addField('created_on')->type('date')->defaultValue(date('Y-m-d H:i:s'));
 		$this->addField('valid_till')->type('date');//->defaultValue(date('Y-m-d',strtotime(date('Y-m-d H:i:s')). " +1 year"));
 		$this->addField('last_renewal_on')->type('date')->defaultValue(date('Y-m-d H:i:s'));

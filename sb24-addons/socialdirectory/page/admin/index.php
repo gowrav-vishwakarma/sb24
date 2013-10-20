@@ -1,6 +1,6 @@
 <?php
 
-class page_socialdirectory_page_index extends page_base_admin {
+class page_socialdirectory_page_admin_index extends page_base_admin {
 	function init(){
 		parent::init();
 
@@ -9,7 +9,7 @@ class page_socialdirectory_page_index extends page_base_admin {
 		$religion_tab=$tabs->addTab('Manage Religions');
 		$cast_tab=$tabs->addTab('Manage Cast');
 		$manage_social_tab=$tabs->addTab('Manage Social Directory');
-		$report_tab=$tabs->addtabURL('socialdirectory/page_report','Reports');
+		$report_tab=$tabs->addtabURL('socialdirectory/page_admin_report','Reports');
 		
 		$religion_crud=$religion_tab->add('CRUD');
 		$religion_crud->setModel('socialdirectory/Religion');

@@ -1,6 +1,6 @@
 <?php
 
-class page_jobandvacancy_page_index extends page_base_admin {
+class page_jobandvacancy_page_admin_index extends page_base_admin {
 	function init(){
 		parent::init();
 
@@ -10,7 +10,7 @@ class page_jobandvacancy_page_index extends page_base_admin {
 		$manage_job_and_vacany_crud=$manage_job_and_vacany_tab->add('CRUD');
 		$manage_job_and_vacany_crud->setModel('jobandvacancy/Listing');
 
-		$tabs->addtabURL('jobandvacancy/page_report','Report');
+		$tabs->addtabURL('jobandvacancy/page_admin_report','Report');
 
 			
 	}

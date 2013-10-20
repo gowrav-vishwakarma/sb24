@@ -3,6 +3,7 @@ class page_base_site extends page_base_null {
 	function init(){
 		parent::init();
 		$this->setUpSiteMenus();
+		$this->setUpAdds();
 	}
 
 	function setUpSiteMenus(){
@@ -20,5 +21,23 @@ class page_base_site extends page_base_null {
 					->addMenuItem('salesandpurchase_page_search','Sales & Purchase')
 					->addMenuItem('memberpanel_page_dashboard','My Account')
 					;
+	}
+
+	function setUpAdds(){
+		$top_blocks = $this->add('adds/Model_AdBlock')
+						->addCondition('position','Top')
+						->addCondition('is_active',true);
+		foreach($top_blocks as $junk){
+			$v=$this->api->add('adds/View_AdBlock',null,'top_advert_spot');
+			$v->setModel($top_blocks);
+		}
+
+		$left_blocks = $this->add('adds/Model_AdBlock')
+						->addCondition('position','Left')
+						->addCondition('is_active',true);
+		foreach($left_blocks as $junk){
+			$v=$this->api->add('adds/View_AdBlock',null,'left');
+			$v->setModel($left_blocks);
+		}
 	}
 }

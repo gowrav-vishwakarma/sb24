@@ -7,7 +7,8 @@ class Model_Listing extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('Member','member_id')->defaultValue($this->api->auth->model->id);
+		$member = $this->hasOne('Member','member_id');
+		if($this->api->auth->model) $member->defaultValue($this->api->auth->model->id);
 
 		$this->hasOne('State','state_id')->display(array('form'=>'autocomplete/Plus'));
 		$this->hasOne('City','city_id')->display(array('form'=>'autocomplete/Plus'));
