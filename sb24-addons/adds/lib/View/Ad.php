@@ -9,6 +9,11 @@ class View_Ad extends \CompleteLister{
 		$this->current_row['height'] = $this->model->ref('adblock_id')->get('height');
 		if($this->i != 1) $this->current_row['active']="";
 		$this->i++;
+
+		if($this->current_row['click_url'] == '') {
+			$this->current_row['click_url']='#';
+			$this->current_row['target']='';
+		}
 	}
 
 	function defaultTemplate(){

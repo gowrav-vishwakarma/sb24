@@ -1,0 +1,12 @@
+nav ul li{
+	margin-bottom: 0em;
+}
+
+.navbar {
+	min-height: 40px;
+}
+
+.navbar-nav > li > a {
+	padding-top: 7px;
+	padding-bottom: 7px;
+}
