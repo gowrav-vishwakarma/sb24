@@ -16,19 +16,19 @@ class page_tracker_page_admin_index extends Page {
 	function page_std(){
 		$std_crud = $this->add('CRUD');
 		$std_crud->setModel('tracker/STDListing');
-		$std_crud->add('Controller_PlaceSelector');
+		$std_crud->add('Controller_ChainSelector',array("chain_fields"=>array('state_id','city_id')));
 	}
 	
 	function page_pincode(){
 		$pincode_crud = $this->add('CRUD');
 		$pincode_crud->setModel('tracker/PINCODEListing');
-		$pincode_crud->add('Controller_PlaceSelector');
+		$pincode_crud->add('Controller_ChainSelector',array("chain_fields"=>array('state_id','city_id')));
 	}
 
 	function page_mirc(){
 		$mirc_crud = $this->add('CRUD');
 		$mirc_crud->setModel('tracker/MIRCListing');
-		$mirc_crud->add('Controller_PlaceSelector');
+		$mirc_crud->add('Controller_ChainSelector',array("chain_fields"=>array('state_id','city_id')));
 	}
 
 
