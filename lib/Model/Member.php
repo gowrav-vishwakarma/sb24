@@ -10,6 +10,8 @@ class Model_Member extends Model_Table {
 		$this->addField('password');
 		$this->addField('mobile_no')->hint("Your Password will be send to this number")->mandatory('mobile number is must, your password will be send to this number');
 
+		$this->addField('is_staff')->type('boolean')->defaultValue(false);
+
 		$this->hasMany('businessdirectory/Listing','member_id');
 		$this->hasMany('businessdirectory/FreeListing','member_id');
 

@@ -28,16 +28,27 @@ class page_base_site extends page_base_null {
 						->addCondition('position','Top')
 						->addCondition('is_active',true);
 		foreach($top_blocks as $junk){
+			$temp_block = $this->add('adds/Model_AdBlock')->load($top_blocks->id);
 			$v=$this->api->add('adds/View_AdBlock',null,'top_advert_spot');
-			$v->setModel($top_blocks);
+			$v->setModel($temp_block);
 		}
 
 		$left_blocks = $this->add('adds/Model_AdBlock')
 						->addCondition('position','Left')
 						->addCondition('is_active',true);
 		foreach($left_blocks as $junk){
+			$temp_block = $this->add('adds/Model_AdBlock')->load($left_blocks->id);
 			$v=$this->api->add('adds/View_AdBlock',null,'left');
-			$v->setModel($left_blocks);
+			$v->setModel($temp_block);
+		}
+
+		$right_blocks = $this->add('adds/Model_AdBlock')
+						->addCondition('position','Right')
+						->addCondition('is_active',true);
+		foreach($right_blocks as $junk){
+			$temp_block = $this->add('adds/Model_AdBlock')->load($right_blocks->id);
+			$v=$this->api->add('adds/View_AdBlock',null,'right');
+			$v->setModel($temp_block);
 		}
 	}
 }

@@ -1,12 +1,10 @@
 <?php
-class Model_Staff extends Model_Table {
-	var $table= "staff";
+class Model_Staff extends Model_Member {
 	function init(){
 		parent::init();
 
-		$this->addField('username');
-		$this->addField('password');
-
+		$this->addCondition('is_staff',true);
 		$this->add('dynamic_model/Controller_AutoCreator');
+
 	}
 }
