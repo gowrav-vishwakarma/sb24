@@ -4,6 +4,9 @@ class page_memberpanel_page_register extends page_base_site {
 	function init(){
 		parent::init();
 
+		$this->add('H3')->set('Register Now, Its Free ...')
+			->sub('Add your own free listings, get unlimited informations ... ');
+
 		$model=$this->add('Model_Member');
 		$model->getElement('password')->system(true);
 
@@ -13,7 +16,7 @@ class page_memberpanel_page_register extends page_base_site {
 
 		if($form->isSubmitted()){
 			$form->update();
-			$form->js()->univ()->closeDialog()->execute();
+			$form->js(null, $this->js()->univ()->redirect('memberpanel_page_dashboard'))->univ()->closeDialog()->execute();
 		}
 	}
 }
