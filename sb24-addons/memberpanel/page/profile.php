@@ -14,7 +14,7 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 		$model->getElement('username')->system(true);
 		$form->setModel($model);
 		
-		$sms_code=$form->addField('line','sms_code');
+		$sms_code=$form->addField('line','sms_code')->setFieldHint("Enter the code you received via sms");
 		$sms_btn = $form->getElement('mobile_no')->afterField()->add('ButtonSet')->add('Button')->set('Send Me Verification Code');
 
 		$mobile_field=$form->getElement('mobile_no');
@@ -45,9 +45,11 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 			if($form->get('password') != $form->get('re_password'))
 				$form->displayError('re_password','Password must match');
 
+			if($form->get('password') == "") $form->model->getElement('password')->destroy();
+
 			$form->model['is_active']=true;
 			$form->update();
-			$form->js()->univ()->successMessage("Your Information is stored")->execute();
+			$form->js(null,$form->js()->reload())->univ()->successMessage("Your Information is stored")->execute();
 		}
 
 	}

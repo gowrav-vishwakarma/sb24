@@ -10,12 +10,18 @@ class Model_Member extends Model_Table {
 		$this->addField('password');
 		$this->addField('mobile_no')->hint("Your Password / Activation Codes will be send to this number, Please keep it correct")->mandatory('mobile number is must, your password will be send to this number');
 
+		$this->hasOne('State','state_id');
+		$this->hasOne('City','city_id');
+		$this->addField('address');
+
 		$this->addField('is_staff')->type('boolean')->defaultValue(false)->system(true);
 
 
 		$this->addField('update_code')->system(true);
 		$this->addField('code_valid_till')->system(true);
 		$this->addField('is_active')->type('boolean')->defaultValue(true)->system(true);
+
+		$this->addField('search_string');
 
 		$this->hasMany('businessdirectory/Listing','member_id');
 		$this->hasMany('businessdirectory/FreeListing','member_id');
@@ -28,6 +34,15 @@ class Model_Member extends Model_Table {
 	}
 
 	function beforeSave(){
+
+		$this['search_string'] = $this['name'].  " ".
+								$this['mobile_no'] . " ".
+								$this->ref('city_id')->get('name') . " ".
+								$this->ref('state_id')->get('name') . " ".
+								$this['address'] . " "
+								;
+
+
 		if(!$this->loaded()){
 			$this['password']=rand(100,999);
 			// check for existing username
