@@ -9,7 +9,9 @@ class Model_Listing extends \Model_Table {
 
 		$this->hasOne('City','city_1_id');
 		$this->hasOne('City','city_2_id');
-		$this->addField('distance');
+		$this->addField('distance_bus');
+		$this->addField('distance_train');
+		$this->addField('distance_plane');
 
 		$this->addHook('beforeSave',$this);
 
@@ -22,6 +24,16 @@ class Model_Listing extends \Model_Table {
 		$existing->addCondition('city_1_id',$this['city_2_id']);
 		$existing->addCondition('id','<>',$this->id);
 		$existing->tryLoadAny();
+
+		$existing1 = $this->add('distance/Model_Listing');
+		$existing1->addCondition('city_1_id',$this['city_1_id']);
+		$existing1->addCondition('city_2_id',$this['city_2_id']);
+		$existing1->addCondition('id','<>',$this->id);
+		$existing1->tryLoadAny();
+
+		if($existing1->loaded())
+			throw $this->exception('This distance is already fed  ','ValidityCheck' )->setField('city_1_id');
+			
 		if($existing->loaded())
 			throw $this->exception('This distance is already fed as ' . $existing['distance'],'ValidityCheck' )->setField('city_1_id');
 		
