@@ -14,6 +14,8 @@ class page_memberpanel_page_base extends page_base_site {
 		}
 		$this->api->auth->check();
 		$this->setUpMemberMenus();
+
+		$this->add('H3')->set("Welcome " . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
 	}
 
 	function update_login_form($auth){
@@ -32,7 +34,8 @@ class page_memberpanel_page_base extends page_base_site {
 	function setUpMemberMenus(){
 		$this->add('Menu',array('inactive_menu_class'=>'','current_menu_class'=>'active'),'sidebar',array('sidebarmenu'))
 			->addMenuItem('memberpanel_page_dashboard','Dashboard')
-			->addMenuItem('memberpanel_page_listings','My Listings')
+			->addMenuItem('businessdirectory_page_member_index','My Listings')
+			->addMenuItem('blooddoner_page_member_index','Blood Donation')
 			->addMenuItem('memberpanel_page_profile','Profile')
 			->addMenuItem('logout');
 		;

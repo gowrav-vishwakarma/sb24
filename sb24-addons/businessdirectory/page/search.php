@@ -11,13 +11,19 @@ class page_businessdirectory_page_search extends page_base_site {
 		$form->addClass('stacked');
 		$search_field=$form->addField('line','search')->setAttr('placeholder','Type business related query here');
 		
-		// $filter=$form->addSeparator('atk-row filter');
-		// $form->addField('checkboxlist','search_in')->setValueList(array('state','city'))->set('0,1,2');
-		// $filter->js(true)->_selector('.filter')->hide();
-		// $search_field->afterField()->add('Button')->set('Filter')->js('click',$filter->js()->_selector('.filter')->toggle('slow'));
-
 		$business_listing = $this->add('businessdirectory/View_Listing');
-		$business_listing->setModel('businessdirectory/Listing');
+		$result = $this->add('businessdirectory/Model_Listing');
+
+		if($_GET['string']){
+			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$_GET['string'].' WITH QUERY EXPANSION")');
+			$result->setOrder('Relevance','Desc');
+			// $result->addCondition('Relevance','>','0.5');
+		}
+
+		$business_listing->setModel($result);
+		if($form->isSubmitted()){
+			$business_listing->js()->reload(array('string'=>$form->get('search')))->execute();
+		}
 
 	}
 }

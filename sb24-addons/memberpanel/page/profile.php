@@ -4,9 +4,51 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 	function init(){
 		parent::init();
 
-		$form=$this->add('Form');
-		$form->setModel($this->api->auth->model);
 
+		$this->add('H3')->set('Update your profile')
+		->sub('SMS Authentication is needed for each updation, So first send your self an Verification Code')
+		;
+
+		$form=$this->add('Form');
+		$model=$this->api->auth->model;
+		$model->getElement('username')->system(true);
+		$form->setModel($model);
+		
+		$sms_code=$form->addField('line','sms_code');
+		$sms_btn = $form->getElement('mobile_no')->afterField()->add('ButtonSet')->add('Button')->set('Send Me Verification Code');
+
+		$mobile_field=$form->getElement('mobile_no');
+		$form->addField('password','re_password');
+
+		if($_GET['mobile_no']){
+			$model->sendCode($_GET['mobile_no']);
+			$sms_btn->set('Code Sent to '. $_GET['mobile_no']);
+		}
+		$sms_btn->js('click',$sms_btn->js()->reload(array('mobile_no'=>$mobile_field->js()->val())));
+		
+
+		$form->addSubmit('Update');
+
+		$form->add('Order')
+				->move('re_password','after','password')
+				->now();
+
+		if($form->isSubmitted()){
+
+			if($form->get('sms_code') != $model['update_code']){
+				$form->displayError("sms_code",'SMS Code is not correct');
+			}else{
+				if(strtotime($model['code_valid_till']) < strtotime(date('Y-m-d')) )
+				$form->displayError("sms_code",'SMS Code is expired, click on right button to send new code');
+			}
+			
+			if($form->get('password') != $form->get('re_password'))
+				$form->displayError('re_password','Password must match');
+
+			$form->model['is_active']=true;
+			$form->update();
+			$form->js()->univ()->successMessage("Your Information is stored")->execute();
+		}
 
 	}
 }

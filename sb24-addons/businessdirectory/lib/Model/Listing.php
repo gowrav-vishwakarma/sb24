@@ -11,6 +11,9 @@ class Model_Listing extends \Model_Table {
 			if($this->api->auth->model) 
 				$member->defaultValue($this->api->auth->model->id);
 
+		$this->hasOne('Category','category_id')->caption('Industry');
+		$this->hasOne('SubCategory','subcategory_id')->caption('Major Field');//->display(array('form'=>'autocomplete/Plus'));
+		
 		$this->hasOne('State','state_id')->display(array('form'=>'autocomplete/Plus'));
 		$this->hasOne('City','city_id')->display(array('form'=>'autocomplete/Plus'));
 		$this->hasOne('Area','area_id')->display(array('form'=>'autocomplete/Plus'));
@@ -42,11 +45,12 @@ class Model_Listing extends \Model_Table {
 		$this->addField('valid_till')->type('date');
 		$this->addField('renewed_on')->type('date');
 
+		$this->addField('tags');
+
 		$this->addField('search_string')->system(true);
 
 		$this->hasMany('businessdirectory/RegisteredCategory','listing_id');
-		$this->hasOne('Category','category_id');//->display(array('form'=>'autocomplete/Plus'));
-		$this->addField('sub_category_list')->system(true);//->display(array('form'=>'autocomplete/Plus'));
+		
 
 		$this->addHook('beforeSave',$this);
 		
@@ -56,9 +60,11 @@ class Model_Listing extends \Model_Table {
 	function beforeSave(){
 
 		$this['search_string']= $this->ref('category_id')->get('name') . " ".
+								$this->ref('subcategory_id')->get('name') . " ".
 								$this->ref('state_id')->get('name') . " ".
 								$this->ref('city_id')->get('name'). " ".
 								$this->ref('area_id')->get('name'). " ".
+								$this["tags"]. " ".
 								$this['name']. " ".
 								$this["company_address"]. " ".
 								$this['contact_person']
