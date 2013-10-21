@@ -17,22 +17,12 @@ class page_distance_page_search extends page_base_site {
 		$v=$this->add('distance/View_Listing');
 
 		if($_GET['filter']){
-
-			$model_distance_listing->_dsql()
-			->where(array(
-					array('city_1_id',$_GET['from_city']),
-					array('city_2_id',$_GET['to_city']),
-				))
-			->where(array(
-					array('city_2_id',$_GET['from_city']),
-					array('city_1_id',$_GET['to_city']),
-				))
-			;
-			// $model_distance_listing->debug();
-		}else{
-			$model_distance_listing->addCondition('id',-1);
-		}
-		
+			if($_GET['from_city'] )
+				$q=$this->api->db->dsql();
+				$q->table('distance_listing');
+			$q->where('city_1_id',$_GET['from_city']);	
+			$q->where('city_2_id',$_GET['to_city']);
+		}		
 		$v->setModel($model_distance_listing);
 
 		if($form->isSubmitted()){

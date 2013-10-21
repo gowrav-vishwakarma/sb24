@@ -10,7 +10,7 @@ class View_Listing extends \View{
 	}
 
 	function setModel($model){
-		$model->debug()->tryLoadAny();
+		$model->tryLoadAny();
 		if(!$model->loaded()) return;
 		parent::setModel($model);
 	}
