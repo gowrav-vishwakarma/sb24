@@ -12,7 +12,7 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 		$form=$this->add('Form');
 		$model=$this->api->auth->model;
 		$model->getElement('username')->system(true);
-		$form->setModel($model);
+		$form->setModel($model,'base');
 		
 		$sms_code=$form->addField('line','sms_code')->setFieldHint("Enter the code you received via sms");
 		$sms_btn = $form->getElement('mobile_no')->afterField()->add('ButtonSet')->add('Button')->set('Send Me Verification Code');
@@ -29,6 +29,9 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 
 		$form->addSubmit('Update');
 
+		if(!$form->isSubmitted()){
+			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id'),'force_selection'=>false));
+		}
 		$form->add('Order')
 				->move('re_password','after','password')
 				->now();
@@ -51,6 +54,7 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 			$form->update();
 			$form->js(null,$form->js()->reload())->univ()->successMessage("Your Information is stored")->execute();
 		}
+
 
 	}
 }

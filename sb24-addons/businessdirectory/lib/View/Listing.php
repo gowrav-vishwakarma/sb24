@@ -5,7 +5,7 @@ namespace businessdirectory;
 class View_Listing extends \CompleteLister{
 
 	function formatRow(){
-		$js = $this->api->js('click')->univ()->frameURL("I M FRAME",$this->api->url('businessdirectory_page_more',array('listing_id'=>$this->model->id)));
+		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('businessdirectory_page_more',array('listing_id'=>$this->model->id)));
 		$this->current_row['more']=$js;
 		parent::formatRow();
 	}

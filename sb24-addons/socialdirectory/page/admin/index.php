@@ -20,7 +20,7 @@ class page_socialdirectory_page_admin_index extends page_base_admin {
 
 
 		$manage_crud=$manage_social_tab->add('CRUD');
-		$manage_crud->setModel('socialdirectory/Listing');
+		$manage_crud->setModel('Member');
 		if($manage_crud->grid)
 			$manage_crud->grid->addQuickSearch(array('name','cast'));
 	}

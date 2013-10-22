@@ -5,23 +5,30 @@ class Model_Member extends Model_Table {
 	function init(){
 		parent::init();
 
-		$this->addField('name');
-		$this->addField('username')->mandatory('username is must');
-		$this->addField('password');
-		$this->addField('mobile_no')->hint("Your Password / Activation Codes will be send to this number, Please keep it correct")->mandatory('mobile number is must, your password will be send to this number');
+		$this->addField('name')->group('social');
+		$this->addField('father_name')->group('social');
+		$this->addField('username')->mandatory('username is must')->group('base');
+		$this->addField('password')->group('base');
+		$this->addField('mobile_no')->hint("Your Password / Activation Codes will be send to this number, Please keep it correct")->mandatory('mobile number is must, your password will be send to this number')->group('base');
 
-		$this->hasOne('State','state_id');
-		$this->hasOne('City','city_id');
-		$this->addField('address');
+		$this->hasOne('State','state_id')->group('base');
+		$this->hasOne('City','city_id')->group('base');
+		$this->addField('address')->type('text')->group('social');
+		$this->addField('date_of_birth')->type('date')->group('social');
+		
+		$this->hasOne('socialdirectory/Religion','religion_id')->group('social');
+		$this->hasOne('socialdirectory/Cast','cast_id')->group('social');
+		$this->hasOne('socialdirectory/SubCast','subcast_id')->group('social');
 
 		$this->addField('is_staff')->type('boolean')->defaultValue(false)->system(true);
+		$this->addField('joined_on')->type('date')->defaultValue(date('Y-m-d H:i:s'))->system(true);
 
 
 		$this->addField('update_code')->system(true);
 		$this->addField('code_valid_till')->system(true);
 		$this->addField('is_active')->type('boolean')->defaultValue(true)->system(true);
 
-		$this->addField('search_string');
+		$this->addField('search_string')->system(true);
 
 		$this->hasMany('businessdirectory/Listing','member_id');
 		$this->hasMany('businessdirectory/FreeListing','member_id');

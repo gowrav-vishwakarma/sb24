@@ -8,7 +8,7 @@ class Model_Religion extends \Model_Table {
 		parent::init();
 
 		$this->addField('name')->Caption('Religion');
-		$this->hasMany('socialdirectory/Listing','religion_id');
+		$this->hasMany('Member','religion_id');
 
 		$this->addHook('beforeSave',$this);
 		$this->add('dynamic_model/Controller_AutoCreator');

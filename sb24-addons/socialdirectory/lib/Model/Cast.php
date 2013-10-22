@@ -7,9 +7,10 @@ class Model_Cast extends \Model_Table {
 	function init(){
 		parent::init();
 
+		$this->hasOne('socialdirectory/Religion','religion_id');
 		$this->addField('name')->Caption('Cast');
 		$this->hasMany('socialdirectory/SubCast','cast_id');
-		$this->hasMany('socialdirectory/Listing','cast_id');
+		$this->hasMany('Member','cast_id');
 
 		$this->addHook('beforeSave',$this);
 		$this->add('dynamic_model/Controller_AutoCreator');

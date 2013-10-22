@@ -2,7 +2,7 @@
 
 namespace emergency;
 
-class Model_Emergeecy extends \Model_Table {
+class Model_Listing extends \Model_Table {
 	var $table= "emergency";
 	function init(){
 		parent::init();
@@ -11,6 +11,7 @@ class Model_Emergeecy extends \Model_Table {
 		$this->hasOne('State','state_id');
 		$this->hasOne('City','city_id');
 		$this->hasOne('Tehsil','tehsil_id');
+		$this->hasOne('emergency/Category','category_id');	
 		
 
 		$this->addField('name');
