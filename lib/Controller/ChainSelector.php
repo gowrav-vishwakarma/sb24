@@ -2,7 +2,7 @@
 
 class Controller_ChainSelector extends AbstractController{
 	public $chain_fields=array();
-	public $force_selection=true;
+	public $force_selection=false;
 
 	function init(){
 		parent::init();

@@ -9,7 +9,6 @@ class Model_Category extends Model_Table {
 		$this->hasMany('SubCategory','category_id');
 		$this->hasMany('businessdirectory/Listing','category_id');
 		// $this->hasMany('businessdirectory/RegisteredCategory','category_id');
-		$this->hasMany('jobandvacancy/RegisteredCategory','category_id');
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

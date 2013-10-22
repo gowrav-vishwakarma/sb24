@@ -17,15 +17,18 @@ class page_distance_page_search extends page_base_site {
 		$v=$this->add('distance/View_Listing');
 
 		if($_GET['filter']){
-			if($_GET['from_city'] )
-				$q=$this->api->db->dsql();
-				$q->table('distance_listing');
-			$q->where('city_1_id',$_GET['from_city']);	
-			$q->where('city_2_id',$_GET['to_city']);
+			$city1=$_GET['from_city'];
+			$city2=$_GET['to_city'];
+				$model_distance_listing->_dsql()
+					->where("(city_1_id=$city1 and city_2_id=$city2) or (city_1_id=$city2 and city_2_id=$city1)");
+		}else{
+			$model_distance_listing->addCondition('city_1_id',-1);
 		}		
 		$v->setModel($model_distance_listing);
 
 		if($form->isSubmitted()){
+			if($form->get('city_1_id')==$form->get('city_2_id'))
+				$form->displayError('from_city','You can not select same city');
 			$v->js()->reload(array('from_city'=>$form->get('from_city'),
 									'to_city'=>$form->get('to_city'),
 									'filter'=>'1'))->execute();
