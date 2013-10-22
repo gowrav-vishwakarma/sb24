@@ -15,6 +15,8 @@ class Model_Member extends Model_Table {
 		$this->hasOne('City','city_id')->group('base');
 		$this->addField('address')->type('text')->group('social');
 		$this->addField('date_of_birth')->type('date')->group('social');
+		$this->addField('gender')->enum(array('Male','Female'))->group('social');
+		$this->addField('interest')->type('text')->caption('About You & Your Interest')->group('social');
 		
 		$this->hasOne('socialdirectory/Religion','religion_id')->group('social');
 		$this->hasOne('socialdirectory/Cast','cast_id')->group('social');
@@ -42,11 +44,13 @@ class Model_Member extends Model_Table {
 
 	function beforeSave(){
 
-		$this['search_string'] = $this['name'].  " ".
+		$this['search_string']= $this['name'].  " ".
 								$this['mobile_no'] . " ".
 								$this->ref('city_id')->get('name') . " ".
 								$this->ref('state_id')->get('name') . " ".
-								$this['address'] . " "
+								$this['address'] . " " . 
+								$ths['father_name'] . " " .
+								$this['interest'] . " " 
 								;
 
 

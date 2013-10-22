@@ -11,7 +11,7 @@ class page_memberpanel_page_register extends page_base_site {
 		$model->getElement('password')->system(true);
 
 		$form = $this->add('Form');
-		$form->setModel($model);
+		$form->setModel($model,'base');
 		$form->addSubmit("Register");
 
 		if($form->isSubmitted()){
