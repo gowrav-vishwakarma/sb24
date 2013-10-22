@@ -14,7 +14,7 @@ class page_socialdirectory_page_member_index extends page_memberpanel_page_base 
 
 		if($form->isSubmitted()){
 			$form->update();
-			$form->js()->reload()->univ()->successMessage("Information Updated")->execute();
+			$form->js(null, $form->js()->reload())->univ()->successMessage("Information Updated")->execute();
 		}
 
 	}
