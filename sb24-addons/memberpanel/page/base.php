@@ -38,6 +38,8 @@ class page_memberpanel_page_base extends page_base_site {
 			->addMenuItem('blooddoner_page_member_index','Blood Donation')
 			->addMenuItem('memberpanel_page_profile','Profile')
 			->addMenuItem('socialdirectory_page_member_index','Social Details')
+			->addMenuItem('jobandvacancy_page_member_index','My Job Posting')
+			->addMenuItem('event_page_member_index','Registered Events')
 			->addMenuItem('logout');
 		;
 	}

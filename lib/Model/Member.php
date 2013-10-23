@@ -35,6 +35,8 @@ class Model_Member extends Model_Table {
 		$this->hasMany('businessdirectory/Listing','member_id');
 		$this->hasMany('businessdirectory/FreeListing','member_id');
 		$this->hasMany('blooddoner/Listing','member_id');
+		$this->hasMany('jobandvacancy/Listing','member_id');
+		$this->hasMany('event/Registration','member_id');
 
 		$this->addHook('beforeSave',$this);
 		$this->addHook('afterInsert',$this);
@@ -49,7 +51,7 @@ class Model_Member extends Model_Table {
 								$this->ref('city_id')->get('name') . " ".
 								$this->ref('state_id')->get('name') . " ".
 								$this['address'] . " " . 
-								$ths['father_name'] . " " .
+								$this['father_name'] . " " .
 								$this['interest'] . " " 
 								;
 

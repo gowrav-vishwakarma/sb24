@@ -6,7 +6,7 @@ class page_socialdirectory_page_search extends page_base_site {
 
 		$this->add('H3')->set('Find People/Persons')->sub('Search via State, City, Cast, Age or Interest');
 		$register_btn = $this->add('Button')->set('Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px'));
-		$register_btn->js('click',$this->js()->univ()->redirect('memberpanel_page_register'));
+		$register_btn->js('click',$this->js()->univ()->redirect('socialdirectory_page_member_index'));
 
 		$form= $this->add('Form');
 		$list = $this->add('socialdirectory/View_Lister');

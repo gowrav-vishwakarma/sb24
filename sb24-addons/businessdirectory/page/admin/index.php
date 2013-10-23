@@ -9,16 +9,19 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 		$business_listing_crud=$business_listing_tab->add('CRUD');
 		$business_listing_crud->setModel('businessdirectory/Listing');
 
+		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','subcategory_id'=>'category_id')));
+		
 		if($f=$business_listing_crud->form){
-			$sub_category_field = $f->getElement('subcategory_id');
-			if($_GET['category_id']) $sub_category_field->model->addCondition('category_id',$_GET['category_id']);
-			// $sub_category_field->setAttr('multiple','multiple');
-
-			$category_field = $f->getElement('category_id');
-			$category_field->js('change',$f->js()->atk4_form('reloadField','subcategory_id',array($this->api->url(),'category_id'=>$category_field->js()->val())));
+			if($f=$business_listing_crud->form){
+				$wz=$f->add('Controller_FormWizard');
+				$wz->addStep('Initial Info','member_id');
+				$wz->addStep('Basic Info','state_id');
+				$wz->addStep('Extended Info','name');
+				$wz->go();
+			}
 
 		}
-		
+
 		$tabs->addtabURL('businessdirectory/page_admin_report','Reports');		
 	}
 }

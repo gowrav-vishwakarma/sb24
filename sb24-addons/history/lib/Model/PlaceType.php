@@ -22,9 +22,6 @@ class Model_PlaceType extends \Model_Table {
 		$old_model->tryLoadAny();
 		if($old_model->loaded())
 			throw $this->exception("This Type is Allready Exist, Take Another.. ",'ValidityCheck')->setField('name');
-			
-
-
 	}
 
 	function beforeDelete(){

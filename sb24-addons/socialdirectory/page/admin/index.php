@@ -6,9 +6,9 @@ class page_socialdirectory_page_admin_index extends page_base_admin {
 
 		$tabs=$this->add('Tabs');
 
-		$religion_tab=$tabs->addTab('Manage Religions');
-		$cast_tab=$tabs->addTab('Manage Cast');
 		$manage_social_tab=$tabs->addTab('Manage Social Directory');
+		$cast_tab=$tabs->addTab('Manage Cast');
+		$religion_tab=$tabs->addTab('Manage Religions');
 		$report_tab=$tabs->addtabURL('socialdirectory/page_admin_report','Reports');
 		
 		$religion_crud=$religion_tab->add('CRUD');

@@ -26,6 +26,7 @@ class page_admin_master extends page_base_admin{
 		$area_tabs=$tabs->addTab('Area');
 		$area_crud=$area_tabs->add('CRUD');
 		$area_crud->setModel('Area');
+		$area_crud->add('Controller_ChainSelector',array('chain_fields'=>array('tehsil_id'=>'city_id')));
 
 	}
 }
