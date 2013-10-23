@@ -32,6 +32,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('tags')->type('text')->group('free');
 
 		// Paid Informations
+		$this->addField('about_us')->type('text')->group('paid');
 		$this->addField('contact_person')->group('paid');
 		$this->addField('designation')->setValueList(array(	
 															'proprietor'=>'Proprietor',
@@ -40,7 +41,6 @@ class Model_Listing extends \Model_Table {
 															'authorized-person'=>'Authorized-Person'
 															))->group('paid');
 		$this->addField('contact_person_contact_number')->group('paid');
-		$this->addField('about_us')->type('text')->group('paid');
 		
 		//Images
 			//FREE LISTING IMAGES & INFO
@@ -74,16 +74,21 @@ class Model_Listing extends \Model_Table {
 		// System & Admin Fields
 		$this->addField('created_on')->type('date')->defaultValue(date('Y-m-d'))->system(true);
 		$this->addField('valid_till')->type('date')->defaultValue(date('Y-m-d',strtotime('+1 Year')))->system(true);
-		$this->addField('payment_received')->type('money')->system(true);
 		$this->addField('last_paid_on')->type('date')->defaultValue(date('Y-m-d'))->system(true);
-		$this->addField('is_paid')->type('boolean')->defaultValue(false)->system(true);
+		$this->addField('is_paid')->type('boolean')->defaultValue(false);
+		$this->addField('is_active')->type('boolean')->defaultValue(false);
 
 		// SEARCH
 		$this->addField('search_string')->system(true);
 
+		$this->addExpression('payment_received')->set(function($m,$q){
+			return $m->refSQL('businessdirectory/PayAmount')->sum('name');
+		});
+
 		//Has Many Relations		
 
 		$this->hasMany('businessdirectory/RegisteredCategory','listing_id');
+		$this->hasMany('businessdirectory/PayAmount','listing_id');
 		
 		$this->addHook('beforeSave',$this);
 		$this->addHook('beforeDelete',$this);
@@ -115,5 +120,9 @@ class Model_Listing extends \Model_Table {
 	function beforeDelete(){
 		if($this['is_paid'] AND $this->api->auth->model['is_staff']==false)
 			$this->api->js()->univ()->errorMessage("This is Paid Entry, You cannot delete, Contact SabKuch24 Office")->execute();
+	}
+
+	function markActivate(){
+        $this->set('is_active',!$this->get('is_active'))->update();
 	}
 }
