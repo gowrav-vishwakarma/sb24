@@ -43,7 +43,6 @@ class Model_Listing extends \Model_Table {
 		$this->addField('about_us')->type('text')->group('paid');
 		
 		//Images
-		if($this->loaded()){
 			//FREE LISTING IMAGES & INFO
 			$this->add("filestore/Field_Image","company_logo_id")->type('image')->group('free');	
 			//PAID LISTING IMAGES & INFO
@@ -57,7 +56,7 @@ class Model_Listing extends \Model_Table {
 			$this->add("filestore/Field_Image","gallery_image_4_id")->type('image')->group('paid');
 			$this->addField('gallery_image_4_info')->group('paid');
 			$this->add("filestore/Field_Image","gallery_image_5_id")->type('image')->group('paid');
-			$this->addField('gallery_image_4_info')->group('paid');
+			$this->addField('gallery_image_5_info')->group('paid');
 				// PRODUCTS & SERVICES IMAGES & INFO
 			$this->add("filestore/Field_Image","products_image_1_id")->type('image')->group('paid');
 			$this->addField('products_image_1_info')->group('paid');
@@ -69,7 +68,6 @@ class Model_Listing extends \Model_Table {
 			$this->addField('products_image_4_info')->group('paid');
 			$this->add("filestore/Field_Image","products_image_5_id")->type('image')->group('paid');
 			$this->addField('products_image_5_info')->group('paid');
-		} 
 
 		$this->addField('map_latitute_longitude')->group('paid');
 
@@ -88,6 +86,7 @@ class Model_Listing extends \Model_Table {
 		$this->hasMany('businessdirectory/RegisteredCategory','listing_id');
 		
 		$this->addHook('beforeSave',$this);
+		$this->addHook('beforeDelete',$this);
 		
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
@@ -111,5 +110,10 @@ class Model_Listing extends \Model_Table {
 		if($this['city_id']=="") throw $this->exception('City is Must','ValidityCheck')->setField('city_id'); 
 		if($this['area_id']=="") throw $this->exception('Area is Must','ValidityCheck')->setField('area_id'); 
 
+	}
+
+	function beforeDelete(){
+		if($this['is_paid'] AND $this->api->auth->model['is_staff']==false)
+			$this->api->js()->univ()->errorMessage("This is Paid Entry, You cannot delete, Contact SabKuch24 Office")->execute();
 	}
 }

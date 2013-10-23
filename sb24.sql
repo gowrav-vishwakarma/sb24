@@ -125,10 +125,12 @@ DROP TABLE IF EXISTS `area`;
 CREATE TABLE `area` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `area_id` int(11) DEFAULT NULL,
+  `tehsil_id` int(11) DEFAULT NULL,
+  `city_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_area_id` (`area_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `fk_tehsil_id` (`tehsil_id`),
+  KEY `fk_city_id` (`city_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,6 +139,7 @@ CREATE TABLE `area` (
 
 LOCK TABLES `area` WRITE;
 /*!40000 ALTER TABLE `area` DISABLE KEYS */;
+INSERT INTO `area` VALUES (1,'Kanji Ka Hata',1,1);
 /*!40000 ALTER TABLE `area` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,46 +212,66 @@ CREATE TABLE `business_listing` (
   `name` varchar(255) DEFAULT NULL,
   `company_address` text,
   `company_ph_no` varchar(255) DEFAULT NULL,
-  `type_of_work` text,
   `email_id` varchar(255) DEFAULT NULL,
   `website` varchar(255) DEFAULT NULL,
   `contact_person` varchar(255) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
-  `contact_number` varchar(255) DEFAULT NULL,
   `address` text,
-  `company_logo` int(11) DEFAULT NULL,
   `is_paid` tinyint(1) DEFAULT NULL,
-  `image1` int(11) DEFAULT NULL,
-  `image2` int(11) DEFAULT NULL,
-  `image3` int(11) DEFAULT NULL,
-  `image4` int(11) DEFAULT NULL,
-  `image5` int(11) DEFAULT NULL,
   `about_us` text,
   `created_on` date DEFAULT NULL,
   `valid_till` date DEFAULT NULL,
-  `renewed_on` date DEFAULT NULL,
   `mobile_no` varchar(255) DEFAULT NULL,
   `member_id` int(11) DEFAULT NULL,
-  `company_logo_id` int(11) DEFAULT NULL,
   `search_string` varchar(255) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
   `subcategory_id` int(11) DEFAULT NULL,
-  `tags` varchar(255) DEFAULT NULL,
+  `tags` text,
+  `short_description` text,
+  `contact_person_contact_number` varchar(255) DEFAULT NULL,
+  `last_paid_on` date DEFAULT NULL,
+  `map_latitute_longitude` varchar(255) DEFAULT NULL,
+  `payment_received` decimal(10,2) DEFAULT NULL,
+  `company_logo_id` int(11) DEFAULT NULL,
+  `gallery_image_1_id` int(11) DEFAULT NULL,
+  `gallery_image_1_info` varchar(255) DEFAULT NULL,
+  `gallery_image_2_id` int(11) DEFAULT NULL,
+  `gallery_image_2_info` varchar(255) DEFAULT NULL,
+  `gallery_image_3_id` int(11) DEFAULT NULL,
+  `gallery_image_3_info` varchar(255) DEFAULT NULL,
+  `gallery_image_4_id` int(11) DEFAULT NULL,
+  `gallery_image_4_info` varchar(255) DEFAULT NULL,
+  `gallery_image_5_id` int(11) DEFAULT NULL,
+  `gallery_image_5_info` varchar(255) DEFAULT NULL,
+  `products_image_1_id` int(11) DEFAULT NULL,
+  `products_image_1_info` varchar(255) DEFAULT NULL,
+  `products_image_2_id` int(11) DEFAULT NULL,
+  `products_image_2_info` varchar(255) DEFAULT NULL,
+  `products_image_3_id` int(11) DEFAULT NULL,
+  `products_image_3_info` varchar(255) DEFAULT NULL,
+  `products_image_4_id` int(11) DEFAULT NULL,
+  `products_image_4_info` varchar(255) DEFAULT NULL,
+  `products_image_5_id` int(11) DEFAULT NULL,
+  `products_image_5_info` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_state_id` (`state_id`),
   KEY `fk_city_id` (`city_id`),
   KEY `fk_area_id` (`area_id`),
-  KEY `fk_company_logo` (`company_logo`),
-  KEY `fk_image1` (`image1`),
-  KEY `fk_image2` (`image2`),
-  KEY `fk_image3` (`image3`),
-  KEY `fk_image4` (`image4`),
-  KEY `fk_image5` (`image5`),
   KEY `fk_member_id` (`member_id`),
-  KEY `fk_company_logo_id` (`company_logo_id`),
   KEY `fk_category_id` (`category_id`),
-  KEY `fk_subcategory_id` (`subcategory_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  KEY `fk_subcategory_id` (`subcategory_id`),
+  KEY `fk_company_logo_id` (`company_logo_id`),
+  KEY `fk_gallery_image_1_id` (`gallery_image_1_id`),
+  KEY `fk_gallery_image_2_id` (`gallery_image_2_id`),
+  KEY `fk_gallery_image_3_id` (`gallery_image_3_id`),
+  KEY `fk_gallery_image_4_id` (`gallery_image_4_id`),
+  KEY `fk_gallery_image_5_id` (`gallery_image_5_id`),
+  KEY `fk_products_image_1_id` (`products_image_1_id`),
+  KEY `fk_products_image_2_id` (`products_image_2_id`),
+  KEY `fk_products_image_3_id` (`products_image_3_id`),
+  KEY `fk_products_image_4_id` (`products_image_4_id`),
+  KEY `fk_products_image_5_id` (`products_image_5_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +280,7 @@ CREATE TABLE `business_listing` (
 
 LOCK TABLES `business_listing` WRITE;
 /*!40000 ALTER TABLE `business_listing` DISABLE KEYS */;
-INSERT INTO `business_listing` VALUES (1,1,1,NULL,'Xavoc ','address','8875191258','IT Company','xavoc@xavoc.c','xavoc.com','xavoc','authorized-person','8875191258','kljlkj',16,0,NULL,NULL,NULL,NULL,NULL,'','2013-10-19',NULL,NULL,'8875191258',1,18,' Rajasthan Udaipur  Xavoc  address xavoc',NULL,NULL,NULL),(2,1,1,NULL,'Agile','Agile','5245666','65+5+','hh@hhjk.c','bjbjk.lkhlkh','hello','partner','7894566223332','qwek',NULL,1,NULL,NULL,NULL,NULL,NULL,'','2013-10-20',NULL,NULL,'4578933',1,20,' Rajasthan Udaipur  Agile Agile hello',NULL,NULL,NULL),(3,NULL,NULL,NULL,'','','','','','','',NULL,'','',NULL,0,NULL,NULL,NULL,NULL,NULL,'','2013-10-20',NULL,NULL,'',1,NULL,'IT Company      ',1,NULL,NULL),(4,NULL,NULL,NULL,'','','','','','','',NULL,'','',NULL,0,NULL,NULL,NULL,NULL,NULL,'','2013-10-20',NULL,NULL,'',1,NULL,'      ',NULL,NULL,NULL);
+INSERT INTO `business_listing` VALUES (1,1,1,NULL,'Xavoc ','address','8875191258','xavoc@xavoc.c','xavoc.com','xavoc','authorized-person','kljlkj',0,'','2013-10-19',NULL,'8875191258',1,' Rajasthan Udaipur  Xavoc  address xavoc',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,NULL,'','','','','','',NULL,'',0,'','2013-10-20',NULL,'',1,'IT Company      ',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,NULL,'','','','','','',NULL,'',0,'','2013-10-20',NULL,'',1,'      ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,1,1,1,'Xavoc International','18/436, Gayatri Marg','9783807100','','','',NULL,'',0,'','2013-10-23',NULL,'9783807100',1,'IT Company web Designing Rajasthan Udaipur Kanji Ka Hata  Xavoc International 18/436, Gayatri Marg ',1,1,'','It Company',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `business_listing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,6 +519,94 @@ INSERT INTO `emergency_category` VALUES (1,'News Paper'),(2,'Police Station');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `event_listing`
+--
+
+DROP TABLE IF EXISTS `event_listing`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_listing` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `state_id` int(11) DEFAULT NULL,
+  `city_id` int(11) DEFAULT NULL,
+  `type_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
+  `event_venue` varchar(255) DEFAULT NULL,
+  `about_event` text,
+  `is_registrable` tinyint(1) DEFAULT NULL,
+  `registration_last_date` date DEFAULT NULL,
+  `event_picture_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_state_id` (`state_id`),
+  KEY `fk_city_id` (`city_id`),
+  KEY `fk_type_id` (`type_id`),
+  KEY `fk_event_picture_id` (`event_picture_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_listing`
+--
+
+LOCK TABLES `event_listing` WRITE;
+/*!40000 ALTER TABLE `event_listing` DISABLE KEYS */;
+INSERT INTO `event_listing` VALUES (1,1,1,1,'Maha Kaal Pooja','2014-02-15','Maha Kaal mandir','Biggest Pooja ever in state',1,'2014-02-01',24);
+/*!40000 ALTER TABLE `event_listing` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event_registration`
+--
+
+DROP TABLE IF EXISTS `event_registration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_registration` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) DEFAULT NULL,
+  `member_id` int(11) DEFAULT NULL,
+  `registration_date` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_event_id` (`event_id`),
+  KEY `fk_member_id` (`member_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_registration`
+--
+
+LOCK TABLES `event_registration` WRITE;
+/*!40000 ALTER TABLE `event_registration` DISABLE KEYS */;
+/*!40000 ALTER TABLE `event_registration` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event_type`
+--
+
+DROP TABLE IF EXISTS `event_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_type`
+--
+
+LOCK TABLES `event_type` WRITE;
+/*!40000 ALTER TABLE `event_type` DISABLE KEYS */;
+INSERT INTO `event_type` VALUES (1,'Religious Event'),(2,'Political Event'),(3,'Educational Event'),(4,'Financial Event');
+/*!40000 ALTER TABLE `event_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `filestore_file`
 --
 
@@ -512,7 +623,7 @@ CREATE TABLE `filestore_file` (
   `filenum` int(11) NOT NULL DEFAULT '0',
   `deleted` enum('Y','N') NOT NULL DEFAULT 'N',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -521,7 +632,7 @@ CREATE TABLE `filestore_file` (
 
 LOCK TABLES `filestore_file` WRITE;
 /*!40000 ALTER TABLE `filestore_file` DISABLE KEYS */;
-INSERT INTO `filestore_file` VALUES (1,1,1,'0/20131019221530_1_thumb-1ms-212660.jpg','thumb_1ms-212660.jpg',5047,0,''),(2,1,1,'0/20131019221530__1ms-212660.jpg','1ms-212660.jpg',246953,0,''),(3,4,1,'0/20131019225227_1_thumb-100-job.png','thumb_100_job.png',3798,0,''),(4,4,1,'0/20131019225227__100-job.png','100_job.png',4149,0,''),(5,1,1,'0/20131019230828_1_thumb-934-ashlee-simpson-wallpapers-hot-1231877913.jpg','thumb_934_ashlee-simpson-wallpapers-hot-1231877913.jpg',4576,0,''),(6,1,1,'0/20131019230828__934-ashlee-simpson-wallpapers-hot-1231877913.jpg','934_ashlee-simpson-wallpapers-hot-1231877913.jpg',98924,0,''),(7,1,1,'0/20131019230909_1_thumb-edit-6.jpg','thumb_edit-6.jpg',13083,0,''),(8,1,1,'0/20131019230909__edit-6.jpg','edit-6.jpg',563909,0,''),(9,1,1,'0/20131019230923_1_thumb-edit-6.jpg','thumb_edit-6.jpg',13083,0,''),(10,1,1,'0/20131019230923__edit-6.jpg','edit-6.jpg',563909,0,''),(11,1,1,'0/20131019231033_1_thumb-74727-374316649325100-214148300-n.jpg','thumb_74727_374316649325100_214148300_n.jpg',4916,0,''),(12,1,1,'0/20131019231033__74727-374316649325100-214148300-n.jpg','74727_374316649325100_214148300_n.jpg',32948,0,''),(13,1,1,'0/20131019231051_1_thumb-girl.jpeg','thumb_girl.jpeg',6803,0,''),(14,1,1,'0/20131019231051__girl.jpeg','girl.jpeg',449731,0,''),(15,1,1,'0/20131020124358_1_thumb-1.jpg','thumb_1.jpg',8524,0,''),(16,1,1,'0/20131020124357__1.jpg','1.jpg',107739,0,''),(17,1,1,'0/20131020124519_1_thumb-1.jpg','thumb_1.jpg',8524,0,''),(18,1,1,'0/20131020124519__1.jpg','1.jpg',107739,0,''),(19,4,1,'0/20131020134742_1_thumb-100-job.png','thumb_100_job.png',3798,0,''),(20,4,1,'0/20131020134742__100-job.png','100_job.png',4149,0,''),(21,1,1,'0/20131022103030_1_thumb-31332-640x480.jpg','thumb_31332-640x480.jpg',11807,0,''),(22,1,1,'0/20131022103030__31332-640x480.jpg','31332-640x480.jpg',152111,0,'');
+INSERT INTO `filestore_file` VALUES (1,1,1,'0/20131019221530_1_thumb-1ms-212660.jpg','thumb_1ms-212660.jpg',5047,0,''),(2,1,1,'0/20131019221530__1ms-212660.jpg','1ms-212660.jpg',246953,0,''),(3,4,1,'0/20131019225227_1_thumb-100-job.png','thumb_100_job.png',3798,0,''),(4,4,1,'0/20131019225227__100-job.png','100_job.png',4149,0,''),(5,1,1,'0/20131019230828_1_thumb-934-ashlee-simpson-wallpapers-hot-1231877913.jpg','thumb_934_ashlee-simpson-wallpapers-hot-1231877913.jpg',4576,0,''),(6,1,1,'0/20131019230828__934-ashlee-simpson-wallpapers-hot-1231877913.jpg','934_ashlee-simpson-wallpapers-hot-1231877913.jpg',98924,0,''),(7,1,1,'0/20131019230909_1_thumb-edit-6.jpg','thumb_edit-6.jpg',13083,0,''),(8,1,1,'0/20131019230909__edit-6.jpg','edit-6.jpg',563909,0,''),(9,1,1,'0/20131019230923_1_thumb-edit-6.jpg','thumb_edit-6.jpg',13083,0,''),(10,1,1,'0/20131019230923__edit-6.jpg','edit-6.jpg',563909,0,''),(11,1,1,'0/20131019231033_1_thumb-74727-374316649325100-214148300-n.jpg','thumb_74727_374316649325100_214148300_n.jpg',4916,0,''),(12,1,1,'0/20131019231033__74727-374316649325100-214148300-n.jpg','74727_374316649325100_214148300_n.jpg',32948,0,''),(13,1,1,'0/20131019231051_1_thumb-girl.jpeg','thumb_girl.jpeg',6803,0,''),(14,1,1,'0/20131019231051__girl.jpeg','girl.jpeg',449731,0,''),(15,1,1,'0/20131020124358_1_thumb-1.jpg','thumb_1.jpg',8524,0,''),(16,1,1,'0/20131020124357__1.jpg','1.jpg',107739,0,''),(17,1,1,'0/20131020124519_1_thumb-1.jpg','thumb_1.jpg',8524,0,''),(18,1,1,'0/20131020124519__1.jpg','1.jpg',107739,0,''),(19,4,1,'0/20131020134742_1_thumb-100-job.png','thumb_100_job.png',3798,0,''),(20,4,1,'0/20131020134742__100-job.png','100_job.png',4149,0,''),(21,1,1,'0/20131022103030_1_thumb-31332-640x480.jpg','thumb_31332-640x480.jpg',11807,0,''),(22,1,1,'0/20131022103030__31332-640x480.jpg','31332-640x480.jpg',152111,0,''),(23,1,1,'0/20131023120159_1_thumb-1ms-212660.jpg','thumb_1ms-212660.jpg',5047,0,''),(24,1,1,'0/20131023120159__1ms-212660.jpg','1ms-212660.jpg',246953,0,''),(25,4,1,'0/20131023130625_1_thumb-100-job.png','thumb_100_job.png',3798,0,''),(26,4,1,'0/20131023130625__100-job.png','100_job.png',4149,0,'');
 /*!40000 ALTER TABLE `filestore_file` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -538,7 +649,7 @@ CREATE TABLE `filestore_image` (
   `original_file_id` int(11) NOT NULL DEFAULT '0',
   `thumb_file_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -547,7 +658,7 @@ CREATE TABLE `filestore_image` (
 
 LOCK TABLES `filestore_image` WRITE;
 /*!40000 ALTER TABLE `filestore_image` DISABLE KEYS */;
-INSERT INTO `filestore_image` VALUES (1,NULL,2,1),(2,NULL,4,3),(3,NULL,6,5),(4,NULL,8,7),(5,NULL,10,9),(6,NULL,12,11),(7,NULL,14,13),(8,NULL,16,15),(9,NULL,18,17),(10,NULL,20,19),(11,NULL,22,21);
+INSERT INTO `filestore_image` VALUES (1,NULL,2,1),(2,NULL,4,3),(3,NULL,6,5),(4,NULL,8,7),(5,NULL,10,9),(6,NULL,12,11),(7,NULL,14,13),(8,NULL,16,15),(9,NULL,18,17),(10,NULL,20,19),(11,NULL,22,21),(12,NULL,24,23),(13,NULL,26,25);
 /*!40000 ALTER TABLE `filestore_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -604,7 +715,7 @@ CREATE TABLE `filestore_volume` (
 
 LOCK TABLES `filestore_volume` WRITE;
 /*!40000 ALTER TABLE `filestore_volume` DISABLE KEYS */;
-INSERT INTO `filestore_volume` VALUES (1,'upload','upload',1000000000,0,3434,'Y',NULL);
+INSERT INTO `filestore_volume` VALUES (1,'upload','upload',1000000000,0,3438,'Y',NULL);
 /*!40000 ALTER TABLE `filestore_volume` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -617,23 +728,30 @@ DROP TABLE IF EXISTS `jobandvacancy_listing`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `jobandvacancy_listing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) DEFAULT NULL,
   `state_id` int(11) DEFAULT NULL,
   `city_id` int(11) DEFAULT NULL,
-  `area_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `company_name` varchar(255) DEFAULT NULL,
   `contact_person` varchar(255) DEFAULT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
-  `vacancy` varchar(255) DEFAULT NULL,
   `created_on` date DEFAULT NULL,
   `valid_till` date DEFAULT NULL,
+  `segment_id` int(11) DEFAULT NULL,
+  `min_experience` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `min_package` int(11) DEFAULT NULL,
+  `max_package` int(11) DEFAULT NULL,
+  `member_id` int(11) DEFAULT NULL,
+  `email_id` varchar(255) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
+  `description` text,
+  `no_of_posts` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_category_id` (`category_id`),
   KEY `fk_state_id` (`state_id`),
   KEY `fk_city_id` (`city_id`),
-  KEY `fk_area_id` (`area_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `fk_segment_id` (`segment_id`),
+  KEY `fk_member_id` (`member_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -642,7 +760,32 @@ CREATE TABLE `jobandvacancy_listing` (
 
 LOCK TABLES `jobandvacancy_listing` WRITE;
 /*!40000 ALTER TABLE `jobandvacancy_listing` DISABLE KEYS */;
+INSERT INTO `jobandvacancy_listing` VALUES (1,1,1,'Required IT professional','xavoc','xavoc','155886+','2013-10-11','2013-10-21',1,'5years','hgjhjghjg',1000,100000,NULL,'',1,NULL,NULL),(2,1,4,'Another Requirement','xavoc','xavoc','457899','2013-10-14','2013-10-11',2,'2','hjlkjkj',20000,25000,NULL,NULL,NULL,NULL,NULL),(3,1,1,'Testing','Testing','Testing','6546546','2013-10-15','2013-10-17',1,'5','64654',10000,1000000,1,'6454',0,'','5');
 /*!40000 ALTER TABLE `jobandvacancy_listing` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `jobandvacancy_segment`
+--
+
+DROP TABLE IF EXISTS `jobandvacancy_segment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `jobandvacancy_segment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `jobandvacancy_segment`
+--
+
+LOCK TABLES `jobandvacancy_segment` WRITE;
+/*!40000 ALTER TABLE `jobandvacancy_segment` DISABLE KEYS */;
+INSERT INTO `jobandvacancy_segment` VALUES (1,'IT Company'),(2,'Technical');
+/*!40000 ALTER TABLE `jobandvacancy_segment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -666,12 +809,14 @@ CREATE TABLE `member` (
   `city_id` int(11) DEFAULT NULL,
   `address` text,
   `search_string` varchar(255) DEFAULT NULL,
+  `father_name` varchar(255) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
   `religion_id` int(11) DEFAULT NULL,
   `cast_id` int(11) DEFAULT NULL,
   `subcast_id` int(11) DEFAULT NULL,
-  `father_name` varchar(255) DEFAULT NULL,
-  `date_of_birth` date DEFAULT NULL,
   `joined_on` date DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `interest` text,
   PRIMARY KEY (`id`),
   KEY `fk_state_id` (`state_id`),
   KEY `fk_city_id` (`city_id`),
@@ -687,7 +832,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,'Admin Member','khushi','378','8875191258',1,'SB24-75153','2013-10-23',1,1,1,'Address','Admin Member 8875191258 Udaipur Rajasthan Address ',1,1,NULL,'Admin Father',NULL,NULL);
+INSERT INTO `member` VALUES (1,'Admin Member','khushi','378','8875191258',1,'SB24-37057','2013-10-23',1,1,1,'Address','Admin Member 8875191258 Udaipur Rajasthan Address   ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -766,7 +911,8 @@ CREATE TABLE `place` (
   `area_id` int(11) DEFAULT NULL,
   `placetype_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `description` text,
+  `short_description` text,
+  `about` text,
   PRIMARY KEY (`id`),
   KEY `fk_state_id` (`state_id`),
   KEY `fk_city_id` (`city_id`),
@@ -781,7 +927,7 @@ CREATE TABLE `place` (
 
 LOCK TABLES `place` WRITE;
 /*!40000 ALTER TABLE `place` DISABLE KEYS */;
-INSERT INTO `place` VALUES (1,1,2,NULL,2,'Jagdish Mandir','near my home\r\nsdfdfsd');
+INSERT INTO `place` VALUES (1,1,1,1,1,'Jagdish Mandir','Jagdish mandir is jagdeesh ji ka mandir','same as above');
 /*!40000 ALTER TABLE `place` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -942,7 +1088,7 @@ CREATE TABLE `state` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -951,7 +1097,7 @@ CREATE TABLE `state` (
 
 LOCK TABLES `state` WRITE;
 /*!40000 ALTER TABLE `state` DISABLE KEYS */;
-INSERT INTO `state` VALUES (1,'Rajasthan');
+INSERT INTO `state` VALUES (1,'Rajasthan'),(2,'Gujarat');
 /*!40000 ALTER TABLE `state` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1071,4 +1217,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-22 15:11:38
+-- Dump completed on 2013-10-23 13:21:09
