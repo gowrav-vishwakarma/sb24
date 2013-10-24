@@ -7,8 +7,8 @@ class Model_PINCODEListing extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('State','state_id');
-		$this->hasOne('City','city_id');
+		$this->hasOne('tracker/PINCODEState','state_id');
+		$this->hasOne('tracker/PINCODEDistrict','district_id');
 
 		$this->addField('post_office');
 		$this->addField('pin_code');
