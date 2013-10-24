@@ -7,8 +7,8 @@ class Model_Listing extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('City','city_1_id');
-		$this->hasOne('City','city_2_id');
+		$this->hasOne('distance/City','city_1_id');
+		$this->hasOne('distance/City','city_2_id');
 		$this->addField('distance_bus');
 		$this->addField('distance_train');
 		$this->addField('distance_plane');
@@ -31,11 +31,13 @@ class Model_Listing extends \Model_Table {
 		$existing1->addCondition('id','<>',$this->id);
 		$existing1->tryLoadAny();
 
-		if($existing1->loaded())
+		if($existing1->loaded()){
 			throw $this->exception('This distance is already fed  ','ValidityCheck' )->setField('city_1_id');
+		}
 			
-		if($existing->loaded())
+		if($existing->loaded()){
 			throw $this->exception('This distance is already fed as ' . $existing['distance'],'ValidityCheck' )->setField('city_1_id');
+		}
 		
 	}
 }

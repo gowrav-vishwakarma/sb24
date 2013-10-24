@@ -4,7 +4,7 @@ class page_distance_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$model=$this->add('Model_City');
+		$model=$this->add('distance/Model_City');
 		$model_distance_listing=$this->add('distance/Model_Listing');
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$city_from_field=$form->addField('dropdown','from_city');
