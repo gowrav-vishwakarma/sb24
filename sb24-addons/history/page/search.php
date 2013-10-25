@@ -4,6 +4,7 @@ class page_history_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
+		$this->add('H3')->set('Find Places')->sub('Search via State, City and Place Type');
 		$fields = array(
 				'state_id'=>array('type'=>'dropdown', 'model'=>'State', 'emptyText' =>'Please Select State', 'mandatory'=>true),
 				'city_id'=>array('type'=>'dropdown', 'model'=> 'City', 'emptyText' =>'Please Select City', 'mandatory'=>true),

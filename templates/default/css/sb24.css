@@ -28,3 +28,8 @@ body{
         #steps li {font-size:24px; float:left; padding:10px; color:#b0b1b3;}
         #steps li span {font-size:11px; display:block;}
         #steps li.current { color:#000;}
+
+  .span5 center{
+  	margin-left: 8.5%;
+  	margin-top: 190px;
+  }
