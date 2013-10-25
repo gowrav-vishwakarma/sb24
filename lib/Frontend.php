@@ -14,7 +14,7 @@ class Frontend extends ApiFrontend {
         // This will add some resources from atk4-addons, which would be located
         // in atk4-addons subdirectory.
 
-        $this->addLocation('.',array('addons'=>'sb24-addons'));
+        $this->addLocation('.',array('addons'=>'sb24-addons','css'=>'templates/js'));
         $this->addLocation('sb24-addons',array(
                     'page'=>array("."),
                     ))

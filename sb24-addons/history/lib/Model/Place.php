@@ -13,7 +13,7 @@ class Model_Place extends \Model_Table {
 		$this->hasOne('history/PlaceType','placetype_id');
 		$this->addField('name');
 		$this->addField('short_description')->type('text')->display(array('grid'=>'shorttext'));
-		$this->addField('about')->type('text')->display(array('grid'=>'shorttext'));
+		$this->addField('about')->type('text')->display(array("form"=>"RichText",'grid'=>'shorttext'));
 		$this->addHook('beforeSave',$this);
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

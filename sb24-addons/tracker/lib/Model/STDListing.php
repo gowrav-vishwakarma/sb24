@@ -7,8 +7,8 @@ class Model_STDListing extends \Model_Table {
 	function init(){
 		parent::init();
 
-		$this->hasOne('State','state_id');
-		$this->hasOne('City','city_id');
+		$this->hasOne('tracker/STDState','state_id');
+		$this->hasOne('tracker/STDDistrict','district_id');
 
 		$this->addField('area');
 		$this->addField('STD_code');
@@ -21,7 +21,7 @@ class Model_STDListing extends \Model_Table {
 	function beforeSave(){
 		if($this['state_id']=="")
 			throw $this->exception('State cannot be empty','ValidityCheck')->setField('state_id');
-		if($this['city_id']=="")
+		if($this['district_id']=="")
 			throw $this->exception('City cannot be empty','ValidityCheck')->setField('city_id');
 
 	}

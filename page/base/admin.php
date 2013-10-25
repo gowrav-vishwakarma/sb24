@@ -4,6 +4,9 @@ class page_base_admin extends Page {
 		parent::init();
 		$this->api->auth->setModel('Staff','username','password');
 
+		$this->api->jquery->addStaticInclude('elrte/js/elrte.min');
+		$this->api->jquery->addStaticStyleSheet('elrte/css/elrte.min');
+
 		$this->api->template->tryDel('top_advert_position');
 		$this->api->template->tryDel('left_advert_position');
 		$this->api->template->tryDel('right_advert_position');
