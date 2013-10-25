@@ -4,6 +4,7 @@ class page_jobandvacancy_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
+		$this->add('H3')->set('Find Job & Vacancy')->sub('Search via State, City, Minimum Package');
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$segment_field=$form->addField('dropdown','segment')->setEmptyText("Please Select Any");
 		$segment_field->setModel('jobandvacancy/Segment');

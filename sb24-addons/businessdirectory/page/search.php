@@ -3,7 +3,8 @@
 class page_businessdirectory_page_search extends page_base_site {
 	function init(){
 		parent::init();
-		
+
+		$this->add('H3')->set('Find Comapnies/Buisness Listing')->sub('Search via State, City, Industry or Major Field');
 		$fields=array(
 			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Please Select State'),
 			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Please Select City'),
