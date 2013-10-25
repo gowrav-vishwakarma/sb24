@@ -1,9 +1,104 @@
-<div id="<?$_name?>">
+
+<style type="text/css">
+	.buisness_listing_logo img{
+		width:150px;
+		height:80px;
+	}
+	.business_listing_company_name h2{
+		text-align: center;
+
+	}
+	.business_listing_left{
+	float: left;
+	padding-left: 40px;
+	width:25%;
+	}
+
+</style>
+
+
+
+<div >
 	<?rows?>
-		<?row?>
-			<div>
-				<?$name?> <?$Relevance?>
+	<?row?>
+	<div class="ui-widget-content ui-corner-all">
+		<div class=" row ui-widget-content ">
+				<div class="col-sm-9"><h2><?name?>Company Name<?/name?></h2>
+				</div>
+				<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$Relevance?>
+				</div>
+		</div>
+		<div class="row">
+			
+			<div class="buisness_listing_logo col-sm-4" >
+
+					<div  class="well" align="center"><img src="<?$company_logo?>"/></div>
 			</div>
-		<?/row?>
+			
+				<div class="buisness_listing_labal col-sm-8" >
+					<div class="row"  >
+					 	<div class="col-sm-9">
+					 		<div class="row">
+					 			<div class="col-sm-6">
+					 	
+									<div>Name :</div>
+					 			</div>
+					 			
+					 			<div class="col-sm-6">
+					 				<div><?name?>Name<?/name?></div>
+					 	
+					 			</div>	
+					 		</div>
+					 		<div class="row">
+					 			<div class="col-sm-6">
+									<div>Father Name :</div>
+					 			</div>
+					 			<div class="col-sm-6">
+									<div><?father_name?>Father Name<?/father_name?></div>
+					 	
+					 			</div>	
+					 		</div>
+						
+							<div class="row">
+					 			<div class="col-sm-6">
+									<div>Mobile NO :</div>
+					 	
+					 			</div>
+					 			<div class="col-sm-6">
+									<div><?mobile_no?>Mobile NO<?/mobile_no?></div>
+					 	
+					 			</div>	
+					 		</div>
+					 
+					 		<div class="row">
+					 			<div class="col-sm-6">
+									<div>Date Of Birth :
+									</div>
+					 	
+					 			</div>
+					 			<div class="col-sm-6">
+									<div><?date_of_birth?>Date Of Birth  <?/date_of_birth?></div>
+					 	
+					 			</div>	
+					 		</div>
+					 		<div class="row">
+					 			<div class="col-sm-6">
+									<div>Gender :</div>
+					 		 	</div>
+					 			<div class="col-sm-6">
+									<div><?gender?>Gender   <?/gender?></div>
+					 	
+					 			</div>	
+					 		</div>
+					 
+					
+					</div>
+					</div>
+
+				</div>
+		</div>		
+	</div>	
+	<?/row?>
 	<?/rows?>
+
 </div>
