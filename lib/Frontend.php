@@ -5,6 +5,8 @@
 class Frontend extends ApiFrontend {
     var $menu;
 
+    var $sb24_config;
+
     function init(){
         parent::init();
         // Keep this if you are going to use database on all pages
@@ -24,7 +26,8 @@ class Frontend extends ApiFrontend {
                     'php'=>array(
                         'mvc',
                         'misc/lib',
-                        )
+                        ),
+                    'page'=>'.'
                     ))
             ->setParent($this->pathfinder->base_location);
 
@@ -60,8 +63,7 @@ class Frontend extends ApiFrontend {
         // If you are using a complex menu, you can re-define
         // it and place in a separate class
 
-
-        
+        $this->sb24_config = $this->add('Model_Config')->tryLoadAny();
 
     }
 

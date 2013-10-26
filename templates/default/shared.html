@@ -13,13 +13,13 @@
     <link rel="stylesheet" type="text/css" href="<?template?>css/atk-main.css<?/?>" />
     <link rel="stylesheet" type="text/css" href="<?template?>css/atk-custom.css<?/?>" />
     <!-- Bootstrap core CSS -->
-    <link href="<?template?>css/bootstrap.css<?/template?>" rel="stylesheet">
+    <link href="<?template?>css/bootstrap.css<?/template?>" rel="stylesheet"/>
 
     <!-- Add custom CSS here -->
-    <link href="<?template?>css/modern-business.css<?/template?>" rel="stylesheet">
-    <link href="<?template?>font-awesome/css/font-awesome.min.css<?/template?>" rel="stylesheet">
+    <link href="<?template?>css/modern-business.css<?/template?>" rel="stylesheet"/>
+    <link href="<?template?>font-awesome/css/font-awesome.min.css<?/template?>" rel="stylesheet"/>
 
-    <link href="<?template?>css/sb24.css<?/template?>" rel="stylesheet">
+    <link href="<?template?>css/sb24.css<?/template?>" rel="stylesheet"/>
     <?$js_include?>
     <!--[if IE 8]>
       <link rel="stylesheet" type="text/css" href="<?template?>css/ie8.css<?/?>"/>
@@ -46,18 +46,23 @@
         <div class="row well"><?$top_advert_spot?></div>
       </div>
     <?/top_advert_position?>
-    <!-- Top Advertising Spot end-->
-    <div class="row-fluid">
+    <!-- Top Advertising Spot end -->
+    <div class="row">
       <?left_advert_position?>
         <div class="col-md-2 well"><?$left?></div>
       <?/left_advert_position?>
       <?center_position?>
-        <div class="col-md-<?center_span?>8<?/center_span?> <?content_class?>main-content ui-widget-content ui-corner-all<?/content_class?>"><?$Content?></div>
+        <div class="col-md-<?center_span?>8<?/center_span?> <?content_class?>main-content <?shrink?>shrink<?/shrink?> ui-widget-content ui-corner-all<?/content_class?>"><?$Content?></div>
       <?/center_position?>
       <?right_advert_position?>
         <div class="col-md-2 well"><?$right?></div>
       <?/right_advert_position?>
     </div>
+    <footer>
+    <div class="row" align="center">
+      <div class="col-lg-12"><a href="http://www.xavoc.com" target="_blank">Developed by: Xavoc Technocrats Pvt. Ltd.</a></div>
+    </div>
+    </footer>
     <script src="<?template?>js/bootstrap.js<?/?>"></script>
     <script src="<?template?>js/modern-business.js<?/?>"></script>
   </body>

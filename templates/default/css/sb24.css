@@ -12,18 +12,24 @@ nav ul li{
 }
 
 body{
-	background-color: white;
+	background: url('../images/bg-body.jpg');
 }
 
 .main-content{
 	background-color: white;
 	padding: 20px;
+  margin-left: .25%;
+  margin-right: .25%;
 }
 
-.prev, .next { background-color:#b0232a; padding:5px 10px; color:#fff; text-decoration:none;}
-        .prev:hover, .next:hover { background-color:#000; text-decoration:none;}
-        .prev { float:left;}
-        .next { float:right;}
+.shrink{
+  width: 66.0%;
+}
+
+form .prev, form .next { background-color:#b0232a; padding:5px 10px; color:#fff; text-decoration:none;}
+        form .prev:hover,form .next:hover { background-color:#000; text-decoration:none;}
+        form .prev { float:left;}
+        form .next { float:right;}
         #steps { list-style:none; width:100%; overflow:hidden; margin:0px; padding:0px;}
         #steps li {font-size:24px; float:left; padding:10px; color:#b0b1b3;}
         #steps li span {font-size:11px; display:block;}
@@ -32,4 +38,10 @@ body{
   .span5 center{
   	margin-left: 8.5%;
   	margin-top: 190px;
+  }
+
+  .row{
+    margin-left: 0px;
+    margin-right: 0px;
+
   }

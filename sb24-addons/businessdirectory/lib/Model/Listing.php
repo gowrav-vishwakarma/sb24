@@ -115,6 +115,22 @@ class Model_Listing extends \Model_Table {
 		if($this['city_id']=="") throw $this->exception('City is Must','ValidityCheck')->setField('city_id'); 
 		if($this['area_id']=="") throw $this->exception('Area is Must','ValidityCheck')->setField('area_id'); 
 
+		if($this->api->auth->model AND $this->api->auth->model['is_staff'] AND !$this['member_id']){
+			// Create member from contact person information first
+			// username => email of listing //password => random number
+			// this_listing's member_id = new member saved
+			$member=$this->add('Model_Member');
+			$member['name']=$this['contact_person'];
+			$member['username']=$this['email_id'];
+			$member['pasword']=rand(1000,9999);
+			$member['mobile_no']=$this['mobile_no'];
+			$member['state_id']=$this['state_id'];
+			$member['city_id']=$this['city_id'];
+			$member->save();
+			$this['member_id']=$member->id;
+
+		}
+
 	}
 
 	function beforeDelete(){

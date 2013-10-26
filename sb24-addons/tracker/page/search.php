@@ -13,7 +13,7 @@ class page_tracker_page_search extends page_base_site {
 	}
 
 	function page_std(){
-		$this->add('H3')->set('Find STD Code')->sub('Search via State, City, Area or STD Code');
+		$this->add('View_ModuleHeading')->set('Find STD Code')->sub('Search via State, City, Area or STD Code');
 		
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$std_grid = $this->add('Grid');

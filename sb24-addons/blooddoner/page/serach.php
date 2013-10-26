@@ -4,7 +4,7 @@ class page_blooddoner_page_serach extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('H3')->set('Find Blood Doners')->sub('Search via Blood Group, State, City or Area vise');
+		$this->add('View_ModuleHeading')->set('Find Blood Doners')->sub('Search via Blood Group, State, City or Area vise');
 		$register_btn = $this->add('Button')->set('Register Your self as a Blood Doner... This may save a life')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white'));
 		$register_btn->js('click',$this->js()->univ()->redirect('memberpanel_page_register'));
 

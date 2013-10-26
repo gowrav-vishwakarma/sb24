@@ -5,7 +5,7 @@ class page_event_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('H3')->set('Find Events')->sub('Search via State, City, Type of event and date');
+		$this->add('View_ModuleHeading')->set('Find Events')->sub('Search via State, City, Type of event and date');
 		$fields=array(
 			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Please Select State', 'mandatory'=>true),
 			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Please Select City', 'mandatory'=>true),

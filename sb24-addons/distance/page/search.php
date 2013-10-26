@@ -4,7 +4,7 @@ class page_distance_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('H3')->set('Find Distance')->sub('Search between to city to from city');
+		$this->add('View_ModuleHeading')->set('Find Distance')->sub('Search between to city to from city');
 		$model=$this->add('distance/Model_City');
 		$model_distance_listing=$this->add('distance/Model_Listing');
 		$form=$this->add('Form',null,null,array('form_horizontal'));

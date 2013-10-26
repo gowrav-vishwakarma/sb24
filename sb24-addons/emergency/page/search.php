@@ -4,7 +4,7 @@ class page_emergency_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('H3')->set('Get Emergency/Important Numbers')->sub('Search via State, City, Tehsil or Category');
+		$this->add('View_ModuleHeading')->set('Get Emergency/Important Numbers')->sub('Search via State, City, Tehsil or Category');
 
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$grid = $this->add('Grid');
