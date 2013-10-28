@@ -20,13 +20,15 @@ class page_socialdirectory_page_search extends page_base_site {
 		}
 
 		if($_GET['search']){
+			$this->api->stickyGET('search');
 			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$_GET['search'].'" IN BOOLEAN MODE)');
 			$result->setOrder('Relevance','Desc');
 			// $result->addCondition('Relevance','>','0.5');
 		}
-
+		// if(!$_GET['search'])
+		// 	$result->addCondition('id','-1');
 		$list->setModel($result,'social');
-
+		$list->addPaginator(1);
 
 	}
 }

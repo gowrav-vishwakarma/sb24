@@ -113,7 +113,7 @@ class Model_Listing extends \Model_Table {
 		if($this['subcategory_id']=="") throw $this->exception('Sub Category is Must','ValidityCheck')->setField('subcategory_id'); 
 		if($this['state_id']=="") throw $this->exception('State is Must','ValidityCheck')->setField('state_id'); 
 		if($this['city_id']=="") throw $this->exception('City is Must','ValidityCheck')->setField('city_id'); 
-		if($this['area_id']=="") throw $this->exception('Area is Must','ValidityCheck')->setField('area_id'); 
+		// if($this['area_id']=="") throw $this->exception('Area is Must','ValidityCheck')->setField('area_id'); 
 
 		if($this->api->auth->model AND $this->api->auth->model['is_staff'] AND !$this['member_id']){
 			// Create member from contact person information first

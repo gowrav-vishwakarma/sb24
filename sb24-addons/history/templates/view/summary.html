@@ -1,0 +1,51 @@
+<style type="text/css">
+	.buisness_listing_logo img{
+		width:150px;
+		height:80px;
+	}
+	.buiness_listing_company_name h2{
+		text-align: center;
+
+	}
+	.business_listing_left{
+	float: left;
+	padding-left: 40px;
+	width:25%;
+	}
+
+</style>
+
+
+
+<div id="<?$_name?>" class="xyz">
+	<?rows?>
+	<?row?>
+	<div class="ui-widget-content ui-corner-all">
+		<div class=" row ui-widget-content ">
+		<div class="col-sm-9"><h2><?name?>Place Name<?/name?></h2><span>( <?placetype?>Place Type<?/placetype?> ) </span></div>
+		<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$relevance?></div>
+		</div>
+			<!-- <div class="buisness_listing_logo col-sm-4" >
+				<div  class="well" align="center"><img src="<?$company_logo?>"/></div>
+			</div> -->
+		<div class="row">
+			<div class="buisness_listing_labal col-sm-2" >
+				<div>State :</div>
+				<div>City :</div>
+				<div>Area :</div>
+				<div>Name Of Palce :</div>
+			</div>
+			<div class="buisness_listing_value col-sm-8">
+				<div><?state?>state<?/state?></div>
+				<div><?city?>city<?/city?></div>
+				<div><?area?>area <?/area?></div>
+				<div><?name?>name<?/name?></div>
+				<div><?short_description?>short_description<?/short_description?></div>
+			</div>
+		</div>
+
+	</div>
+	<?/row?>
+	<?/rows?>
+<?$paginator?>
+</div>

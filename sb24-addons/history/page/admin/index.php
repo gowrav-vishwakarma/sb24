@@ -5,8 +5,8 @@ class page_history_page_admin_index extends page_base_admin {
 		parent::init();
 
 		$tabs=$this->add('Tabs');
-		$place_tab = $tabs->addTab('Manage Places');
 		$placetype_tab = $tabs->addTab('Place Type');
+		$place_tab = $tabs->addTab('Manage Places');
 
 		$placetype_crud=$placetype_tab->add('CRUD');
 		$placetype_crud->setModel('history/PlaceType');

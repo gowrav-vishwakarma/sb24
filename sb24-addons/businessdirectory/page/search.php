@@ -35,6 +35,13 @@ class page_businessdirectory_page_search extends page_base_site {
 			}
 		}
 
+		// if(!$_GET['filter'])
+		// 		$result->addCondition('id','-1	');
+
+		$result->setOrder('created_on');
+		$result->setOrder('payment_received','desc');
+
+		$business_listing->addPaginator(2);
 		$business_listing->setModel($result);
 		if($form->isSubmitted()){
 			$business_listing->js()->reload(array(

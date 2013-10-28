@@ -18,7 +18,6 @@ class page_event_page_search extends page_base_site {
 		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields));
 
 		$list = $this->add('event/View_Listing');
-
 		if($form->isSubmitted()){
 			$list->js()->reload(array(
 					'state'=>$form['state_id'],
@@ -28,7 +27,7 @@ class page_event_page_search extends page_base_site {
 					'to_date'=>$form['event_to_date'],
 				))->execute();
 		}
-
+		$list->addPaginator(1);
 		$result = $this->add('event/Model_Listing');
 
 		$list->setModel($result);

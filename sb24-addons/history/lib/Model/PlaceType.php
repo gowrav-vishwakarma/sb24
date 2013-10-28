@@ -25,7 +25,7 @@ class Model_PlaceType extends \Model_Table {
 	}
 
 	function beforeDelete(){
-		if($this->ref('History_Place')->count()->getOne()> 0)
+		if($this->ref('history/Place')->count()->getOne()> 0)
 			throw $this->exception("You Can't Delete, It contain places...");
 			
 

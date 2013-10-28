@@ -3,7 +3,7 @@
 namespace distance;
 
 class View_Listing extends \View{
-
+	public $paginator;
 	function init(){
 		parent::init();
 
@@ -14,6 +14,8 @@ class View_Listing extends \View{
 		if(!$model->loaded()) return;
 		parent::setModel($model);
 	}
+
+	
 
 	function defaultTemplate(){
 		$l=$this->api->locate('addons',__NAMESPACE__, 'location');
