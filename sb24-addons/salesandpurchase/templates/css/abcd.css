@@ -1,0 +1,17 @@
+.xyz{
+	color:red;
+}
+.text{
+	border: 2px solid gray;
+	border-radius:5px;
+}
+.gallary{
+	width:70%;
+	height:70%;
+	border: 3px solid gray;
+	border: 5px solid gray;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+}

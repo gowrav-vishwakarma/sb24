@@ -29,11 +29,13 @@ class page_businessdirectory_page_search extends page_base_site {
 				$result->addCondition('subcategory_id',$_GET['subcategory_id']);
 
 			if($_GET['string']){
-				$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$_GET['string'].' IN BOOLEAN MODE")');
+				$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$_GET['string'].'" IN BOOLEAN MODE)');
 				$result->setOrder('Relevance','Desc');
 				// $result->addCondition('Relevance','>','0.5');
 			}
 		}
+				$result->addCondition('is_active',true);
+				$result->setOrder('is_paid','asc');
 
 		// if(!$_GET['filter'])
 		// 		$result->addCondition('id','-1	');

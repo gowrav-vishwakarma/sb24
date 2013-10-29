@@ -12,7 +12,8 @@ class page_admin_modules_index extends page_base_admin {
 				'distance/page_admin_index' => 'Distances',
 				'tracker/page_admin_index' => 'Tracker',
 				'emergency/page_admin_index' => 'Emergency',
-				'event/page_admin_index' => 'Events'
+				'event/page_admin_index' => 'Events',
+				'salesandpurchase/page_admin_index' => 'Sales & Purchase'
 			);
 
 		$tabs=$this->add('Tabs');

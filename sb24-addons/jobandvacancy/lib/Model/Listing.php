@@ -23,7 +23,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('contact_number')->group('all');
 		$this->addField('address')->group('all');
 		$this->addField('email_id')->group('all');
-		$this->addField('description')->type('text')->group('all');
+		$this->addField('description')->type('text')->display(array('form'=>'RichText'))->group('all');
 		$this->addField('created_on')->type('date')->defaultValue(date('Y-m-d'))->group('base');
 		$this->addField('valid_till')->type('date')->group('base');
 		$this->addField('is_active')->type('boolean')->defaultValue(false)->group('all');

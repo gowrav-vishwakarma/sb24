@@ -6,6 +6,13 @@ class View_Lister extends \CompleteLister{
 
 	public $paginator;
 
+
+	function formatRow(){
+		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('socialdirectory_page_more',array('member_id'=>$this->model->id)));
+		$this->current_row['more']=$js;
+		parent::formatRow();
+	}
+
 	function addPaginator($ipp = 25, $options = null)
     {
         // adding ajax paginator

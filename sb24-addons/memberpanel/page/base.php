@@ -8,6 +8,7 @@ class page_memberpanel_page_base extends page_base_site {
 		$this->api->auth->addHook('updateForm',array($this,'update_login_form'));
 		if(!$this->api->auth->isLoggedIn()){
 			$this->api->template->tryDel('top_advert_position');
+			$this->api->template->tryDel('shrink');
 			$this->api->template->tryDel('left_advert_position');
 			$this->api->template->tryDel('right_advert_position');
 			$this->api->template->trySet('center_span',12);

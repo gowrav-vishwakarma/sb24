@@ -33,12 +33,15 @@ class page_jobandvacancy_page_search extends page_base_site {
 				$model_jobandvacancy->addCondition('min_package','>=',$_GET['min_package']);
 		}
 
+		
+
 		$v->setModel($model_jobandvacancy);
+	
 
 		if($form->isSubmitted()){
 			$v->js()->reload(array('segment'=>$form->get('segment'),
-									'state'=>$form->get('state'),
-									'city'=>$form->get('city'),
+									'state'=>$form->get('state_id'),
+									'city'=>$form->get('city_id'),
 									'min_package'=>$form->get('min_package'),
 									'filter'=>'1'))->execute();
 		}

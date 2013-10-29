@@ -14,7 +14,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('name');
 		$this->addField('event_date')->type('date');
 		$this->addField('event_venue');
-		$this->addField('about_event')->type('text')->display(array('grid'=>'shorttext'));
+		$this->addField('about_event')->type('text')->display(array('grid'=>'shorttext','form'=>'RichText'));
 		$this->addField('is_registrable')->type('boolean')->defaultValue(true);
 		$this->addField('registration_last_date')->type('date');
 

@@ -11,6 +11,7 @@ class Model_State extends Model_Table {
 		$this->hasMany('SocialDirectory_Listing','state_id');
 		$this->hasMany('BusinessDirectory_Listing','state_id');
 		$this->hasMany('JobAndVacancy_Listing','state_id');
+		$this->hasMany('SalesAndPurchse_Listing','state_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 }

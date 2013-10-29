@@ -16,7 +16,7 @@ class Model_Member extends Model_Table {
 		$this->addField('address')->type('text')->group('social');
 		$this->addField('date_of_birth')->type('date')->group('social');
 		$this->addField('gender')->enum(array('Male','Female'))->group('social');
-		$this->addField('interest')->type('text')->caption('About You & Your Interest')->group('social');
+		$this->addField('interest')->type('text')->caption('About You & Your Interest')->display(array('form'=>'RichText'))->group('social');
 		
 		$this->hasOne('socialdirectory/Religion','religion_id')->group('social');
 		$this->hasOne('socialdirectory/Cast','cast_id')->group('social');
@@ -37,6 +37,7 @@ class Model_Member extends Model_Table {
 		$this->hasMany('blooddoner/Listing','member_id');
 		$this->hasMany('jobandvacancy/Listing','member_id');
 		$this->hasMany('event/Registration','member_id');
+		$this->hasMany('salesandpurchase/Listing','member_id');
 
 		$this->addHook('beforeSave',$this);
 		$this->addHook('afterInsert',$this);
