@@ -5,6 +5,7 @@ class Model_Area extends Model_Table {
 	function init(){
 		parent::init();
 
+		$this->hasOne('State','state_id');
 		$this->hasOne('City','city_id');
 		$this->hasOne('Tehsil','tehsil_id');
 		$this->addField('name');

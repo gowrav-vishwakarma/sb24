@@ -13,11 +13,12 @@ class Model_Listing extends \Model_Table {
 		if($this->api->auth->model)
 			$member->defaultValue($this->api->auth->model->id);
 
-		$this->hasOne('Category','category_id')->caption('Industry')->group('free');
-		$this->hasOne('SubCategory','subcategory_id')->caption('Major Field')->group('free');//->display(array('form'=>'autocomplete/Plus'));
+		$this->hasOne('businessdirectory/Industry','industry_id')->caption('Industry')->group('free');
+		$this->hasOne('businessdirectory/Segment','segment_id')->caption('Major Field')->group('free');//->display(array('form'=>'autocomplete/Plus'));
 		
 		$this->hasOne('State','state_id')->group('free');
 		$this->hasOne('City','city_id')->group('free');
+		$this->hasOne('Tehsil','tehsil_id')->group('free');
 		$this->hasOne('Area','area_id')->group('free');
 
 		//Basic Details FREE LISTING SECTION
@@ -25,7 +26,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('company_address')->type('text')->group('free');
 		$this->addField('mobile_no')->group('free');
 		$this->addField('company_ph_no')->group('free');
-		$this->addField('address')->type('text')->group('free');
+		$this->addField('address')->type('text')->caption('Contact Persons Address')->group('free');
 		$this->addField('short_description')->type('text')->group('free');
 		$this->addField('email_id')->group('free');
 		$this->addField('website')->group('free');
@@ -98,8 +99,8 @@ class Model_Listing extends \Model_Table {
 
 	function beforeSave(){
 
-		$this['search_string']= $this->ref('category_id')->get('name') . " ".
-								$this->ref('subcategory_id')->get('name') . " ".
+		$this['search_string']= $this->ref('industry_id')->get('name') . " ".
+								$this->ref('segment_id')->get('name') . " ".
 								$this->ref('state_id')->get('name') . " ".
 								$this->ref('city_id')->get('name'). " ".
 								$this->ref('area_id')->get('name'). " ".
@@ -109,10 +110,10 @@ class Model_Listing extends \Model_Table {
 								$this['contact_person']
 							;
 
-		if($this['category_id']=="") throw $this->exception('Category is Must','ValidityCheck')->setField('category_id'); 
-		if($this['subcategory_id']=="") throw $this->exception('Sub Category is Must','ValidityCheck')->setField('subcategory_id'); 
-		if($this['state_id']=="") throw $this->exception('State is Must','ValidityCheck')->setField('state_id'); 
-		if($this['city_id']=="") throw $this->exception('City is Must','ValidityCheck')->setField('city_id'); 
+		if($this['industry_id']=="") throw $this->exception('Industry is Must','ValidityCheck')->setField('category_id'); 
+		if($this['segment_id']=="") throw $this->exception('Segment is Must','ValidityCheck')->setField('subcategory_id'); 
+		// if($this['state_id']=="") throw $this->exception('State is Must','ValidityCheck')->setField('state_id')->addMoreInfo('listingName',$this['name']); 
+		// if($this['city_id']=="") throw $this->exception('City is Must','ValidityCheck')->setField('city_id'); 
 		// if($this['area_id']=="") throw $this->exception('Area is Must','ValidityCheck')->setField('area_id'); 
 
 		if($this->api->auth->model AND $this->api->auth->model['is_staff'] AND !$this['member_id']){
