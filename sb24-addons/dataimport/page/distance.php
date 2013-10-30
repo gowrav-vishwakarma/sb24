@@ -4,7 +4,8 @@
 class page_dataimport_page_distance extends Page {
 	function init(){
 		parent::init();
-
+		return;
+		
 		$cities_done=array();
 		$cities_array=array();
 

@@ -27,6 +27,7 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 
 		if($business_listing_crud->grid){
 			$business_listing_crud->grid->addColumn('Button','activate');
+			$business_listing_crud->grid->addPaginatory(20);
 			}
 			$business_listing_crud->addRef('businessdirectory/PayAmount');
 		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','subcategory_id'=>'category_id')));

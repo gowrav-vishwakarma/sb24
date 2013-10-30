@@ -5,6 +5,8 @@ class page_dataimport_page_rtocode extends page_base_site {
 	function init(){
 		parent::init();
 
+		return;
+
 		$old_rto = $this->add('dataimport/Model_RTOCode');
 
 		$new_rto = $this->add('tracker/Model_RTOListing');

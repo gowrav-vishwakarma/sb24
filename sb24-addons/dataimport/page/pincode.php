@@ -4,6 +4,7 @@ class page_dataimport_page_pincode extends page_base_site {
 	function init(){
 		parent::init();
 
+		return;
 		// SELECT DISTINCT STATE => PUT IN PINCODESTATE TABLE
 
 

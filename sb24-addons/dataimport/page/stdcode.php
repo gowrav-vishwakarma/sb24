@@ -5,6 +5,8 @@ class page_dataimport_page_stdcode extends page_base_site {
 	function init(){
 		parent::init();
 
+		return;
+
 		$old_std = $this->add('dataimport/Model_STDCode');
 
 		$new_std = $this->add('tracker/Model_STDListing');
