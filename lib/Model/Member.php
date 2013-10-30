@@ -5,7 +5,7 @@ class Model_Member extends Model_Table {
 	function init(){
 		parent::init();
 
-		$this->addField('name')->group('social');
+		$this->addField('name')->group('base');
 		$this->addField('father_name')->group('social');
 		$this->addField('username')->mandatory('username is must')->group('base');
 		$this->addField('password')->group('base');
@@ -64,12 +64,12 @@ class Model_Member extends Model_Table {
 			$member->addCondition('username',$this['username']);
 			$member->tryLoadAny();
 			if($member->loaded())
-				throw $this->exception('This Username is already take, please choose another one','ValidityCheck')->setField('username');
+				throw $this->exception('This Username is already take, please choose another one','ValidityCheck')->setField('username')->addMoreInfo('username',$this['username']);
 		}
 	}
 
 	function afterInsert($model,$new_id){
-		$this->add('Controller_SMS')->sendActivationCode($model,$model['password']);
+		// $this->add('Controller_SMS')->sendCode($model['mobile_no'],$model['username'],$model['password']);
 	}
 
 	function sendCode($on_number=null){
@@ -81,7 +81,7 @@ class Model_Member extends Model_Table {
 			$no=$on_number;
 		else
 			$no=$this['mobile_no'];
-		$this->add('Controller_SMS')->sendSMS($no, $msg="Hi");
+		// $this->add('Controller_SMS')->sendSMS($no, $msg="Hi");
 
 	}
 }

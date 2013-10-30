@@ -34,7 +34,7 @@ class Model_Listing extends \Model_Table {
 			$no=$on_number;
 		else
 			$no=$this->ref('member_id')->get('mobile_no');
-		$this->add('Controller_SMS')->sendSMS($no, $msg="Hi");
+		$this->add('Controller_SMS')->sendCODE($no, $this->ref('member_id')->get('name'), $this['update_code']);
 
 	}
 

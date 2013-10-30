@@ -5,10 +5,6 @@ class page_admin_master extends page_base_admin{
 
 		$tabs=$this->add('Tabs');
 
-		$category_tab=$tabs->addTab('Business Categories');
-		$category_crud=$category_tab->add('CRUD');
-		$category_crud->setModel('Category');
-		$category_crud->addRef('SubCategory');
 
 		$state_tab=$tabs->addTab('States');
 		$state_crud=$state_tab->add('CRUD');

@@ -1,5 +1,8 @@
 <?php
-class Model_OldListing extends Model_Table {
+
+namespace dataimport;
+
+class Model_OldListing extends \Model_Table {
 	var $table= "old_businesslisting";
 	function init(){
 		parent::init();
