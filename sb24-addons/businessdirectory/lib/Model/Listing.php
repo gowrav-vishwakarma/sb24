@@ -10,16 +10,16 @@ class Model_Listing extends \Model_Table {
 		//Has One ...
 
 		$member = $this->hasOne('Member','member_id');
-		if($this->api->auth->model)
-			$member->defaultValue($this->api->auth->model->id);
+		// if($this->api->auth->model)
+		// 	$member->defaultValue($this->api->auth->model->id);
 
-		$this->hasOne('businessdirectory/Industry','industry_id')->caption('Industry')->group('free');
-		$this->hasOne('businessdirectory/Segment','segment_id')->caption('Major Field')->group('free');//->display(array('form'=>'autocomplete/Plus'));
+		$this->hasOne('businessdirectory/Industry','industry_id')->caption('Industry')->group('free')->sortable(true);
+		$this->hasOne('businessdirectory/Segment','segment_id')->caption('Major Field')->group('free')->sortable(true);//->display(array('form'=>'autocomplete/Plus'));
 		
-		$this->hasOne('State','state_id')->group('free');
-		$this->hasOne('City','city_id')->group('free');
-		$this->hasOne('Tehsil','tehsil_id')->group('free');
-		$this->hasOne('Area','area_id')->group('free');
+		$this->hasOne('State','state_id')->group('free')->sortable(true);
+		$this->hasOne('City','city_id')->group('free')->sortable(true);
+		$this->hasOne('Tehsil','tehsil_id')->group('free')->sortable(true);
+		$this->hasOne('Area','area_id')->group('free')->sortable(true);
 
 		//Basic Details FREE LISTING SECTION
 		$this->addField('name')->caption('Name Of Company')->group('free');

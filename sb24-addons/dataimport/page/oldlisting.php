@@ -4,6 +4,8 @@ class page_dataimport_page_oldlisting extends page_base_admin {
 	function init(){
 		parent::init();
 
+		return;
+
 		$old_listing = $this->add('dataimport/Model_OldListing')->dsql()->getAll();
 
 		$new_listing = $this->add('businessdirectory/Model_Listing');

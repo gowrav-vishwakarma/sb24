@@ -5,7 +5,7 @@ class Model_Member extends Model_Table {
 	function init(){
 		parent::init();
 
-		$this->addField('name')->group('social');
+		$this->addField('name')->group('base');
 		$this->addField('father_name')->group('social');
 		$this->addField('username')->mandatory('username is must')->group('base');
 		$this->addField('password')->group('base');
@@ -69,7 +69,7 @@ class Model_Member extends Model_Table {
 	}
 
 	function afterInsert($model,$new_id){
-		$this->add('Controller_SMS')->sendActivationCode($model,$model['password']);
+		$this->add('Controller_SMS')->sendCode($model['mobile_no'],$model['username'],$model['password']);
 	}
 
 	function sendCode($on_number=null){
