@@ -16,7 +16,7 @@ class page_memberpanel_page_base extends page_base_site {
 		$this->api->auth->check();
 		$this->setUpMemberMenus();
 
-		$this->add('View_ModuleHeading',null,'welcome')->set("Welcome " . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
+		// $this->add('View_ModuleHeading',null,'welcome')->set("Welcome " . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
 	}
 
 	function update_login_form($auth){

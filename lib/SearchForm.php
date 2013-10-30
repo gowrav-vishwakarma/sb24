@@ -21,6 +21,6 @@ class SearchForm extends Form {
 	}
 
 	function defaultTemplate(){
-		return array('form_horizontal');
+		return array('view/myform');
 	}
 }

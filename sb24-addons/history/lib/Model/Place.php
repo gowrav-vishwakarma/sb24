@@ -9,6 +9,7 @@ class Model_Place extends \Model_Table {
 
 		$this->hasOne('State','state_id');
 		$this->hasOne('City','city_id');
+		$this->hasOne('Tehsil','tehsil_id');
 		$this->hasOne('Area','area_id');
 		$this->hasOne('history/PlaceType','placetype_id');
 		$this->addField('name');

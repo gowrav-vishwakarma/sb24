@@ -45,3 +45,34 @@ form .prev, form .next { background-color:#b0232a; padding:5px 10px; color:#fff;
     margin-right: 0px;
 
   }
+
+  .main{
+   background-image:  -webkit-linear-gradient( right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  -moz-linear-gradient( right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  -ms-linear-gradient(to right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  -o-linear-gradient(to right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  linear-gradient(to right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   margin-bottom: 5px;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px red;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .mybutton button{
+    height: 33px;
+    margin: 14px 241px;
+    width: 307px;
+  }
+
+  
+  .ui-tabs .ui-tabs-nav li.ui-tabs-active a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-tabs-loading a{
+  color:red;
+
+} 
+
+.ui-tabs .ui-tabs-nav li a{
+font-weight: bold;  
+font-size: 1.2em;
+}

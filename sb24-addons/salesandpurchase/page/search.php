@@ -4,22 +4,30 @@ class page_salesandpurchase_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('View_ModuleHeading')->set('Find Sales And Purchase  Listing')->sub('Search via State, City, Category or Subcategory Field');
+		$this->add('View_ModuleHeading');//->set('Find Sales And Purchase  Listing')->sub('Search via State, City, Category or Subcategory Field');
 		
 		
 		$fields=array(
 			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Please Select State'),
 			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Please Select City'),
+			'search'=>array('type'=>'line'),
+			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Please Select Tehsil'),
 			'category_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/Category','emptyText'=>'Please Select Category'),
 			'subcategory_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/SubCategory','emptyText'=>'Please Select SubCategory Field'),
 			'min_amount'=>array('type'=>'line'),
-			'search'=>array('type'=>'line'),
 			);
 
-		$chain_fields=array("city_id"=>'state_id','subcategory_id'=>'category_id');
+		$chain_fields=array("city_id"=>'state_id','tehsil_id'=>'city_id','subcategory_id'=>'category_id');
 		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields));
 		$salesandpurchase_listing = $this->add('salesandpurchase/View_Listing');
 		$result = $this->add('salesandpurchase/Model_Listing');
+		$form->setFormClass('stacked atk-row');
+            $o=$form->add('Order')
+                ->move($form->addSeparator('noborder span4'),'first')
+                ->move($form->addSeparator('noborder span4'),'after','search')
+                ->move($form->addSeparator('noborder span3'),'after','category_id')
+                ->now();
+
 
 		if($_GET['filter']){
 			if($_GET['state_id'])
@@ -40,6 +48,9 @@ class page_salesandpurchase_page_search extends page_base_site {
 			}
 
 			
+		}else{
+			
+		$result->addCondition('state_id',-1);
 		}
 
 

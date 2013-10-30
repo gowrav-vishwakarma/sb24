@@ -53,8 +53,10 @@ class page_tracker_page_admin_index extends Page {
 
 	function page_vehicle(){
 		$vehicle_crud = $this->add('CRUD');
-		$vehicle_crud->setModel('tracker/RTOCODEListing');
+		$vehicle_crud->setModel('tracker/RTOListing');
 		$vehicle_crud->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id')));
+		if($vehicle_crud->grid)
+			$vehicle_crud->grid->addPaginator(10);
 	}
 
 

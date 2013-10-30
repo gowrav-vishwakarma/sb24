@@ -1,0 +1,58 @@
+<style type="text/css">
+	.buisness_listing_logo img{
+		width:150px;
+		height:80px;
+	}
+	.buiness_listing_company_name h2{
+		text-align: center;
+
+	}
+	.business_listing_left{
+	float: left;
+	padding-left: 40px;
+	width:25%;
+	}
+
+</style>
+
+
+
+<div id="<?$_name?>" class="xyz">
+	<?rows?>
+	<?row?>
+	<div class="ui-widget-content ui-corner-all">
+		<div class=" row ui-widget-content ">
+		<div class="col-sm-9"><h2><?company_name?>Company Name<?/company_name?> ( <?$name?> )</h2></div>
+		<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$Relevance?></div>
+		</div>
+		<div class="row">
+			<!-- <div class="buisness_listing_logo col-sm-4" >
+				<div  class="well" align="center"><img src="<?$company_logo?>"/></div>
+			</div> -->
+			<div class="buisness_listing_labal col-sm-4" >
+				<div>Post :</div>
+				<div>No Of Post :</div>
+				<div>Minimum Experience :</div>
+				<div>Min Package :</div>
+				<div>Max Package :</div>
+				<div>Contact Person :</div>
+				<div>Contact Number :</div>
+				<div>Address :</div>
+			</div>
+			<div class="buisness_listing_value col-sm-4">
+				<div><?post?>N/A<?/post?></div>
+				<div><?no_of_post?>N/A<?/no_of_post?></div>
+				<div><?min_experience?>N/A<?/min_experience?></div>
+				<div><?min_package?>N/A <?/min_package?></div>
+				<div><?max_package?>N/A<?/max_package?></div>
+				<div><?contact_person?>N/A<?/contact_person?></div>
+				<div><?contact_number?>N/A<?/contact_number?></div>
+				<div><?address?>N/A<?/address?></div>
+			</div>
+		</div>
+
+	</div>
+	<?/row?>
+	<?/rows?>
+<?$paginator?>
+</div>

@@ -4,16 +4,22 @@ class page_distance_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('View_ModuleHeading')->set('Find Distance')->sub('Search between to city to from city');
+		$this->add('View_ModuleHeading');//->set('Find Distance')->sub('Search between to city to from city');
 		$model=$this->add('distance/Model_City');
 		$model_distance_listing=$this->add('distance/Model_Listing');
-		$form=$this->add('Form',null,null,array('form_horizontal'));
+		$cols=$this->add('Columns');
+		$col1=$cols->addColumn(2)->add('Text')->setHTML('&nbsp;');
+		$col2=$cols->addColumn(8);
+		$col3=$cols->addColumn(2);
+		$form=$col2->add('Form');
 		$city_from_field=$form->addField('dropdown','from_city');
 		$city_from_field->setModel($model);
 
 		$city_to_field=$form->addField('dropdown','to_city');
 		$city_to_field->setModel($model);
-		$form->addSubmit('Search');
+		// $form->addSubmit('Search');
+		$form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span3')->js('click')->submit();
+
 
 		$v=$this->add('distance/View_Listing');
 		$heading = $v->add('H3')->set('Distance');

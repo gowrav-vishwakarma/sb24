@@ -5,14 +5,20 @@ class View_ModuleHeading extends View{
 	function init(){
 		parent::init();
 		$cols = $this->add('Columns');
-		$left = $cols->addColumn(7);
-		$right = $cols->addColumn(5);
-		$this->heading=$left->add('H3');
-		$right->add('View')
+		$left = $cols->addColumn(8);
+		$right = $cols->addColumn(4);
+		$left->add('View')
 				->setElement('img')
-				->setAttr('src','logo.png')
-				->setStyle('max-width','100%')
+				->setAttr('src','sabkuch.png')
 							;
+		$btn=$right->add('View')
+				->setElement('img')
+				->setAttr('src','login.png')
+				->setAttr(array('width'=>'250px','height'=>'100px'))
+							;
+
+
+		$btn->js('click',$this->js()->univ()->redirect('memberpanel_page_dashboard'));
 		return $this;
 	}
 

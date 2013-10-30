@@ -12,6 +12,7 @@ class Model_Listing extends \Model_Table {
 				$member->defaultValue($this->api->auth->model->id);
 		$this->hasOne('State','state_id')->group('all');
 		$this->hasOne('City','city_id')->group('all');
+		$this->hasOne('Tehsil','tehsil_id')->group('all');
 		$this->hasOne('jobandvacancy/Segment','segment_id')->group('all');
 		$this->addField('name')->caption('Post vancant')->group('base');
 		$this->addField('company_name')->group('all');

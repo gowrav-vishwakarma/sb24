@@ -10,6 +10,9 @@ class Model_Tehsil extends Model_Table {
 		$this->hasMany('History_Place','tehsil_id');
 		$this->hasMany('SocialDirectory_Listing','tehsil_id');
 		$this->hasMany('BusinessDirectory_Listing','tehsil_id');
+		$this->hasMany('JobAndVacany_Listing','tehsil_id');
+		$this->hasMany('SalesAndPurchase_Listing','tehsil_id');
+		$this->hasMany('History_Place','tehsil_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 }
