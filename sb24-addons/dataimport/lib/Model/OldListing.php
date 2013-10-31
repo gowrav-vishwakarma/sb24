@@ -21,8 +21,8 @@ class Model_OldListing extends \Model_Table {
 		$this->addField('companyaddress');
 		$this->addField('typeofwork');
 		$this->addField('mobileno');
-		$this->addField('phno1');
-		$this->addField('phno2');
+		$this->addField('phoneno1');
+		$this->addField('phoneno2');
 		$this->addField('emailid');
 		$this->addField('website');
 		$this->addField('date');

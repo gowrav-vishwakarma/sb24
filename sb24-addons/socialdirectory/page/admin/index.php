@@ -22,6 +22,17 @@ class page_socialdirectory_page_admin_index extends page_base_admin {
 		$manage_crud=$manage_social_tab->add('CRUD');
 		$manage_crud->setModel('Member');
 		if($mg=$manage_crud->grid){
+			$mg->js(true)->_load('footable')->_selector('#'.$mg->name.' table')->footable();
+			$this->api->jquery->addStyleSheet('footable.core');
+			$mg->columns['address']['thparam']='data-hide="all"';
+			$mg->columns['state']['thparam']='data-hide="all"';
+			$mg->columns['tehsil']['thparam']='data-hide="all"';
+			$mg->columns['area']['thparam']='data-hide="all"';
+			$mg->columns['interest']['thparam']='data-hide="all"';
+			$mg->columns['religion']['thparam']='data-hide="all"';
+			$mg->columns['cast']['thparam']='data-hide="all"';
+			$mg->columns['subcast']['thparam']='data-hide="all"';
+			$mg->columns['password']['thparam']='data-hide="all"';
 			$mg->addQuickSearch(array('name','username','mobile_no'));
 			$mg->addPaginator(20);
 		}

@@ -14,7 +14,10 @@ class page_index extends page_base_site {
 		// $col3=$cols->addColumn(2);
 		$this->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center');
 		$form=$this->add('Form')->addClass('stacked');
-		$form->addField('line','Search','');
+		$form->addField('line','search','');
+		if($form->isSubmitted()){
+			$form->js()->univ()->redirect($this->api->url('businessdirectory_page_search',array('reset'=>1,"filter"=>1,'search'=>$form['search'])))->execute();
+		}
 
 	}
 

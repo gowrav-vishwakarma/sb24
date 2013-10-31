@@ -7,10 +7,7 @@ class View_ModuleHeading extends View{
 		$cols = $this->add('Columns');
 		$left = $cols->addColumn(8);
 		$right = $cols->addColumn(4);
-		$left->add('View')
-				->setElement('img')
-				->setAttr('src','sabkuch.png')
-							;
+		$this->heading = $left->add('H2');
 		$btn=$right->add('View')
 				->setElement('img')
 				->setAttr('src','login.png')

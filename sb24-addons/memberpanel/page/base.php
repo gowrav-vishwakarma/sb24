@@ -4,6 +4,9 @@ class page_memberpanel_page_base extends page_base_site {
 	function init(){
 		parent::init();
 
+		$this->api->jquery->addStaticInclude('elrte/js/elrte.min');
+		$this->api->jquery->addStaticStyleSheet('elrte/css/elrte.min');
+
 		$this->api->auth->setModel('Member','username','password');
 		$this->api->auth->addHook('updateForm',array($this,'update_login_form'));
 		if(!$this->api->auth->isLoggedIn()){
@@ -16,7 +19,7 @@ class page_memberpanel_page_base extends page_base_site {
 		$this->api->auth->check();
 		$this->setUpMemberMenus();
 
-		// $this->add('View_ModuleHeading',null,'welcome')->set("Welcome " . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
+		$this->add('View_ModuleHeading',null,'welcome')->set("Welcome " . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
 	}
 
 	function update_login_form($auth){

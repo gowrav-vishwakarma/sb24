@@ -23,12 +23,12 @@ class Model_Listing extends \Model_Table {
 
 		//Basic Details FREE LISTING SECTION
 		$this->addField('name')->caption('Name Of Company')->group('free')->sortable(true)->display(array('grid'=>'grid/inline'));
-		$this->addField('company_address')->type('text')->group('free')->display(array('grid'=>'grid/inline'));
+		$this->addField('company_address')->type('text')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('mobile_no')->group('free');
 		$this->addField('company_ph_no')->group('free');
 		$this->addField('address')->type('text')->caption('Contact Persons Address')->group('free')->display(array('grid'=>'grid/inline'));
-		$this->addField('short_description')->type('text')->group('free')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
-		$this->addField('email_id')->group('free')->display(array('grid'=>'grid/inline'));
+		$this->addField('short_description')->type('text')->group('free')->display(array('grid'=>'shorttext,grid/inline'));
+		$this->addField('email_id')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('website')->group('free')->display(array('grid'=>'grid/inline'));
 		$this->addField('tags')->type('text')->group('free')->display(array('grid'=>'grid/inline'));
 
