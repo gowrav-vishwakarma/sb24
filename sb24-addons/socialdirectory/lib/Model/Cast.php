@@ -3,7 +3,7 @@
 namespace socialdirectory;
 
 class Model_Cast extends \Model_Table {
-	var $table= "cast";
+	var $table= "social_cast";
 	function init(){
 		parent::init();
 
@@ -13,6 +13,7 @@ class Model_Cast extends \Model_Table {
 		$this->hasMany('Member','cast_id');
 
 		$this->addHook('beforeSave',$this);
+		$this->addHook('beforeDelete',$this);
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 
@@ -23,5 +24,10 @@ class Model_Cast extends \Model_Table {
 		$old_model->tryLoadAny();
 		if($old_model->loaded())
 			throw $this->exception("This Cast is Allready Exist, Take Another.. ",'ValidityCheck')->setField('name');
+	}
+
+	function beforeDelete(){
+		if($this->ref('socialdirectory/SubCast')->count()->getOne() > 0)
+			throw $this->exception('You Cannot delete this cast, it contained defined sub casts','ValidityCheck')->setField('name')->addMoreInfo('Cast',$this['name']);
 	}
 }

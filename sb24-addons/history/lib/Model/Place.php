@@ -3,7 +3,7 @@
 namespace history;
 
 class Model_Place extends \Model_Table {
-	var $table= "place";
+	var $table= "place_listing";
 	function init(){
 		parent::init();
 
@@ -12,9 +12,9 @@ class Model_Place extends \Model_Table {
 		$this->hasOne('Tehsil','tehsil_id');
 		$this->hasOne('Area','area_id');
 		$this->hasOne('history/PlaceType','placetype_id');
-		$this->addField('name');
-		$this->addField('short_description')->type('text')->display(array('grid'=>'shorttext'));
-		$this->addField('about')->type('text')->display(array("form"=>"RichText",'grid'=>'shorttext'));
+		$this->addField('name')->display(array('grid'=>'grid/inline'));
+		$this->addField('short_description')->type('text')->display(array('grid'=>'shorttext,grid/inline'));
+		$this->addField('about')->type('text')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
 		$this->addHook('beforeSave',$this);
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

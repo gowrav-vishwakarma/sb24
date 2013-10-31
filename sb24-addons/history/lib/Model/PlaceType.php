@@ -3,11 +3,12 @@
 namespace history;
 
 class Model_PlaceType extends \Model_Table {
-	var $table= "placetype";
+	var $table= "place_type";
 	function init(){
 		parent::init();
 
-		$this->addField('name')->caption('Type Of Place');
+		$this->addField('name')->caption('Type Of Place')->display(array('grid'=>'grid/inline'));
+		$this->add("filestore/Field_Image","placetype_icon_id")->type('image');
 		$this->hasMany('history/Place','placetype_id');
 
 		$this->addHook('beforeSave',$this);

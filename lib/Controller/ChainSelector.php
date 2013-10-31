@@ -28,8 +28,11 @@ class Controller_ChainSelector extends AbstractController{
 				if($_GET[$depent_on]){
 					$to_change_field->model->addCondition($depent_on,$_GET[$depent_on]);
 				}else{
-					if(($object->model AND !$object->model->loaded()) or $this->force_selection)
+					if(($object->model AND !$object->model->loaded()) OR $this->force_selection)
 						$to_change_field->model->addCondition($depent_on,-1);
+					else if(($object->model AND $object->model->loaded())){
+						$to_change_field->model->addCondition($depent_on,$object->model[$depent_on]);
+					}
 				}
 				$send_back = array();
 				foreach ($dependent_on_list as $depent_on_send_back) {

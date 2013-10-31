@@ -3,7 +3,7 @@
 namespace socialdirectory;
 
 class Model_SubCast extends \Model_Table {
-	var $table= "subcast";
+	var $table= "soaicl_subcast";
 	function init(){
 		parent::init();
 

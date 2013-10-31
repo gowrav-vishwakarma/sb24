@@ -1,26 +1,28 @@
 <?php
 
 class Model_Member extends Model_Table {
-	var $table= "member";
+	var $table= "social_member";
 	function init(){
 		parent::init();
 
-		$this->addField('name')->group('base');
+		$this->addField('name')->group('base')->sortable(true);
 		$this->addField('father_name')->group('social');
 		$this->addField('username')->mandatory('username is must')->group('base');
 		$this->addField('password')->group('base');
 		$this->addField('mobile_no')->hint("Your Password / Activation Codes will be send to this number, Please keep it correct")->mandatory('mobile number is must, your password will be send to this number')->group('base');
 
-		$this->hasOne('State','state_id')->group('base');
-		$this->hasOne('City','city_id')->group('base');
+		$this->hasOne('State','state_id')->group('base')->sortable(true);
+		$this->hasOne('City','city_id')->group('base')->sortable(true);
+		$this->hasOne('Tehsil','tehsil_id')->group('social')->sortable(true);
+		$this->hasOne('Area','area_id')->group('social')->sortable(true);
 		$this->addField('address')->type('text')->group('social');
 		$this->addField('date_of_birth')->type('date')->group('social');
 		$this->addField('gender')->enum(array('Male','Female'))->group('social');
 		$this->addField('interest')->type('text')->caption('About You & Your Interest')->display(array('form'=>'RichText'))->group('social');
 		
-		$this->hasOne('socialdirectory/Religion','religion_id')->group('social');
-		$this->hasOne('socialdirectory/Cast','cast_id')->group('social');
-		$this->hasOne('socialdirectory/SubCast','subcast_id')->group('social');
+		$this->hasOne('socialdirectory/Religion','religion_id')->group('social')->sortable(true);
+		$this->hasOne('socialdirectory/Cast','cast_id')->group('social')->sortable(true);
+		$this->hasOne('socialdirectory/SubCast','subcast_id')->group('social')->sortable(true);
 
 		$this->addField('is_staff')->type('boolean')->defaultValue(false)->system(true);
 		$this->addField('joined_on')->type('date')->defaultValue(date('Y-m-d H:i:s'))->system(true);

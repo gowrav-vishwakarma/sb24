@@ -9,7 +9,7 @@ class page_socialdirectory_page_admin_index extends page_base_admin {
 		$manage_social_tab=$tabs->addTab('Manage Social Directory');
 		$cast_tab=$tabs->addTab('Manage Cast');
 		$religion_tab=$tabs->addTab('Manage Religions');
-		$report_tab=$tabs->addtabURL('socialdirectory/page_admin_report','Reports');
+		// $report_tab=$tabs->addtabURL('socialdirectory/page_admin_report','Reports');
 		
 		$religion_crud=$religion_tab->add('CRUD');
 		$religion_crud->setModel('socialdirectory/Religion');
@@ -21,7 +21,10 @@ class page_socialdirectory_page_admin_index extends page_base_admin {
 
 		$manage_crud=$manage_social_tab->add('CRUD');
 		$manage_crud->setModel('Member');
-		if($manage_crud->grid)
-			$manage_crud->grid->addQuickSearch(array('name','cast'));
+		if($mg=$manage_crud->grid){
+			$mg->addQuickSearch(array('name','username','mobile_no'));
+			$mg->addPaginator(20);
+		}
+		$manage_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'tehsil_id','tehsil_id'=>'city_id','city_id'=>'state_id'),'force_selection'=>false));
 	}
 }
