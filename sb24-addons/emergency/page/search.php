@@ -24,7 +24,6 @@ class page_emergency_page_search extends page_base_site {
 		
 		$form->setModel('emergency/Listing',array('state_id','city_id','tehsil_id','category_id'));
 		// $form->addSubmit('Filter');
-		$form->add('Button')->set('Filter Search')->addStyle('margin-top','25px')->addClass('atk-form-row atk-form-row-dropdown span5')->js('click')->submit();
 
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
@@ -32,6 +31,7 @@ class page_emergency_page_search extends page_base_site {
                 ->move($form->addSeparator('noborder span4'),'after','city_id')
                 ->move($form->addSeparator('noborder span3'),'after','category_id')
                 ->now();
+		$form->add('Button')->set('Filter Search')->addStyle('margin-top','25px')->addClass('atk-form-row atk-form-row-dropdown span12')->js('click')->submit();
 		if(!$form->isSubmitted()){
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id','tehsil_id'=>'city_id')));
 		}

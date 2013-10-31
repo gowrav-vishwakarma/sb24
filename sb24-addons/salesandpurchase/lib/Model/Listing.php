@@ -18,6 +18,7 @@ class Model_Listing extends \Model_Table {
  		$this->addField('mobile_number');
  		$this->addField('price');
  		$this->addField('description')->type('text')->display(array('form'=>'RichText'));
+ 		// $this->addField('short_description	')->type('text')->display(array('form'=>'RichText'));
  		$this->addField('is_sold')->type('boolean');
  		$this->addField('sold_date')->type('date');
  		$this->addField('search_string')->system(true);

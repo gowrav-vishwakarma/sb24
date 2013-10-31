@@ -1,47 +1,37 @@
-<style type="text/css">
-	.buisness_listing_logo img{
-		width:150px;
-		height:80px;
-	}
-	.buiness_listing_company_name h2{
-		text-align: center;
-
-	}
-	.business_listing_left{
-	float: left;
-	padding-left: 40px;
-	width:25%;
-	}
-
-</style>
-
-
-
-<div id="<?$_name?>" class="xyz">
+<div id="<?$_name?>" class="xyz1">
 	<?rows?>
 	<?row?>
-	<div class="ui-widget-content ui-corner-all">
-		<div class=" row ui-widget-content ">
-		<div class="col-sm-9"><h2><?name?>Place Name<?/name?></h2><span>( <?placetype?>Place Type<?/placetype?> ) </span></div>
-		<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$relevance?></div>
+	<div class="ui-widget-content ui-corner-all main-block">
+		<div class=" row ui-widget-content header">
+		<div class="col-sm-9 company_name"><h2><?name?>Company Name<?/name?></h2></div>
+		<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$Relevance?></div>
 		</div>
-			<!-- <div class="buisness_listing_logo col-sm-4" >
-				<div  class="well" align="center"><img src="<?$company_logo?>"/></div>
-			</div> -->
+		<div class="row main-block-body">
+			<div class="buisness_listing_logo col-sm-4" >
+				<div  class="well" align="center"><h1><img src="<?$company_logo?>" alt="Place Picture Here "/></h1></div>
+			</div>
+	<div class="col-sm-8" >
 		<div class="row">
-			<div class="buisness_listing_labal col-sm-2" >
-				<div>State :</div>
-				<div>City :</div>
-				<div>Area :</div>
-				<div>Name Of Palce :</div>
+			<div class="col-sm-12" >
+				<div class="row">
+					<div class="col-sm-4 info-title">State</div>
+					<div class="col-sm-8 info-vlaue"><?state?>state<?/state?></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 info-title">City</div>
+					<div class="col-sm-8 info-vlaue"><?city?>city<?/city?></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 info-title">Area</div>
+					<div class="col-sm-8 info-vlaue"><?area?>area<?/area?></div>
+				</div>		
+				<div class="row">
+					<div class="col-sm-4 info-title">About</div>
+					<div class="col-sm-8 info-vlaue"><?short_description?>short_description <?/short_description?></div>
+				</div>
+				</div>
 			</div>
-			<div class="buisness_listing_value col-sm-8">
-				<div><?state?>state<?/state?></div>
-				<div><?city?>city<?/city?></div>
-				<div><?area?>area <?/area?></div>
-				<div><?name?>name<?/name?></div>
-				<div><?short_description?>short_description<?/short_description?></div>
-			</div>
+		</div>
 		</div>
 
 	</div>

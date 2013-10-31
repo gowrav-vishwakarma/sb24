@@ -11,6 +11,19 @@ class Model_Segment extends \Model_Table {
 		$this->addField('name');
 		$this->hasMany('businessdirectory/Listing','segment_id');
 
+		$this->addExpression('no_of_listings')->set(function ($m,$q){
+			return $m->refSQL('businessdirectory/Listing')->count();
+		});
+
+		$this->addHook('beforeDelete',$this);
+
 		$this->add('dynamic_model/Controller_AutoCreator');
+	}
+
+
+	function beforeDelete(){
+		if($this->ref('businessdirectory/Listing')->count()->getOne() > 0)
+			throw $this->exception('Segement contains Listings in it, cannot delete','ValidityCheck')->setField('name')->addMoreInfo('Segment',$this['name']);
+	
 	}
 }

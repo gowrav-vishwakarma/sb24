@@ -1,102 +1,48 @@
 
-<style type="text/css">
-	.buisness_listing_logo img{
-		width:150px;
-		height:80px;
-	}
-	.business_listing_company_name h2{
-		text-align: center;
-
-	}
-	.business_listing_left{
-	float: left;
-	padding-left: 40px;
-	width:25%;
-	}
-
-</style>
-
-
-
 <div id="<?$_name?>">
 	<?rows?>
 	<?row?>
-	<div class="ui-widget-content ui-corner-all">
-		<div class=" row ui-widget-content ">
-				<div class="col-sm-9"><h2><?name?>Company Name<?/name?></h2>
-				</div>
-				<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$Relevance?>
-				</div>
+	<div class="ui-widget-content ui-corner-all main-block">
+		<div class=" row ui-widget-content header">
+		<div class="col-sm-9 company_name"><h2><?name?>Company Name<?/name?></h2></div>
+		<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$Relevance?></div>
 		</div>
-		<div class="row">
-			
+		<div class="row main-block-body">
 			<div class="buisness_listing_logo col-sm-4" >
-
-					<div  class="well" align="center"><img src="<?$company_logo?>"/></div>
+				<div  class="well" align="center"><h1><img src="<?$company_logo?>" alt="Your Picture Here "/></h1></div>
 			</div>
-			
-				<div class="buisness_listing_labal col-sm-8" >
-					<div class="row"  >
-					 	<div class="col-sm-9">
-					 		<div class="row">
-					 			<div class="col-sm-6">
-					 	
-									<div>Name :</div>
-					 			</div>
-					 			
-					 			<div class="col-sm-6">
-					 				<div><?name?>Name<?/name?></div>
-					 	
-					 			</div>	
-					 		</div>
-					 		<div class="row">
-					 			<div class="col-sm-6">
-									<div>Father Name :</div>
-					 			</div>
-					 			<div class="col-sm-6">
-									<div><?father_name?>Father Name<?/father_name?></div>
-					 	
-					 			</div>	
-					 		</div>
-						
-							<div class="row">
-					 			<div class="col-sm-6">
-									<div>Mobile NO :</div>
-					 	
-					 			</div>
-					 			<div class="col-sm-6">
-									<div><?mobile_no?>Mobile NO<?/mobile_no?></div>
-					 	
-					 			</div>	
-					 		</div>
-					 
-					 		<div class="row">
-					 			<div class="col-sm-6">
-									<div>Date Of Birth :
-									</div>
-					 	
-					 			</div>
-					 			<div class="col-sm-6">
-									<div><?date_of_birth?>Date Of Birth  <?/date_of_birth?></div>
-					 	
-					 			</div>	
-					 		</div>
-					 		<div class="row">
-					 			<div class="col-sm-6">
-									<div>Gender :</div>
-					 		 	</div>
-					 			<div class="col-sm-6">
-									<div><?gender?>Gender   <?/gender?></div>
-					 	
-					 			</div>	
-					 		</div>
-					 
-					
-					</div>
-					</div>
-
+	<div class="col-sm-8" >
+		<div class="row">
+			<div class="col-sm-12" >
+				<div class="row">
+					<div class="col-sm-4 info-title">Name</div>
+					<div class="col-sm-8 info-vlaue"><?name?>name<?/name?></div>
 				</div>
-		</div>		
+				<div class="row">
+					<div class="col-sm-4 info-title">Father's Name</div>
+					<div class="col-sm-8 info-vlaue"><?father_name?>father_name<?/father_name?></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 info-title">Mobile No</div>
+					<div class="col-sm-8 info-vlaue"><?mobile_no?>mobile_no<?/mobile_no?></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 info-title">Email</div>
+					<div class="col-sm-8 info-vlaue"><?email?>email <?/email?></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 info-title">Address</div>
+					<div class="col-sm-8 info-vlaue"><?address?>address <?/address?></div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 info-title">About</div>
+					<div class="col-sm-8 info-vlaue"><?short_description?>short_description <?/short_description?></div>
+				</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
 	</div>	
 	<?/row?>
 	<?/rows?>

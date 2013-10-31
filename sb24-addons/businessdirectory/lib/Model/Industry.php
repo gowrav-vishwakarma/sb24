@@ -11,6 +11,14 @@ class Model_Industry extends \Model_Table {
 		$this->hasMany('businessdirectory/Segment','industry_id');
 		$this->hasMany('businessdirectory/Listing','industry_id');
 
+		$this->addExpression('no_of_segments')->set(function ($m,$q){
+			return $m->refSQL('businessdirectory/Segment')->count();
+		});
+
+		$this->addExpression('no_of_listings')->set(function ($m,$q){
+			return $m->refSQL('businessdirectory/Listing')->count();
+		});
+
 		$this->addHook('beforeDelete',$this);
 
 		$this->add('dynamic_model/Controller_AutoCreator');

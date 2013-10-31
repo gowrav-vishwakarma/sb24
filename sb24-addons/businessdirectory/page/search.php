@@ -7,6 +7,8 @@ class page_businessdirectory_page_search extends page_base_site {
 			$this->forget('filter');
 			$this->forget('state');
 			$this->forget('city');
+			$this->forget('tehsil');
+			$this->forget('area');
 			$this->forget('industry');
 			$this->forget('segment');
 			$this->forget('search');
@@ -14,6 +16,8 @@ class page_businessdirectory_page_search extends page_base_site {
 		$this->memorize("filter",$_GET['filter']?:$this->recall('filter',false));
 		$this->memorize("state",$_GET['state']?:$this->recall('state',false));
 		$this->memorize("city",$_GET['city']?:$this->recall('city',false));
+		$this->memorize("tehsil",$_GET['tehsil']?:$this->recall('tehsil',false));
+		$this->memorize("area",$_GET['area']?:$this->recall('area',false));
 		$this->memorize("industry",$_GET['industry']?:$this->recall('industry',false));
 		$this->memorize("segment",$_GET['segment']?:$this->recall('segment',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
@@ -48,6 +52,10 @@ class page_businessdirectory_page_search extends page_base_site {
 				$result->addCondition('state_id',$this->recall('state',false));
 			if($this->recall('city',false))
 				$result->addCondition('city_id',$this->recall('city',false));
+			if($this->recall('tehsil',false))
+				$result->addCondition('tehsil_id',$this->recall('tehsil',false));
+			if($this->recall('area',false))
+				$result->addCondition('area_id',$this->recall('area',false));
 			if($this->recall('industry',false))
 				$result->addCondition('industry_id',$this->recall('industry',false));
 			if($this->recall('segment',false))
@@ -74,6 +82,8 @@ class page_businessdirectory_page_search extends page_base_site {
 												'search'=>$form->get('search'),
 												'state'=>$form->get('state_id'),
 												'city'=>$form->get('city_id'),
+												'tehsil'=>$form->get('tehsil_id'),
+												'area'=>$form->get('area_id'),
 												'industry'=>$form->get('industry_id'),
 												'segment'=>$form->get('segment_id'),
 												'filter'=>'1'))->execute();

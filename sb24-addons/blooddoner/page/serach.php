@@ -24,7 +24,7 @@ class page_blooddoner_page_serach extends page_base_site {
 		$grid=$this->add('Grid');
 
 		$doners = $this->add('blooddoner/Model_Listing');
-		$member_join = $doners->join('member','member_id');
+		$member_join = $doners->join('social_member','member_id');
 		$member_join->join('state','state_id')->addField('state','name');
 		$member_join->join('city','city_id')->addField('city','name');
 		$member_join->addField('address');

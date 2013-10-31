@@ -1,49 +1,37 @@
-<style type="text/css">
-	.buisness_listing_logo img{
-		width:150px;
-		height:80px;
-	}
-	.buiness_listing_company_name h2{
-		text-align: center;
-
-	}
-	.business_listing_left{
-	float: left;
-	padding-left: 40px;
-	width:25%;
-	}
-
-</style>
-
-
-
 <div id="<?$_name?>">
 	<?rows?>
 	<?row?>
-	<div class="ui-widget-content ui-corner-all">
-		<div class=" row ui-widget-content ">
-		<div class="col-sm-9"><h2><?name?>Event<?/name?></h2></div>
-		<div class="col-sm-1 btn btn-primary" onclick="<?$more?>">More <?$Relevance?></div>
-		<div class="col-sm-2 btn btn-primary" onclick="<?$register?>"><?register_label?>Register<?/register_label?></div>
+	<div class="ui-widget-content ui-corner-all main-block">
+		<div class=" row ui-widget-content header">
+			<div class="col-sm-9 company_name"><h2><?name?>Company Name<?/name?></h2></div>
+			<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$Relevance?></div>
 		</div>
-		<div class="row">
+		<div class="row main-block-body">
 			<div class="buisness_listing_logo col-sm-4" >
-				<div  class="well" align="center"><img src="<?$event_picture?>"/></div>
+				<div  class="well" align="center"><h1><img src="<?$company_logo?>" alt="Your Event Picture "/></h1></div>
 			</div>
-			<div class="buisness_listing_labal col-sm-4" >
-				<div>Event Date :</div>
-				<div>Event Venu :</div>
-				<div>Last Registration Date :</div>
-			</div>
-			<div class="buisness_listing_value col-sm-4">
-				<div><?event_date?>event_date<?/event_date?></div>
-				<div><?event_venue?>event_venue<?/event_venue?></div>
-				<div><?registration_last_date?>registration_last_date<?/registration_last_date?></div>
+			<div class="col-sm-8" >
+				<div class="row">
+					<div class="col-sm-12" >
+						<div class="row">
+							<div class="col-sm-4 info-title">Event Date</div>
+							<div class="col-sm-8 info-vlaue"><?event_date?>event_date<?/event_date?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">Event venu</div>
+							<div class="col-sm-8 info-vlaue"><?event_venu?>event_venu<?/event_venu?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">Last Registration Date</div>
+							<div class="col-sm-8 info-vlaue"><?registration_last_date?>last_registration_date <?/registration_last_date?></div>
+						</div>
+						
+					</div>
+				</div>
 			</div>
 		</div>
-
 	</div>
-	<?/row?>
-	<?/rows?>
+<?/row?>
+<?/rows?>
 <?$paginator?>
 </div>

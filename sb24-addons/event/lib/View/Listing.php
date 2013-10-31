@@ -24,8 +24,6 @@ class View_Listing extends \CompleteLister{
 			}
 			
 		}
-
-		
 		parent::formatRow();
 	}
 

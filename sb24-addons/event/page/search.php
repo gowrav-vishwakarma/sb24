@@ -42,8 +42,8 @@ class page_event_page_search extends page_base_site {
 					'state'=>$form['state_id'],
 					'city'=>$form['city_id'],
 					'event_type'=>$form['event_type_id'],
-					'from_date'=>$form['event_from_date'],
-					'to_date'=>$form['event_to_date'],
+					'from_date'=>$form['event_from_date']?:'0',
+					'to_date'=>$form['event_to_date']?:"0",
 					'filter'=>'1'
 				))->execute();
 		}
@@ -55,7 +55,7 @@ class page_event_page_search extends page_base_site {
 			if($this->recall('to_date',false)) $result->addCondition('event_date','>=',$this->recall('to_date',false));
 			if($this->recall('from_date',false)) $result->addCondition('event_date','<=',$this->recall('from_date',false));
 		}else{
-			$result->addCondition('state_id',-1);
+			// $result->addCondition('state_id',-1);
 		}
 
 
