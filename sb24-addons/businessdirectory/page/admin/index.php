@@ -33,7 +33,7 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 		// $business_listing_crud->grid->js()->univ()->errorMessage("This is Already Activate")->execute();
 		// $business_listing_crud->grid->js()->reload()->execute();
 		
-		$business_listing_crud->setModel($model,null,array('state','city','tehsil','area','name','company_address','company_ph_no','email_id','contact_person','payment_received','is_active','is_paid','created_on'));
+		$business_listing_crud->setModel($model,null,array('name','state','city','tehsil','area','company_address','company_ph_no','email_id','contact_person','payment_received','is_active','is_paid','created_on','username','password'));
 
 		if($blg=$business_listing_crud->grid){
 			$blg->js(true)->_load('footable')->_selector('#'.$blg->name.' table')->footable();
@@ -43,7 +43,10 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 			$blg->columns['state']['thparam']='data-hide="all"';
 			$blg->columns['email_id']['thparam']='data-hide="all"';
 			$blg->columns['payment_received']['thparam']='data-hide="all"';
-			$blg->columns['created_on']['thparam']='data-hide="all"';
+			$blg->columns['tehsil']['thparam']='data-hide="all"';
+			$blg->columns['area']['thparam']='data-hide="all"';
+			$blg->columns['username']['thparam']='data-hide="all"';
+			$blg->columns['password']['thparam']='data-hide="all"';
 			$blg->addColumn('Button','activate');
 			$blg->addPaginator(20);
 			$blg->addQuickSearch(array('name','state','city','tehsil','area','email_id'));

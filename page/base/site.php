@@ -10,8 +10,8 @@ class page_base_site extends page_base_null {
 		$this->api->menu
 					->addMenuItem('index','Home')
 					->addMenuItem($this->api->url('history_page_search',array('reset'=>1)),'History')
-					->addMenuItem($this->api->url('businessdirectory_page_search',array('reset'=>1)),'Business Directory')
-					->addMenuItem($this->api->url('socialdirectory_page_search',array('reset'=>1)),'Social Directory')
+					->addMenuItem($this->api->url('businessdirectory_page_search',array('reset'=>1)),'Free Business Listing')
+					->addMenuItem($this->api->url('socialdirectory_page_search',array('reset'=>1)),'Social Listing')
 					->addMenuItem($this->api->url('distance_page_search',array('reset'=>1)),'Distance')
 					->addMenuItem($this->api->url('tracker_page_search',array('reset'=>1)),'Tracker')
 					->addMenuItem($this->api->url('emergency_page_search',array('reset'=>1)),'Emergency Numbers')

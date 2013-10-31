@@ -7,6 +7,11 @@ class page_businessdirectory_page_more extends page_base_site{
 		$listing=$this->add('businessdirectory/Model_Listing');
 		$listing->load($_GET['listing_id']);
 
+		if(!$listing['is_paid']){
+			$this->add('View_Info')->set("Additional Information not available, as it is a free listing");
+			return;
+		}
+
 		$tabs=$this->add('Tabs');
 		$about=$tabs->addTab('About ' .$listing['name']);
 		$gallary=$tabs->addTab('Gallary');
@@ -15,7 +20,7 @@ class page_businessdirectory_page_more extends page_base_site{
 		$contact=$tabs->addTab('Contact Us');
 
 		$about->add('H2')->set('About '.$listing['name']);
-		$about->add('View')->set($listing['about_us'])->addClass('text');
+		$about->add('View')->setHTML("Hello".$listing['about_us']);
 
 		//gallary start//
 		$gallary->add('H2')->set("Gallary");
@@ -56,11 +61,10 @@ class page_businessdirectory_page_more extends page_base_site{
 		$contact_form->addField('line','mobile_no');
 		$contact_form->addField('line','email_id');
 		$contact_form->addField('text','messge');
-		$contact_form->addField('line','messge');
 		$contact_form->addSubmit('Submit Enquiry');
 
 		if($contact_form->isSubmitted()){
-			
+			// TODO EMAIL SEND
 		}
 	}
 }

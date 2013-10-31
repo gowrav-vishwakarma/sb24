@@ -22,25 +22,25 @@ class Model_Listing extends \Model_Table {
 		$this->hasOne('Area','area_id')->group('free')->sortable(true);
 
 		//Basic Details FREE LISTING SECTION
-		$this->addField('name')->caption('Name Of Company')->group('free')->sortable(true)->display(array('grid'=>'grid/inline'));
+		$this->addField('name')->caption('Name Of Company')->group('free')->sortable(true);//->display(array('grid'=>'grid/inline'));
 		$this->addField('company_address')->type('text')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('mobile_no')->group('free');
 		$this->addField('company_ph_no')->group('free');
-		$this->addField('address')->type('text')->caption('Contact Persons Address')->group('free')->display(array('grid'=>'grid/inline'));
+		$this->addField('address')->type('text')->caption('Contact Persons Address')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('short_description')->type('text')->group('free')->display(array('grid'=>'shorttext,grid/inline'));
 		$this->addField('email_id')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('website')->group('free')->display(array('grid'=>'grid/inline'));
 		$this->addField('tags')->type('text')->group('free')->display(array('grid'=>'grid/inline'));
 
 		// Paid Informations
-		$this->addField('about_us')->type('text')->group('paid')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
-		$this->addField('contact_person')->group('paid')->display(array('grid'=>'grid/inline'));
+		$this->addField('about_us')->type('text')->group('paid')->display(array("form"=>"Text",'grid'=>'shorttext,grid/inline'));
+		$this->addField('contact_person')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('designation')->setValueList(array(	
 															'proprietor'=>'Proprietor',
 															'partner'=>'Partner',
 															'director'=>'Director',
 															'authorized-person'=>'Authorized-Person'
-															))->group('paid')->display(array('grid'=>'grid/inline'));
+															))->group('free')->display(array('grid'=>'grid/inline'));
 		$this->addField('contact_person_contact_number')->group('paid')->display(array('grid'=>'grid/inline'));
 		
 		//Images
@@ -84,6 +84,14 @@ class Model_Listing extends \Model_Table {
 
 		$this->addExpression('payment_received')->set(function($m,$q){
 			return $m->refSQL('businessdirectory/PayAmount')->sum('name');
+		});
+
+		$this->addExpression('username')->set(function($m,$q){
+			return $m->refSQL('member_id')->fieldQuery('username');
+		});
+
+		$this->addExpression('password')->set(function($m,$q){
+			return $m->refSQL('member_id')->fieldQuery('password');
 		});
 
 		//Has Many Relations		

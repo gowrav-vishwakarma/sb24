@@ -23,17 +23,17 @@ class page_businessdirectory_page_member_index extends page_memberpanel_page_bas
 		$paid_listing_crud->setModel($paid_model_listing,null,array('name','mobile_no','is_paid'));
 		$paid_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id')));
 
-		if($f=$paid_listing_crud->form){
-			$wz=$f->add('Controller_FormWizard');
-			$wz->addStep('Initial Info','member_id');
-			$wz->addStep('Basic Info','name');
-			$wz->addStep('About us','about_us');
-			$wz->addStep('Contact us','contact_person');
-			$wz->addStep('Gallary','gallery_image_1_id');
-			$wz->addStep('Product & Service','products_image_1_id');
-			$wz->addStep('Map','map_latitute_longitude');
-			$wz->go();
-		}
+		// if($f=$paid_listing_crud->form){
+		// 	$wz=$f->add('Controller_FormWizard');
+		// 	$wz->addStep('Initial Info','member_id');
+		// 	$wz->addStep('Basic Info','name');
+		// 	$wz->addStep('About us','about_us');
+		// 	$wz->addStep('Contact us','contact_person');
+		// 	$wz->addStep('Gallary','gallery_image_1_id');
+		// 	$wz->addStep('Product & Service','products_image_1_id');
+		// 	$wz->addStep('Map','map_latitute_longitude');
+		// 	$wz->go();
+		// }
 
 	}
 
@@ -47,7 +47,7 @@ class page_businessdirectory_page_member_index extends page_memberpanel_page_bas
 		$freelisting_model_listing->addCondition('is_paid',false);
 
 		$business_listing_crud->setModel($freelisting_model_listing,'free',array('name','mobile_no','is_active'));
-		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id')));
+		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'tehsil_id','tehsil_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id')));
 		
 	}
 		

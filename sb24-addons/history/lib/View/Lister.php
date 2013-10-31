@@ -6,9 +6,16 @@ class View_Lister extends \CompleteLister{
 	public $paginator;
 		
 		function formatRow(){
-		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('history_page_more',array('place_id'=>$this->model->id)));
+		$js = $this->api->js('click')->univ()
+			->frameURL("Details for " . $this->model['name'],$this->api->url('history_page_more',array('place_id'=>$this->model->id)),array('width'=>'65%'));
 		$this->current_row['more']=$js;
+		$this->current_row['place_type_icon']=$this->model->ref('placetype_id')->get('placetype_icon');
 		parent::formatRow();
+	}
+
+	function setModel($model){
+		if($model->count()->getOne() > 0) $this->template->tryDel('not_found');
+		parent::setModel($model);
 	}
 
 	function addPaginator($ipp = 25, $options = null)

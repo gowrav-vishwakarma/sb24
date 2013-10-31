@@ -12,6 +12,7 @@ class Model_Place extends \Model_Table {
 		$this->hasOne('Tehsil','tehsil_id');
 		$this->hasOne('Area','area_id');
 		$this->hasOne('history/PlaceType','placetype_id');
+		$this->add("filestore/Field_Image","place_image_id")->type('image');
 		$this->addField('name')->display(array('grid'=>'grid/inline'));
 		$this->addField('short_description')->type('text')->display(array('grid'=>'shorttext,grid/inline'));
 		$this->addField('about')->type('text')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));

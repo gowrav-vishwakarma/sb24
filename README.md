@@ -17,3 +17,10 @@ distance:
 		- by bus instead by train
 
 ALL using IMAGES ... beforeDelete remove images to save space
+
+
+=================
+
+Contact us in business directory more .. email send
+editor in chrome ..=> member area =>business listing edit=>about us
+senitize all $_GET inputs to prevent sql injections on all pages

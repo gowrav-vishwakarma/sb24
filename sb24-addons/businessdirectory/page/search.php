@@ -35,6 +35,7 @@ class page_businessdirectory_page_search extends page_base_site {
 
 		$chain_fields=array("city_id"=>'state_id',"tehsil_id"=>"city_id","area_id"=>'tehsil_id','segment_id'=>'industry_id');
 		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields));
+
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder span4'),'first')
@@ -72,12 +73,20 @@ class page_businessdirectory_page_search extends page_base_site {
 		if($search=$this->recall('search',false)){
 			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE)');
 			$result->setOrder('Relevance','Desc');
-			// $result->addCondition('Relevance','>','0.5');
+			$result->addCondition('Relevance','>','0');
 		}
 
 		$business_listing->setModel($result);
 		$business_listing->addPaginator(10);
 		if($form->isSubmitted()){
+			$this->forget('filter');
+			$this->forget('state');
+			$this->forget('city');
+			$this->forget('tehsil');
+			$this->forget('area');
+			$this->forget('industry');
+			$this->forget('segment');
+			$this->forget('search');
 			$business_listing->js()->reload(array(
 												'search'=>$form->get('search'),
 												'state'=>$form->get('state_id'),

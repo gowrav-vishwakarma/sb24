@@ -58,7 +58,7 @@ class Frontend extends ApiFrontend {
 
         // Menu:
 
-            $this->menu=$this->add('Menu',array('inactive_menu_class'=>'','current_menu_class'=>''),'Menu');
+            $this->menu=$this->add('Menu',array('inactive_menu_class'=>'','current_menu_class'=>'current_menu_class'),'Menu');
 
         // If you are using a complex menu, you can re-define
         // it and place in a separate class

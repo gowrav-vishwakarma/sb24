@@ -21,18 +21,23 @@ class page_socialdirectory_page_search extends page_base_site {
 		$result = $this->add('Model_Member');
 
 		if($form->isSubmitted()){
+			
+			$this->forget('search');
+
+			if(strlen(trim($form['search']))<=3 )
+				$form->displayError("search",'Worlds containing more then 3 characteres are used only');
 			$list->js()->reload(array('search'=>$form['search']))->execute();
 		}
 
 		if($search=$this->recall('search',false)){
-			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
+			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE)');
 			$result->setOrder('Relevance','Desc');
-			$result->addCondition('Relevance','>','0.5');
+			$result->addCondition('Relevance','>','0');
 		}
 		if(!$this->recall('search'))
 			$result->addCondition('id','-1');
 
-		$list->addPaginator(1);
+		$list->addPaginator(10);
 		$list->setModel($result,'social');
 
 	}

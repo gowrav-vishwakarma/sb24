@@ -15,6 +15,12 @@ body{
 	background: url('../images/bg-body.jpg');
 }
 
+.current_menu_class{
+  font-weight: bold;
+  color: white;
+  
+}
+
 .main-content{
 	background-color: white;
 	padding: 20px;
@@ -78,11 +84,10 @@ font-weight: bold;
 font-size: 1.2em;
 }
 
-  .buisness_listing_logo img{
-    width:150px;
-    height:80px;
-    color: gray;
-  }
+.buisness_listing_logo img{
+  max-width:100%;
+  max-height:150px;
+}
 
  /*.business_listing_left{
   float: left;
@@ -109,15 +114,12 @@ font-size: 1.2em;
 }
 .main-block{
 
-background: #febbbb; /* Old browsers */
-background: -moz-linear-gradient(top, #febbbb 58%, #ff5c5c 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(58%,#febbbb), color-stop(100%,#ff5c5c)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, #febbbb 58%,#ff5c5c 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, #febbbb 58%,#ff5c5c 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top, #febbbb 58%,#ff5c5c 100%); /* IE10+ */
-background: linear-gradient(to bottom, #febbbb 58%,#ff5c5c 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=0 ); /* IE6-9 */
-Color format: 
+background: #9ecaed; /* Old browsers */
+background-image:  -webkit-linear-gradient( right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  -moz-linear-gradient( right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  -ms-linear-gradient( right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  -o-linear-gradient( right bottom, #FFFFFF 0%, #FFDDAB 100%);
+   background-image:  linear-gradient(right bottom, #FFFFFF 0%, #FFDDAB 100%); 
 }
 .main-block:hover{
 

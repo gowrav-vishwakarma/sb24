@@ -11,8 +11,8 @@ class Model_Member extends Model_Table {
 		$this->addField('password')->group('base');
 		$this->addField('mobile_no')->hint("Your Password / Activation Codes will be send to this number, Please keep it correct")->mandatory('mobile number is must, your password will be send to this number')->group('base');
 
-		$this->hasOne('State','state_id')->group('base')->sortable(true);
-		$this->hasOne('City','city_id')->group('base')->sortable(true);
+		$this->hasOne('State','state_id')->group('social')->sortable(true);
+		$this->hasOne('City','city_id')->group('social')->sortable(true);
 		$this->hasOne('Tehsil','tehsil_id')->group('social')->sortable(true);
 		$this->hasOne('Area','area_id')->group('social')->sortable(true);
 		$this->addField('address')->type('text')->group('social');
@@ -26,7 +26,7 @@ class Model_Member extends Model_Table {
 
 		$this->addField('is_staff')->type('boolean')->defaultValue(false)->system(true);
 		$this->addField('joined_on')->type('date')->defaultValue(date('Y-m-d H:i:s'))->system(true);
-
+		$this->add("filestore/Field_Image","profile_pic_id")->type('image')->group('social');
 
 		$this->addField('update_code')->system(true);
 		$this->addField('code_valid_till')->system(true);

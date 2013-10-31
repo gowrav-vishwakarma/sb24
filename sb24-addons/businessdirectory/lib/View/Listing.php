@@ -5,9 +5,14 @@ namespace businessdirectory;
 class View_Listing extends \CompleteLister{
 	public $paginator;
 	function formatRow(){
-		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('businessdirectory_page_more',array('listing_id'=>$this->model->id)));
+		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('businessdirectory_page_more',array('listing_id'=>$this->model->id)),array('width'=>'65%'));
 		$this->current_row['more']=$js;
 		parent::formatRow();
+	}
+
+	function setModel($model){
+		if($model->count()->getOne() > 0) $this->template->tryDel('not_found');
+		parent::setModel($model);
 	}
 
 	function addPaginator($ipp = 25, $options = null)
