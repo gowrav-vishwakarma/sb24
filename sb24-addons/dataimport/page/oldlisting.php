@@ -46,11 +46,11 @@ class page_dataimport_page_oldlisting extends page_base_admin {
 			$new_listing['is_active'] = true;
 
 			$new_listing->save();
-			$payment = $new_listing->ref('businessdirectory/PayAmount');
-			$payment['name'] = $l['amount'];
-			$payment['submitted_on'] = date('Y-m-d H:i:s',strtotime($l['date']));
+				$payment = $new_listing->ref('businessdirectory/PayAmount');
+				$payment['name'] = $l['amount'];
+				$payment['submitted_on'] = date('Y-m-d H:i:s',strtotime($l['date']));
 
-			$payment->saveAndUnload();
+				$payment->saveAndUnload();
 			$new_listing->unload();
 
 		}

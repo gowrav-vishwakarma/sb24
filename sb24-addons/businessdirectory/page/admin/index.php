@@ -35,13 +35,21 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 		
 		$business_listing_crud->setModel($model,null,array('state','city','tehsil','area','name','company_address','company_ph_no','email_id','contact_person','payment_received','is_active','is_paid','created_on'));
 
-		if($business_listing_crud->grid){
-			$business_listing_crud->grid->addColumn('Button','activate');
-			$business_listing_crud->grid->addPaginator(20);
-			$business_listing_crud->grid->addQuickSearch(array('name'));
+		if($blg=$business_listing_crud->grid){
+			$blg->js(true)->_load('footable')->_selector('#'.$blg->name.' table')->footable();
+			$this->api->jquery->addStyleSheet('footable.core');
+			$blg->columns['company_address']['thparam']='data-hide="all"';
+			$blg->columns['company_ph_no']['thparam']='data-hide="all"';
+			$blg->columns['state']['thparam']='data-hide="all"';
+			$blg->columns['email_id']['thparam']='data-hide="all"';
+			$blg->columns['payment_received']['thparam']='data-hide="all"';
+			$blg->columns['created_on']['thparam']='data-hide="all"';
+			$blg->addColumn('Button','activate');
+			$blg->addPaginator(20);
+			$blg->addQuickSearch(array('name','state','city','tehsil','area','email_id'));
 		}
 		$business_listing_crud->addRef('businessdirectory/PayAmount');
-		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id')));
+		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id'),'force_selection'=>false));
 		
 		// if($f=$business_listing_crud->form){
 		// 	if($f=$business_listing_crud->form){
