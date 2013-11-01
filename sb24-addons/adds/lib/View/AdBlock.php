@@ -10,4 +10,8 @@ class View_AdBlock extends \View{
 		parent::setModel($block_model);
 	}
 
+	// function render(){
+	// 	// $this->js(true)->carousel(array('interval'=> $this->model['rotation_time']*1000));
+	// 	parent::render();
+	// }
 }
