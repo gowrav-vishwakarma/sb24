@@ -28,14 +28,14 @@ class page_index extends page_base_site {
 
 
 		$col_register->add('H3')->set('Register Now, Its Free ...')
-			->sub('Add your own free listings, get unlimited informations ... ');
+			->sub('Add your own free listings, get unlimited informations ... ')->setStyle('color','burlywood');
 
 		$model=$this->add('Model_Member');
 		$model->getElement('password')->system(true);
 
 		$form_register = $col_register->add('Form');
 		$form_register->setModel($model,'base');
-		$form_register->addSubmit("Register");
+		$form_register->addSubmit("Register")->addClass('shine');
 
 		if($form_register->isSubmitted()){
 			$form_register->update();
@@ -43,11 +43,20 @@ class page_index extends page_base_site {
 		}
 
 
-		$col_login->add('H1')->set('Login to Your Account');
+		$col_login->add('H3')->set('Login to Your Account')->setStyle('color','burlywood');
 		$login_form=$col_login->add('Form');
 		$login_form->addField('line','username');
 		$login_form->addField('password','password');
-		$login_form->addSubmit('Log In');
+		$login_form->addSubmit('Log In')->addClass('shine');
+
+		if($login_form->isSubmitted()){
+			$this->api->auth->setModel('Member','username','password');
+			if(!$this->api->auth->verifyCredentials($login_form['username'],$login_form['password'])){
+				$login_form->displayError('password','Incorrect login information');
+			}
+			$this->api->auth->loginBy('username',$login_form['username']);
+			$this->js()->univ()->redirect('memberpanel_page_dashboard')->execute();
+		}
 	}
 
 

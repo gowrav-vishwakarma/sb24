@@ -15,7 +15,7 @@ class SearchForm extends Form {
 			if(isset($options['mandatory'])) $f->validateNotNull();
 		}
 
-		$this->addSubmit('Search');
+		$this->addSubmit('Search',null,null,array('view/mybutton','button'))->setStyle('margin-top','20px');
 		if(!$this->isSubmitted())
 			$this->add('Controller_ChainSelector',array('chain_fields'=>$this->chain_fields ,'force_selection'=>true));
 	}
