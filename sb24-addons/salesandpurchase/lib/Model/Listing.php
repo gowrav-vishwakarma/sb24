@@ -6,16 +6,16 @@ class Model_Listing extends \Model_Table {
  		parent::init();
 
  		$member = $this->hasOne('Member','member_id');
-		if($this->api->auth->model)
+ 		if($this->api->auth->model AND !$this->api->auth->model['is_staff']){
 			$member->defaultValue($this->api->auth->model->id);
+ 		}
+		
  		$this->hasOne('State','state_id');
  		$this->hasOne('City','city_id');
  		$this->hasOne('Tehsil','tehsil_id');
  		$this->hasOne('salesandpurchase/Category','category_id');
  		$this->hasOne('salesandpurchase/SubCategory','subcategory_id');
  		$this->addField('name')->caption('Name Of Product');
- 		$this->addField('contact_person');
- 		$this->addField('mobile_number');
  		$this->addField('price');
  		$this->addField('description')->type('text')->display(array('form'=>'RichText'));
  		// $this->addField('short_description	')->type('text')->display(array('form'=>'RichText'));
@@ -26,6 +26,7 @@ class Model_Listing extends \Model_Table {
  		$this->add("filestore/Field_Image","product_image_2_id")->type('image');
  		$this->add("filestore/Field_Image","product_image_3_id")->type('image');
  		
+
  		$this->addHook('beforeSave',$this);
  		$this->add('dynamic_model/Controller_AutoCreator');
  	}
@@ -36,10 +37,16 @@ class Model_Listing extends \Model_Table {
 								$this->ref('subcategory_id')->get('name') . " ".
 								$this->ref('state_id')->get('name') . " ".
 								$this->ref('city_id')->get('name'). " ".
-								$this['contact_person']
+								$this->ref('member_id')->get('name'). " "
 							;
 
-		}
-
 	}
+
+	function markSold(){
+		$this['is_sold']=true;
+		$this['sold_date']=date('Y-m-d H:i:s');
+		$this->save();
+	}
+
+}
  

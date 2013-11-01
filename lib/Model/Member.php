@@ -71,7 +71,7 @@ class Model_Member extends Model_Table {
 	}
 
 	function afterInsert($model,$new_id){
-		// $this->add('Controller_SMS')->sendCode($model['mobile_no'],$model['username'],$model['password']);
+		$this->add('Controller_SMS')->sendCode($model['mobile_no'],$model['username'],$model['password']);
 	}
 
 	function sendCode($on_number=null){
@@ -83,7 +83,7 @@ class Model_Member extends Model_Table {
 			$no=$on_number;
 		else
 			$no=$this['mobile_no'];
-		// $this->add('Controller_SMS')->sendSMS($no, $msg="Hi");
+		$this->add('Controller_SMS')->sendSMS($no, $this['name'], $this['update_code']);
 
 	}
 }

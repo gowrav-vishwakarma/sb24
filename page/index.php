@@ -15,7 +15,7 @@ class page_index extends page_base_site {
 		$this->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center');
 		$search_form=$this->add('Form')->addClass('stacked');
 		$search_form->addField('line','search','')->addClass('span10');
-		$search_form->add('Button')->set('Search')->addClass('shine atk-form-row atk-form-row-dropdown span3')->js('click')->submit();
+		$search_form->add('Button')->set('Search')->addClass('shine atk-form-row atk-form-row-dropdown span3 span3')->js('click')->submit();
 		if($search_form->isSubmitted()){
 			$search_form->js()->univ()->redirect($this->api->url('businessdirectory_page_search',array('reset'=>1,"filter"=>1,'search'=>$form['search'])))->execute();
 		}

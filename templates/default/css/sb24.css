@@ -15,10 +15,16 @@ body{
 	background: url('../images/bg-body.jpg');
 }
 
-.current_menu_class{
-  font-weight: bold;
-  color: white;
-  
+.navbar-inverse .navbar-nav > li.current_menu_class > a, .navbar-inverse .navbar-nav > li.menu_class > a:hover{
+  color: red;
+}
+
+.navbar-inverse .navbar-nav > li.menu_class > a {
+  color: black;
+}
+
+.navbar-inverse {
+  background-color: #FFFFFF;
 }
 
 .main-content{
@@ -134,15 +140,42 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', end
 
 }
 
-.top_ad_block{
-  
+.top_ad_block_outer{
+  /* fixed position a zero-height full width container */
+    position: fixed;
+    top: 40px; /* or whatever position is desired */
+    left: 0;
+    right: 0;
+    height: 120px;
+    padding-top: 8px;
+    width:100%;
+    background: #7db9e8; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover, #7db9e8 0%, #1e5799 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7db9e8), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, #7db9e8 0%,#1e5799 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    /* center all inline content */
+    text-align: center;
+    z-index: 10;
 }
 
 .col{
   border-left: 2px solid lightgray;
   padding-right: 15px;
 }
+.top_ad_block_outer > div {
+    /* make the block inline */
+    display: inline-block;
+    /* reset container's center alignment */
+    text-align: left;
+} 
 
+body{
+  margin-top: 140px;
+}
 .right-front-page-col{
 /*margin-left:36.5% !important;*/
 border-left: 5px solid black;
