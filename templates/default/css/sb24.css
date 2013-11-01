@@ -241,3 +241,7 @@ border-radius:40px;
     /*border-radius: 5px;*/
 border-radius:40px;
 }
+
+.atk-form .atk-buttons, .atk-form .legend{
+  padding-left: 0px;
+}
