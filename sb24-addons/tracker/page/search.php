@@ -185,6 +185,8 @@ class page_tracker_page_search extends page_base_site {
 	}
 
 	function page_mobile(){
+
+		$this->add('View_Info')->setHTML('<h1> Page Under Construction, Come Back Soon..!</h1>');
 		
 	}
 

@@ -29,9 +29,9 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 
 		$form->addSubmit('Update');
 
-		if(!$form->isSubmitted()){
-			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id'),'force_selection'=>false));
-		}
+		// if(!$form->isSubmitted()){
+		// 	// $form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id'),'force_selection'=>false));
+		// }
 		$form->add('Order')
 				->move('re_password','after','password')
 				->now();

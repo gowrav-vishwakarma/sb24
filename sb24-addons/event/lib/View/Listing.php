@@ -6,11 +6,12 @@ class View_Listing extends \CompleteLister{
 		public $paginator;
 	function formatRow(){
 		$js = $this->api->js('click')->univ()
-			->frameURL("Details for " . $this->model['name'],$this->api->url('event_page_more',array('event_id'=>$this->model->id)));
+			->frameURL("Details for " . $this->model['name'],$this->api->url('event_page_more',array('event_id'=>$this->model->id)),array('width'=>'65%'));
 		$this->current_row['more']=$js;
 
 		$this->api->auth->setModel('Member','username','password');
 		if(!$this->api->auth->isLoggedIn()){
+			
 			$this->current_row['register'] = $this->api->js()->univ()->redirect($this->api->url('memberpanel_page_dashboard'));
 			$this->current_row['register_label'] = "Login To Register";
 		}else{

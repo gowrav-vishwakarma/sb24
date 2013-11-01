@@ -30,6 +30,7 @@ class page_base_site extends page_base_null {
 		foreach($top_blocks as $junk){
 			$temp_block = $this->add('adds/Model_AdBlock')->load($top_blocks->id);
 			$v=$this->api->add('adds/View_AdBlock',null,'top_advert_spot');
+			$v->addClass('top_ad_block');
 			$v->setModel($temp_block);
 		}
 

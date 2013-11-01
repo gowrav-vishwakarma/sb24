@@ -3,27 +3,28 @@
 	<?row?>
 	<div class="ui-widget-content ui-corner-all main-block">
 		<div class=" row ui-widget-content header">
-			<div class="col-sm-9 company_name"><h2><?name?>Company Name<?/name?></h2></div>
-			<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More <?$Relevance?></div>
+			<div class="col-sm-8 company_name"><h2><?name?>Company Name<?/name?></h2></div>
+			<div class="col-sm-1 btn btn-primary" onclick="<?$more?>">More </div>
+			<div class="col-sm-3 btn btn-primary" onclick="<?$register?>"><?register_label?>Register<?/register_label?> </div>
 		</div>
 		<div class="row main-block-body">
 			<div class="buisness_listing_logo col-sm-4" >
-				<div  class="well" align="center"><h1><img src="<?$company_logo?>" alt="Your Event Picture "/></h1></div>
+				<div  class="well" align="center"><h1><img src="<?$event_picture?>" alt="Your Event Picture "/></h1></div>
 			</div>
 			<div class="col-sm-8" >
 				<div class="row">
 					<div class="col-sm-12" >
 						<div class="row">
 							<div class="col-sm-4 info-title">Event Date</div>
-							<div class="col-sm-8 info-vlaue"><?event_date?>event_date<?/event_date?></div>
+							<div class="col-sm-8 info-vlaue"><?event_date?>N/A<?/event_date?></div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 info-title">Event venu</div>
-							<div class="col-sm-8 info-vlaue"><?event_venu?>event_venu<?/event_venu?></div>
+							<div class="col-sm-8 info-vlaue"><?event_venue?>N/A<?/event_venue?></div>
 						</div>
 						<div class="row">
 							<div class="col-sm-4 info-title">Last Registration Date</div>
-							<div class="col-sm-8 info-vlaue"><?registration_last_date?>last_registration_date <?/registration_last_date?></div>
+							<div class="col-sm-8 info-vlaue"><?registration_last_date?>N/A <?/registration_last_date?></div>
 						</div>
 						
 					</div>

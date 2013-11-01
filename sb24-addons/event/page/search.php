@@ -52,10 +52,10 @@ class page_event_page_search extends page_base_site {
 			if($this->recall('state',false)) $result->addCondition('state_id',$this->recall('state',false));
 			if($this->recall('city',false))  $result->addCondition('city_id',$this->recall('city',false));
 			if($this->recall('event_type',false)) $result->addCondition('event_type_id',$this->recall('event_type',false));
-			if($this->recall('to_date',false)) $result->addCondition('event_date','>=',$this->recall('to_date',false));
-			if($this->recall('from_date',false)) $result->addCondition('event_date','<=',$this->recall('from_date',false));
+			if($this->recall('to_date',false)) $result->addCondition('event_date','<=',$this->recall('to_date',false));
+			if($this->recall('from_date',false)) $result->addCondition('event_date','>=',$this->recall('from_date',false));
 		}else{
-			// $result->addCondition('state_id',-1);
+			$result->addCondition('state_id',-1);
 		}
 
 

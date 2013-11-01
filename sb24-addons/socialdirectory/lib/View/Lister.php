@@ -8,7 +8,7 @@ class View_Lister extends \CompleteLister{
 
 
 	function formatRow(){
-		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('socialdirectory_page_more',array('member_id'=>$this->model->id)));
+		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('socialdirectory_page_more',array('member_id'=>$this->model->id)),array('width'=>'65%'));
 		$this->current_row['more']=$js;
 		parent::formatRow();
 	}

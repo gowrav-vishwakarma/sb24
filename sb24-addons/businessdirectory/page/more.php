@@ -3,9 +3,10 @@
 class page_businessdirectory_page_more extends page_base_site{
 	function init(){
 		parent::init();
-
+		$this->api->stickyGET('listing_id');
 		$listing=$this->add('businessdirectory/Model_Listing');
 		$listing->load($_GET['listing_id']);
+
 
 		if(!$listing['is_paid']){
 			$this->add('View_Info')->set("Additional Information not available, as it is a free listing");
@@ -15,8 +16,8 @@ class page_businessdirectory_page_more extends page_base_site{
 		$tabs=$this->add('Tabs');
 		$about=$tabs->addTab('About ' .$listing['name']);
 		$gallary=$tabs->addTab('Gallary');
-		$p_and_s=$tabs->addTab('Products & gallary');
-		$map=$tabs->addTab('Map');
+		$p_and_s=$tabs->addTab('Products & Services');
+		// $map=$tabs->addTab('Map');
 		$contact=$tabs->addTab('Contact Us');
 
 		$about->add('H2')->set('About '.$listing['name']);
@@ -44,7 +45,7 @@ class page_businessdirectory_page_more extends page_base_site{
 		//products and services end//
 
 		//map//
-		$map->add('google/View_Map');
+		// $map->add('google/View_Map');
 
 		//contact us
 
@@ -64,7 +65,7 @@ class page_businessdirectory_page_more extends page_base_site{
 		$contact_form->addSubmit('Submit Enquiry');
 
 		if($contact_form->isSubmitted()){
-			// TODO EMAIL SEND
+			$contact_form->js()->univ()->successMessage('Under Construction, Contact You soon...')->execute();
 		}
 	}
 }
