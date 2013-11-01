@@ -12,6 +12,7 @@ class page_base_admin extends Page {
 		$this->api->template->tryDel('right_advert_position');
 		$this->api->template->tryDel('shrink');
 		$this->api->template->trySet('center_span',12);
+		$this->api->template->tryDel('body_margin');
 
 		$this->api->auth->check();
 

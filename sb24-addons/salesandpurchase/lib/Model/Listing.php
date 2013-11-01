@@ -13,6 +13,7 @@ class Model_Listing extends \Model_Table {
  		$this->hasOne('State','state_id');
  		$this->hasOne('City','city_id');
  		$this->hasOne('Tehsil','tehsil_id');
+ 		$this->hasOne('Area','area_id');
  		$this->hasOne('salesandpurchase/Category','category_id');
  		$this->hasOne('salesandpurchase/SubCategory','subcategory_id');
  		$this->addField('name')->caption('Name Of Product');
