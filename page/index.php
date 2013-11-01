@@ -8,6 +8,7 @@ class page_index extends page_base_site {
 		$this->api->template->tryDel('right_advert_position');
 		$this->api->template->trySet('center_span',12);
 		$this->api->template->tryDel('content_class');
+		$this->api->template->tryDel('body_margin');
 		// $cols=$this->add('Columns');
 		// $col1=$cols->addColumn(1)->add('View')->setHtml('&nbsp');
 		// $col2=$cols->addColumn(5);//->addStyle(array("margin-top"=>"150px","margin-left"=>"450px"));
@@ -17,7 +18,7 @@ class page_index extends page_base_site {
 		$search_form->addField('line','search','')->addClass('span10');
 		$search_form->add('Button')->set('Search')->addClass('shine atk-form-row atk-form-row-dropdown span3 span3')->js('click')->submit();
 		if($search_form->isSubmitted()){
-			$search_form->js()->univ()->redirect($this->api->url('businessdirectory_page_search',array('reset'=>1,"filter"=>1,'search'=>$form['search'])))->execute();
+			$search_form->js()->univ()->redirect($this->api->url('businessdirectory_page_search',array('reset'=>1,"filter"=>1,'search'=>$search_form['search'])))->execute();
 		}
 
 		$cols=$this->add('Columns')->addClass('right-front-page-col');

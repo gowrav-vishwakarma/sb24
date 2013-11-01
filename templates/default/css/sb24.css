@@ -173,9 +173,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', end
     text-align: left;
 } 
 
-body{
-  margin-top: 140px;
-}
 .right-front-page-col{
 /*margin-left:36.5% !important;*/
 border-left: 5px solid black;
