@@ -18,7 +18,7 @@ class page_distance_page_search extends page_base_site {
 		$city_to_field=$form->addField('dropdown','to_city');
 		$city_to_field->setModel($model);
 		// $form->addSubmit('Search');
-		$form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span3')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 
 
 		$v=$this->add('distance/View_Listing');

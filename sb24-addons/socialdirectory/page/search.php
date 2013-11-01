@@ -47,7 +47,7 @@ class page_socialdirectory_page_search extends page_base_site {
 			$form->add('Controller_ChainSelector',array('chain_fields'=>array('city_id'=>'state_id','tehsil_id'=>'city_id','area_id'=>'tehsil_id'),'force_selection'=>true));
 		}
 
-		$form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span12')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 		if($form->isSubmitted()){
 			$this->forget('search');
 			$this->forget('state');
