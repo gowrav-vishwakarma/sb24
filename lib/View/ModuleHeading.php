@@ -29,6 +29,11 @@ class View_ModuleHeading extends View{
 		return $this;
 	}
 
+	function recursiveRender(){
+		if($this->heading->getHTML()=="") $this->heading->destroy();
+		parent::recursiveRender();
+	}
+
 	function sub($text){
 		$this->heading->sub($text);
 	}

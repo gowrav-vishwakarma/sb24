@@ -36,10 +36,10 @@ class Model_Listing extends \Model_Table {
 		$this->addField('about_us')->type('text')->group('paid')->display(array("form"=>"Text",'grid'=>'shorttext,grid/inline'));
 		$this->addField('contact_person')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('designation')->setValueList(array(	
-															'proprietor'=>'Proprietor',
-															'partner'=>'Partner',
-															'director'=>'Director',
-															'authorized-person'=>'Authorized-Person'
+															'Proprietor'=>'Proprietor',
+															'Partner'=>'Partner',
+															'Director'=>'Director',
+															'Authorized Person'=>'Authorized-Person'
 															))->group('free')->display(array('grid'=>'grid/inline'));
 		$this->addField('contact_person_contact_number')->group('paid')->display(array('grid'=>'grid/inline'));
 		

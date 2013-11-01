@@ -56,15 +56,13 @@ class Frontend extends ApiFrontend {
         // or initialize additional elements in here which are common to all
         // the pages.
 
-        // Menu:
-
-            $this->menu=$this->add('Menu',array('inactive_menu_class'=>'','current_menu_class'=>'current_menu_class'),'Menu');
+        // Menu:  OUR OWN DEFINED MENY CLASS IN OUR OWN LIB
+        $this->menu=$this->add('Menu',array('inactive_menu_class'=>'menu_class','current_menu_class'=>'ui-state-default ui-corner-top ui-tabs-active ui-state-active current_menu_class '),'Menu');
 
         // If you are using a complex menu, you can re-define
         // it and place in a separate class
 
         $this->sb24_config = $this->add('Model_Config')->tryLoadAny();
-
     }
 
 }
