@@ -17,7 +17,7 @@ class page_blooddoner_page_serach extends page_base_site {
 		$search_field->template->trySet('row_class','span10');
 		// $search_field->afterField()->add('Button')->set('GO')->js('click',$form->js()->submit());
 		// $form->addSubmit('Search');
-		$form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span3')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 
 
 

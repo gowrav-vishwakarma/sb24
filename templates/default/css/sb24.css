@@ -249,6 +249,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47aad1', end
     /*border-radius: 5px;*/
 border-radius:40px;
 }
+
+.atk-form .atk-buttons, .atk-form .legend{
+  padding-left: 0px;
+}
 .info_btn{  
 background: rgba(164,179,87,1);
 background: -moz-linear-gradient(top, rgba(164,179,87,1) 0%, rgba(117,137,12,1) 100%);

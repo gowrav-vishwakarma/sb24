@@ -83,7 +83,7 @@ class Model_Member extends Model_Table {
 			$no=$on_number;
 		else
 			$no=$this['mobile_no'];
-		$this->add('Controller_SMS')->sendSMS($no, $this['name'], $this['update_code']);
+		$this->add('Controller_SMS')->sendCode($no, $this['name'], $this['update_code']);
 
 	}
 }

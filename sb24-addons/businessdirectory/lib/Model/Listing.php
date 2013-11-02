@@ -48,27 +48,27 @@ class Model_Listing extends \Model_Table {
 			$this->add("filestore/Field_Image","company_logo_id")->type('image')->group('free');	
 			//PAID LISTING IMAGES & INFO
 				// GALLERY PICS
-			$this->add("filestore/Field_Image","gallery_image_1_id")->type('image')->group('paid');
-			$this->addField('gallery_image_1_info')->group('paid');
-			$this->add("filestore/Field_Image","gallery_image_2_id")->type('image')->group('paid');
-			$this->addField('gallery_image_2_info')->group('paid');
-			$this->add("filestore/Field_Image","gallery_image_3_id")->type('image')->group('paid');
-			$this->addField('gallery_image_3_info')->group('paid');
-			$this->add("filestore/Field_Image","gallery_image_4_id")->type('image')->group('paid');
-			$this->addField('gallery_image_4_info')->group('paid');
-			$this->add("filestore/Field_Image","gallery_image_5_id")->type('image')->group('paid');
-			$this->addField('gallery_image_5_info')->group('paid');
-				// PRODUCTS & SERVICES IMAGES & INFO
-			$this->add("filestore/Field_Image","products_image_1_id")->type('image')->group('paid');
-			$this->addField('products_image_1_info')->group('paid');
-			$this->add("filestore/Field_Image","products_image_2_id")->type('image')->group('paid');
-			$this->addField('products_image_2_info')->group('paid');
-			$this->add("filestore/Field_Image","products_image_3_id")->type('image')->group('paid');
-			$this->addField('products_image_3_info')->group('paid');
-			$this->add("filestore/Field_Image","products_image_4_id")->type('image')->group('paid');
-			$this->addField('products_image_4_info')->group('paid');
-			$this->add("filestore/Field_Image","products_image_5_id")->type('image')->group('paid');
-			$this->addField('products_image_5_info')->group('paid');
+			// $this->add("filestore/Field_Image","gallery_image_1_id")->type('image')->group('paid');
+			// $this->addField('gallery_image_1_info')->group('paid');
+			// $this->add("filestore/Field_Image","gallery_image_2_id")->type('image')->group('paid');
+			// $this->addField('gallery_image_2_info')->group('paid');
+			// $this->add("filestore/Field_Image","gallery_image_3_id")->type('image')->group('paid');
+			// $this->addField('gallery_image_3_info')->group('paid');
+			// $this->add("filestore/Field_Image","gallery_image_4_id")->type('image')->group('paid');
+			// $this->addField('gallery_image_4_info')->group('paid');
+			// $this->add("filestore/Field_Image","gallery_image_5_id")->type('image')->group('paid');
+			// $this->addField('gallery_image_5_info')->group('paid');
+			// 	// PRODUCTS & SERVICES IMAGES & INFO
+			// $this->add("filestore/Field_Image","products_image_1_id")->type('image')->group('paid');
+			// $this->addField('products_image_1_info')->group('paid');
+			// $this->add("filestore/Field_Image","products_image_2_id")->type('image')->group('paid');
+			// $this->addField('products_image_2_info')->group('paid');
+			// $this->add("filestore/Field_Image","products_image_3_id")->type('image')->group('paid');
+			// $this->addField('products_image_3_info')->group('paid');
+			// $this->add("filestore/Field_Image","products_image_4_id")->type('image')->group('paid');
+			// $this->addField('products_image_4_info')->group('paid');
+			// $this->add("filestore/Field_Image","products_image_5_id")->type('image')->group('paid');
+			// $this->addField('products_image_5_info')->group('paid');
 
 		$this->addField('map_latitute_longitude')->group('paid');
 
@@ -98,6 +98,8 @@ class Model_Listing extends \Model_Table {
 
 		$this->hasMany('businessdirectory/RegisteredCategory','listing_id');
 		$this->hasMany('businessdirectory/PayAmount','listing_id');
+		$this->hasMany('businessdirectory/ProductImages','listing_id');
+		$this->hasMany('businessdirectory/GallaryImages','listing_id');
 		
 		$this->addHook('beforeSave',$this);
 		$this->addHook('beforeDelete',$this);

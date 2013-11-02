@@ -34,7 +34,6 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 		// $business_listing_crud->grid->js()->reload()->execute();
 		
 		$business_listing_crud->setModel($model,null,array('name','state','city','tehsil','area','company_address','company_ph_no','email_id','contact_person','payment_received','is_active','is_paid','created_on','username','password'));
-
 		if($blg=$business_listing_crud->grid){
 			$blg->js(true)->_load('footable')->_selector('#'.$blg->name.' table')->footable();
 			$this->api->jquery->addStyleSheet('footable.core');
@@ -52,6 +51,8 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 			$blg->addQuickSearch(array('name','state','city','tehsil','area','email_id'));
 		}
 		$business_listing_crud->addRef('businessdirectory/PayAmount');
+		$business_listing_crud->addRef('businessdirectory/ProductImages');
+		$business_listing_crud->addRef('businessdirectory/GallaryImages');
 		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id'),'force_selection'=>false));
 		
 		// if($f=$business_listing_crud->form){

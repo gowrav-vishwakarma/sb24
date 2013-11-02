@@ -48,6 +48,7 @@ class page_index extends page_base_site {
 		$login_form->addField('line','username');
 		$login_form->addField('password','password');
 		$login_form->addSubmit('Log In')->addClass('shine');
+		$col_login->add('H5')->set('Forget Password')->setStyle('text-decoration','underline')->addStyle('cursor','help')->js('click',$this->js()->univ()->frameURL("Forgot Password !!!",$this->api->url('memberpanel_page_forgetpassword')));
 
 		if($login_form->isSubmitted()){
 			$this->api->auth->setModel('Member','username','password');

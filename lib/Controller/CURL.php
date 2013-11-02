@@ -1,4 +1,4 @@
- <?
+<?
 /*
   Class: MyCurl
   Author: Skakunov Alex (i1t2b3@gmail.com)
@@ -9,7 +9,7 @@ class Controller_CURL extends AbstractController
 {
   public $getHeaders = true;//headers will be added to output
   public $getContent = true; //contens will be added to output
-  public $followRedirects = true; //should the class go to another URL, if the current is "HTTP/1.1 302 Moved Temporarily"
+  public $followRedirects = false; //should the class go to another URL, if the current is "HTTP/1.1 302 Moved Temporarily"
   
   private $fCookieFile;
   private $fSocket;
@@ -44,9 +44,9 @@ class Controller_CURL extends AbstractController
     $this->setopt(CURLOPT_USERAGENT, "MyCurl");
     $this->setopt(CURLOPT_POST, 1);
     $this->setopt(CURLOPT_CUSTOMREQUEST,'POST');
-    $fp = fopen("c:\\__curl.log", "a");
-    if($fp)
-      $this->setopt(CURLOPT_STDERR, $fp);
+    // $fp = fopen("c:\\__curl.log", "a");
+    // if($fp)
+    //   $this->setopt(CURLOPT_STDERR, $fp);
   }
 
   function destroy()

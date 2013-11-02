@@ -34,7 +34,7 @@ class page_tracker_page_search extends page_base_site {
 		$distinct_area = $this->add('tracker/Model_STDListing');//->debug()->_dsql()->del('field')->field('distinct(area) area');
 		$distinct_area->title_field = $distinct_area->id_field = 'area';
 		$form->addField('dropdown','area')->setEmptyText("Any Area")->setModel($distinct_area);
-		$form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span3')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 		if(!$form->isSubmitted())
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id','area'=>'district_id'),'force_selection'=>true));
 
@@ -86,7 +86,7 @@ class page_tracker_page_search extends page_base_site {
 		$post_office = $this->add('tracker/Model_PINCODEListing');//->debug()->_dsql()->del('field')->field('distinct(area) area');
 		$post_office->title_field = $post_office->id_field = 'post_office';
 		$form->addField('dropdown','post_office')->setEmptyText("Any Post Office")->setModel($post_office);
-		$form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span3')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 		if(!$form->isSubmitted())
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id','post_office'=>'district_id'),'force_selection'=>true));
 
@@ -149,7 +149,7 @@ class page_tracker_page_search extends page_base_site {
   //               ->move($form->addSeparator('noborder span4'),'after','city_id')
   //               ->move($form->addSeparator('noborder span3'),'after','branch')
   //               ->now();
-		$submit_btn = $form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','margin-left'=>'30%','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span4');
+		$submit_btn = $form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 		// $submit_btn->template->trySet('row_class','span12');
 		$submit_btn->js('click')->submit();
 		if(!$form->isSubmitted()){

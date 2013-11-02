@@ -21,7 +21,7 @@ class page_jobandvacancy_page_search extends page_base_site {
                 ->move($form->addSeparator('noborder span3'),'after','state_id')
                 ->move($form->addSeparator('noborder span4'),'after','tehsil_id')
                 ->now();
-                $form->add('Button')->set('Filter Search')->addStyle(array('margin-top'=>'25px','height'=>'30px'))->addClass('atk-form-row atk-form-row-dropdown span10')->js('click')->submit();
+                $form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 
 		if(!$form->isSubmitted()){
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id','tehsil_id'=>'city_id'),'force_selection'=>true));
