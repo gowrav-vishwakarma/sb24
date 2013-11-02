@@ -249,6 +249,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47aad1', end
     /*border-radius: 5px;*/
 border-radius:40px;
 }
+
+.atk-form .atk-buttons, .atk-form .legend{
+  padding-left: 0px;
+}
 <<<<<<< HEAD
 .info_btn{  
 background: rgba(164,179,87,1);
@@ -270,9 +274,31 @@ padding:10px 25px;
     -webkit-border-radius: 5px;
     /*border-radius: 5px;*/
 border-radius:40px;
-=======
-
-.atk-form .atk-buttons, .atk-form .legend{
-  padding-left: 0px;
->>>>>>> 5e051cb4870be03c2c9ce16e0324ee0ad1d1eabb
 }
+=======
+.top_left_image {
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transform: translate(-10px, 0px);
+  -moz-transform: translate(-10px, 0px);
+  -ms-transform: translate(-10px, 0px);
+  -o-transform: translate(-10px, 0px);
+  transform: translate(-10px, 0px);
+  max-width: 100%;
+}
+.top_left_image:hover,
+.top_left_image:focus {
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transform: translate(10px, 0px);
+  -moz-transform: translate(10px, 0px);
+  -ms-transform: translate(10px, 0px);
+  -o-transform: translate(10px, 0px);
+  transform: translate(10px, 0px);
+  max-width: 120%;
+}
+>>>>>>> 7b116ed7c3823fb8dc5ee7bd455a71d15ef8e46d

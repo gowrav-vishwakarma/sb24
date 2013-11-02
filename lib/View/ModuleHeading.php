@@ -12,7 +12,9 @@ class View_ModuleHeading extends View{
 		$right = $cols->addColumn(6);
 		$btn=$left->add('View')
 				->setElement('img')
-				->setAttr('src','sabkuch.png');
+				->setAttr('src','sabkuch.png')
+				->addClass('top_left_image')
+				;
 				
 		$this->login_btn_spot=$right->add('View');
 		$this->login_btn_spot->setAttr('align','right');
