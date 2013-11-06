@@ -17,7 +17,7 @@ class page_emergency_page_search extends page_base_site {
 		$this->memorize("tehsil",$_GET['tehsil']?:$this->recall('tehsil',false));
 		$this->memorize("category",$_GET['category']?:$this->recall('category',false));
 
-		$this->add('View_ModuleHeading');//->set('Get Emergency/Important Numbers')->sub('Search via State, City, Tehsil or Category');
+		$this->add('View_ModuleHeading')->set('Get Emergency/Important Numbers')->sub('Search via State, City, Tehsil or Category');
 
 		$form=$this->add('Form');
 		$grid = $this->add('Grid');
@@ -31,7 +31,7 @@ class page_emergency_page_search extends page_base_site {
                 ->move($form->addSeparator('noborder span4'),'after','city_id')
                 ->move($form->addSeparator('noborder span3'),'after','category_id')
                 ->now();
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 		if(!$form->isSubmitted()){
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id','tehsil_id'=>'city_id')));
 		}
@@ -59,7 +59,7 @@ class page_emergency_page_search extends page_base_site {
 			$result->addCondition('state_id',-1);
 		}
 
-		$grid->addPaginator(1);
+		$grid->addPaginator(10);
 		$grid->setModel($result);
 
 	}

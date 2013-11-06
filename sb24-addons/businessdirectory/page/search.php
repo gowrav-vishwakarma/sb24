@@ -22,13 +22,13 @@ class page_businessdirectory_page_search extends page_base_site {
 		$this->memorize("segment",$_GET['segment']?:$this->recall('segment',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 
-		$this->add('View_ModuleHeading');//->set('Find Comapnies/Buisness Listing')->sub('Search via State, City, Industry or Major Field');
+		$this->add('View_ModuleHeading')->set('Find Comapnies( Free Buisness Listing )')->sub('Search via State, City, Industry or Major Field');
 		$fields=array(
 			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Please Select State'),
 			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Please Select City'),
 			'search'=>array('type'=>'line'),
-			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Please Select City'),
-			'area_id'=>array('type'=>'dropdown','model'=>'Area','emptyText'=>'Please Select City'),
+			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Please Select Tehsil'),
+			'area_id'=>array('type'=>'dropdown','model'=>'Area','emptyText'=>'Please Select Area'),
 			'industry_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Industry','emptyText'=>'Please Select Industry'),
 			'segment_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Segment','emptyText'=>'Please Select Major Field'),
 			);

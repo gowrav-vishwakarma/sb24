@@ -9,8 +9,9 @@ class Model_STDDistrict extends \Model_Table {
 
 		$this->hasOne('tracker/STDState','state_id');
 		$this->addField('name');
+		$this->_dsql()->order('name','asc');
 
-
+		$this->hasMany('tracker/STDListing','district_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 }

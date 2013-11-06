@@ -20,11 +20,11 @@ class page_history_page_search extends page_base_site {
 		$this->memorize("placetype",$_GET['placetype']?:$this->recall('placetype',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 
-		$this->add('View_ModuleHeading');//->set('Find Places')->sub('Search via State, City and Place Type');
+		$this->add('View_ModuleHeading')->set('Find Places ( History )')->sub('Search via State, City and Place Type');
 		$fields = array(
 				'state_id'=>array('type'=>'dropdown', 'model'=>'State', 'emptyText' =>'Please Select State'),
 				'city_id'=>array('type'=>'dropdown', 'model'=> 'City', 'emptyText' =>'Please Select City'),
-				'tehsil_id'=>array('type'=>'dropdown', 'model' =>'Tehsil', 'emptyText' =>"Please Select Area"),
+				'tehsil_id'=>array('type'=>'dropdown', 'model' =>'Tehsil', 'emptyText' =>"Please Select Tehsil"),
 				'area_id'=>array('type'=>'dropdown', 'model' =>'Area', 'emptyText' =>"Please Select Area"),
 				'placetype_id'=>array('type'=>'dropdown','model'=>'history/PlaceType', 'emptyText'=>'Please select Place Type'),
 				'search'=>array('type'=>'line')

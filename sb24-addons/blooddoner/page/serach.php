@@ -4,7 +4,7 @@ class page_blooddoner_page_serach extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('View_ModuleHeading');
+		$this->add('View_ModuleHeading')->set('Find Blood Dooner')->sub('Search via State, City, Type of event and date');
 		$register_btn = $this->add('Button')->set('Register Your self as a Blood Doner... This may save a life')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white'));
 		$register_btn->js('click',$this->js()->univ()->redirect('memberpanel_page_register'));
 
@@ -17,7 +17,7 @@ class page_blooddoner_page_serach extends page_base_site {
 		$search_field->template->trySet('row_class','span10');
 		// $search_field->afterField()->add('Button')->set('GO')->js('click',$form->js()->submit());
 		// $form->addSubmit('Search');
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
 
 
 

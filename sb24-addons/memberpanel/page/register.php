@@ -12,9 +12,12 @@ class page_memberpanel_page_register extends page_base_site {
 
 		$form = $this->add('Form');
 		$form->setModel($model,'base');
-		$form->addSubmit("Register");
+		$form->addField('checkbox','i_agree','&nbsp;I agree to sabkuch24.com terms of service and privcy policy, Subscriber to e-mail and sms alert');
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Register')->addStyle(array('margin-top'=>'25px','margin-left'=>'398px'))->addClass(' shine1')->js('click')->submit();
 
 		if($form->isSubmitted()){
+			if(!$form->get('i_agree'))
+				$form->displayError('i_agree','please check');
 			$form->update();
 			$form->js(null, $this->js()->univ()->redirect('memberpanel_page_dashboard'))->univ()->closeDialog()->execute();
 		}

@@ -10,22 +10,21 @@ class View_ModuleHeading extends View{
 		$cols = $this->add('Columns');
 		$left = $cols->addColumn(6);
 		$right = $cols->addColumn(6);
-		$btn=$left->add('View')
+		$left->add('View')
 				->setElement('img')
 				->setAttr('src','sabkuch.png')
 				->addClass('top_left_image')
 				;
 				
-		$this->login_btn_spot=$right->add('View');
+		$btn=$this->login_btn_spot=$right->add('View');
 		$this->login_btn_spot->setAttr('align','right');
 		$this->login_btn=$this->login_btn_spot->add('View');
-		$this->login_btn->add('View')->setElement('a')->setAttr('href','#')->add('View')
-				->setElement('img')
-				->setAttr('src','login.png')
-				->setAttr(array('width'=>'200px','height'=>'75px'))
-				->addClass('register_btn');
-							;
-		$this->heading = $this->login_btn_spot->add('H3');
+		$this->login_btn->add('View')->setElement('a')->setAttr('href','#')->add('View')->set('Register / login')
+				->addStyle('margin-left','280px')
+				->addStyle('padding','18px')
+				->addClass('shine1');
+							
+		$this->heading = $this->login_btn_spot->add('H3')->setStyle(array('font-family'=> 'Snippet','sans-serif',' font-weight'=>' bold','color'=>'saddlebrown'));
 
 
 		$btn->js('click',$this->js()->univ()->redirect('memberpanel_page_dashboard'));

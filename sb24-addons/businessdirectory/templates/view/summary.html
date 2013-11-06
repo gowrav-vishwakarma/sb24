@@ -12,7 +12,7 @@
 					<div class="col-sm-6">( <?$segment?> )</div>
 				</div>
 			</div>
-			<div class="col-sm-2 btn btn-primary" onclick="<?$more?>">More</div>
+			<div class="col-sm-1 btn shine1" onclick="<?$more?>">More</div>
 		</div>
 		<div class="row main-block-body">
 			<div class="buisness_listing_logo col-sm-4" >
@@ -26,11 +26,11 @@
 							<div class="col-sm-8 info-vlaue"><?contact_person?>N/A<?/contact_person?></div>
 						</div>
 						<div class="row">
-							<div class="col-sm-4 info-title">Mobile No</div>
+							<div class="col-sm-4 info-title">Mobile No.</div>
 							<div class="col-sm-8 info-vlaue"><?mobile_no?>N/A<?/mobile_no?></div>
 						</div>
 						<div class="row">
-							<div class="col-sm-4 info-title">Ph No</div>
+							<div class="col-sm-4 info-title">Phone No.</div>
 							<div class="col-sm-8 info-vlaue"><?company_ph_no?>N/A<?/company_ph_no?></div>
 						</div>
 						<div class="row">
@@ -46,10 +46,14 @@
 							<div class="col-sm-8 info-vlaue"><?company_address?>N/A<?/company_address?></div>
 						</div>
 						<div class="row">
-							<div class="col-sm-2 info-title">City</div>
-							<div class="col-sm-4 info-vlaue"><?city?>N/A<?/city?></div>
 							<div class="col-sm-2 info-title">State</div>
 							<div class="col-sm-4 info-vlaue"><?state?>N/A<?/state?></div>
+							<div class="col-sm-2 info-title">City</div>
+							<div class="col-sm-4 info-vlaue"><?city?>N/A<?/city?></div>
+							<div class="col-sm-2 info-title">Tehsil</div>
+							<div class="col-sm-4 info-vlaue"><?tehsil?>N/A<?/tehsil?></div>
+							<div class="col-sm-2 info-title">Area</div>
+							<div class="col-sm-4 info-vlaue"><?area?>N/A<?/area?></div>
 						</div>
 					</div>
 				</div>
@@ -65,6 +69,6 @@
 	<?/rows?>
 	<?$paginator?>
 	<?not_found?>
-    <div class="atk-grid-notfound ui-state-highlight ui-corner-all clearfix"><i class="ui-icon ui-icon-alert float-left"></i><?not_found_message?>No Records Found<?/?></div>
-  <?/not_found?>
+    <div class="atk-grid-notfound ui-state-highlight ui-corner-all clearfix"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
+  <?/not_found?></h3>
 </div>

@@ -26,12 +26,15 @@ class page_tracker_page_admin_index extends Page {
 		$std_crud->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id')));
 
 		if($std_crud->grid) $std_crud->grid->addPaginator(50);
+		if($std_crud->grid) $std_crud->grid->addQuickSearch(array('area'));
 
 		$district_crud = $district_tab->add('CRUD');
 		$district_crud->setModel('tracker/STDDistrict');
-		if($district_crud->grid) $district_crud->grid->addPaginator(20);
+		if($district_crud->grid) $district_crud->grid->addPaginator(50);
+		if($district_crud->grid) $district_crud->grid->addQuickSearch(array('area','name','state','district'));
 
 		$state_crud = $state_tab->add('CRUD');
+
 		$state_crud->setModel('tracker/STDState');
 
 
@@ -41,8 +44,11 @@ class page_tracker_page_admin_index extends Page {
 		$pincode_crud = $this->add('CRUD');
 		$pincode_crud->setModel('tracker/PINCODEListing');
 		$pincode_crud->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id')));
-		if($pincode_crud->grid)
+		if($pincode_crud->grid){
+			
 			$pincode_crud->grid->addPaginator(50);
+			$pincode_crud->grid->addQuickSearch(array('pin_code','district'));
+		}
 	}
 
 	function page_mirc(){

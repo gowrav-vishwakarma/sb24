@@ -9,6 +9,8 @@ class View_Listing extends \CompleteLister{
 			->frameURL("Details for " . $this->model['name'],$this->api->url('event_page_more',array('event_id'=>$this->model->id)),array('width'=>'65%'));
 		$this->current_row['more']=$js;
 
+		if($this->current_row['event_picture'] == '') $this->current_row['event_picture'] = 'sabkuch.png';
+
 		$this->api->auth->setModel('Member','username','password');
 		if(!$this->api->auth->isLoggedIn()){
 			
@@ -26,6 +28,11 @@ class View_Listing extends \CompleteLister{
 			
 		}
 		parent::formatRow();
+	}
+
+	function setModel($model){
+		if($model->count()->getOne() > 0) $this->template->tryDel('not_found');
+		parent::setModel($model);
 	}
 
 	function addPaginator($ipp = 25, $options = null)

@@ -8,6 +8,7 @@ class Model_Tehsil extends Model_Table {
 		$this->hasOne('City','city_id')->sortable(true);
 		$this->addField('name')->sortable(true);
 		$this->hasMany('Area','tehsil_id');
+		$this->hasMany('event/Listing','tehsil_id');
 
 		$this->addExpression('no_of_areas')->set(function($m,$q){
 			return $m->refSQL('Area')->count();
@@ -15,7 +16,7 @@ class Model_Tehsil extends Model_Table {
 
 		$this->addHook('beforeDelete',$this);
 
-		$this->setOrder('name');
+		 $this->_dsql()->order('name','asc');
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

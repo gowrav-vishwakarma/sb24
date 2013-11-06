@@ -4,7 +4,7 @@ class page_salesandpurchase_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('View_ModuleHeading');//->set('Find Sales And Purchase  Listing')->sub('Search via State, City, Category or Subcategory Field');
+		$this->add('View_ModuleHeading')->set('Find Sales And Purchase  Listing')->sub('Search via State, City, Category or Subcategory Field');
 		
 		
 		$fields=array(
@@ -13,7 +13,7 @@ class page_salesandpurchase_page_search extends page_base_site {
 			'search'=>array('type'=>'line'),
 			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Please Select Tehsil'),
 			'category_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/Category','emptyText'=>'Please Select Category'),
-			'subcategory_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/SubCategory','emptyText'=>'Please Select SubCategory Field'),
+			'subcategory_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/SubCategory','emptyText'=>'Please Select SubCategory'),
 			'min_amount'=>array('type'=>'line'),
 			);
 

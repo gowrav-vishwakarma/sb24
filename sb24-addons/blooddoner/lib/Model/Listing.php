@@ -10,7 +10,7 @@ class Model_Listing extends \Model_Table {
 		$member = $this->hasOne('Member','member_id');
 		if($this->api->auth->model) $member->defaultValue($this->api->auth->model->id);
 		$this->addField('blood_group')->enum(array('A+','A-','B+','B-','O+','O-','AB+','AB-'));
-		$this->addField('want_to_donate')->type('boolean')->defaultValue(false)->caption('I Am Available to donate my blood');
+		$this->addField('want_to_donate')->type('boolean')->defaultValue(false)->caption(' &nbsp I Am Available to donate my blood');
 		
 		$this->addField('update_code')->system(true);
 		$this->addField('code_valid_till')->system(true);
