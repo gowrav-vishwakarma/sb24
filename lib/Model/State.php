@@ -9,10 +9,12 @@ class Model_State extends Model_Table {
 		$this->hasMany('City','state_id');
 		$this->hasMany('Tehsil','state_id');
 		$this->hasMany('Area','state_id');
+		$this->hasMany('tracker/STDListing','state_id');
 
 		$this->addExpression('no_of_cities')->set(function($m,$q){
 			return $m->refSQL('City')->count();
 		});
+		 $this->_dsql()->order('name','asc');
 
 		$this->addHook('beforeDelete',$this);
 

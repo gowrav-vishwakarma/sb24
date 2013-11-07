@@ -9,6 +9,7 @@ class Model_Listing extends \Model_Table {
 
 		$this->hasOne('State','state_id');
 		$this->hasOne('City','city_id');
+		$this->hasOne('Tehsil','tehsil_id');
 		$this->hasOne('event/Type','type_id');
 
 		$this->addField('name');

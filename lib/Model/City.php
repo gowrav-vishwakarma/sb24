@@ -14,6 +14,8 @@ class Model_City extends Model_Table {
 			return $m->refSQL('Tehsil')->count();
 		});
 
+		 $this->_dsql()->order('name','asc');
+
 		$this->addHook('beforeDelete',$this);
 		$this->setOrder('name');
 		$this->add('dynamic_model/Controller_AutoCreator');

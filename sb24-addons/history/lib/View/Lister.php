@@ -8,6 +8,7 @@ class View_Lister extends \CompleteLister{
 		function formatRow(){
 		$js = $this->api->js('click')->univ()
 			->frameURL("Details for " . $this->model['name'],$this->api->url('history_page_more',array('place_id'=>$this->model->id)),array('width'=>'65%'));
+		if($this->current_row['place_image'] == '') $this->current_row['place_image'] = 'sabkuch.png';
 		$this->current_row['more']=$js;
 		$this->current_row['place_type_icon']=$this->model->ref('placetype_id')->get('placetype_icon');
 		parent::formatRow();

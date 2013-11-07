@@ -37,5 +37,9 @@ class page_admin_master extends page_base_admin{
 			$ag->addPaginator(20);
 		}
 
+		$question_tabs=$tabs->addTab('Question');
+		$question_crud=$question_tabs->add('CRUD');
+		$question_crud->setModel('Questions');
+
 	}
 }

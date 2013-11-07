@@ -30,7 +30,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('short_description')->type('text')->group('free')->display(array('grid'=>'shorttext,grid/inline'));
 		$this->addField('email_id')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('website')->group('free')->display(array('grid'=>'grid/inline'));
-		$this->addField('tags')->type('text')->group('free')->display(array('grid'=>'grid/inline'));
+		$this->addField('tags')->type('text')->caption('Keywords to search')->group('free')->display(array('grid'=>'grid/inline'));
 
 		// Paid Informations
 		$this->addField('about_us')->type('text')->group('paid')->display(array("form"=>"Text",'grid'=>'shorttext,grid/inline'));
@@ -77,7 +77,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('valid_till')->type('date')->defaultValue(date('Y-m-d',strtotime('+1 Year')))->system(true);
 		$this->addField('last_paid_on')->type('date')->defaultValue(date('Y-m-d'))->system(true);
 		$this->addField('is_paid')->type('boolean')->defaultValue(false);
-		$this->addField('is_active')->type('boolean')->defaultValue(false);
+		$this->addField('is_active')->type('boolean')->defaultValue(true);
 
 		// SEARCH
 		$this->addField('search_string')->system(true);

@@ -47,6 +47,17 @@ class page_businessdirectory_page_member_index extends page_memberpanel_page_bas
 		$freelisting_model_listing->addCondition('is_paid',false);
 
 		$business_listing_crud->setModel($freelisting_model_listing,'free',array('name','mobile_no','is_active'));
+		if($business_listing_crud->form){
+			$business_listing_crud->form->template->tryDel('button_row');
+			 $business_listing_crud->form->add('Button',null,null,array('view/mybutton','button'))->set('Save')->addStyle(array('margin-top'=>'25px','margin-left'=>'390px'))->addClass('shine1')->js('click')->submit();
+			
+		}
+
+		// if($business_listing_crud->form->isSubmitted())
+			// $business_listing_crud->form->js(null,$business_listing_crud->form->js()->univ()->closeDialog())->univ()->successMessage('Informatin Added Successfully')->execute();
+		// 	// if($freelisting_model_listing->loaded())
+		// 	// $business_listing_crud->form->js(null,$business_listing_crud->form->js()->univ()->closeDialog())->univ()->successMessage('Informatin Updated Successfully')->execute();
+		// }
 		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'tehsil_id','tehsil_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id')));
 		
 	}

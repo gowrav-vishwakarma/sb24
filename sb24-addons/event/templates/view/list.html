@@ -4,8 +4,8 @@
 	<div class="ui-widget-content ui-corner-all main-block">
 		<div class=" row ui-widget-content header">
 			<div class="col-sm-8 company_name"><h2><?name?>Company Name<?/name?></h2></div>
-			<div class="col-sm-1 btn btn-primary" onclick="<?$more?>">More </div>
-			<div class="col-sm-3 btn btn-primary" onclick="<?$register?>"><?register_label?>Register<?/register_label?> </div>
+			<div class="col-sm-1 btn shine1" onclick="<?$more?>">More </div>
+			<div class="col-sm-3 btn shine1" onclick="<?$register?>"><?register_label?>Register<?/register_label?> </div>
 		</div>
 		<div class="row main-block-body">
 			<div class="buisness_listing_logo col-sm-4" >
@@ -35,4 +35,7 @@
 <?/row?>
 <?/rows?>
 <?$paginator?>
+<?not_found?>
+    <div class="atk-grid-notfound ui-state-highlight ui-corner-all clearfix"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
+  <?/not_found?></h3>
 </div>

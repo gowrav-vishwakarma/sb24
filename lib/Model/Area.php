@@ -14,5 +14,6 @@ class Model_Area extends Model_Table {
 		// $this->hasMany('BusinessDirectory_Listing','area_id');
 		// $this->hasMany('JobAndVacancy_Listing','area_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
+		 $this->_dsql()->order('name','asc');
 	}
 }

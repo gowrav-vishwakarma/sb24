@@ -7,6 +7,7 @@ class View_Listing extends \CompleteLister{
 	function formatRow(){
 		$js = $this->api->js('click')->univ()->frameURL("Details for " . $this->model['name'],$this->api->url('salesandpurchase_page_more',array('listing_id'=>$this->model->id)),array('width'=>'65%'));
 		$this->current_row['more']=$js;
+		if($this->current_row['product_image_1']=='') $this->current_row['product_image_1']="sabkuch.png";
 		parent::formatRow();
 	}
 
@@ -20,6 +21,11 @@ class View_Listing extends \CompleteLister{
         $this->paginator->ipp($ipp);
         return $this;
     }
+
+    function setModel($model){
+		if($model->count()->getOne() > 0) $this->template->tryDel('not_found');
+		parent::setModel($model);
+	}
 
 	function defaultTemplate(){
 		$l=$this->api->locate('addons',__NAMESPACE__, 'location');

@@ -14,7 +14,7 @@ class page_businessdirectory_page_more extends page_base_site{
 		}
 
 		$tabs=$this->add('Tabs');
-		$about=$tabs->addTab('About ' .$listing['name']);
+		$about=$tabs->addTab('About Company');
 		$gallary=$tabs->addTab('Gallary');
 		$p_and_s=$tabs->addTab('Products & Services');
 		// $map=$tabs->addTab('Map');

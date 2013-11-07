@@ -11,7 +11,7 @@ class Model_RTOListing extends \Model_Table {
 		$this->addField('area');
 		$this->addField('name')->caption('RTO Code');
 		$this->addHook('beforeSave',$this);
-
+		$this->_dsql()->order('area','asc');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 

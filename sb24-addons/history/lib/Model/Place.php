@@ -16,11 +16,19 @@ class Model_Place extends \Model_Table {
 		$this->addField('name')->display(array('grid'=>'grid/inline'));
 		$this->addField('short_description')->type('text')->display(array('grid'=>'shorttext,grid/inline'));
 		$this->addField('about')->type('text')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
+		$this->addField('search_string')->type('text')->system(true);
 		$this->addHook('beforeSave',$this);
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 
 	function beforeSave(){
+		$this['search_string']= $this->ref('state_id')->get('name') . " ".
+								$this->ref('city_id')->get('name'). " ".
+								$this->ref('area_id')->get('name'). " ".
+								$this->ref('placetype_id')->get('name'). " ".
+								$this["short_description"]. " ".
+								$this['about']. " ".
+								$this["name"];
 		$old_model=$this->add('history/Model_Place');
 		$old_model->addCondition('name',$this['name']);
 		$old_model->addCondition('id','<>',$this->id);

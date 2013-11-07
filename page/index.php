@@ -11,16 +11,21 @@ class page_index extends page_base_site {
 		$this->api->template->tryDel('body_margin');
 		
 
-		$this->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center');
+		$this->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center')->setStyle('margin-bottom','10px');
 		$search_form=$this->add('Form')->addClass('stacked');
-		$search_form->addField('line','search','')->addClass('span10');
-		$search_form->add('Button')->set('Search')->addClass('shine atk-form-row atk-form-row-dropdown span3 span3')->js('click')->submit();
+		$search_form->addField('line','search','')->validateNotNull("Please Search")->setClass('highlight span10');
+		$search_form->add('Button')->set('Search')->addClass('shine atk-form-row atk-form-row-dropdown  ')->js('click')->submit();
+		$search_form->add('View')->set('A Rajasthan Local Search Engine & Telephone Web Directory')->setStyle(array('margin-top'=>'20px',
+																												'font-family'=> 'Snippet','sans-serif',' font-weight'=>' bold','color'=>'saddlebrown'));
+
 		if($search_form->isSubmitted()){
 			$search_form->js()->univ()->redirect($this->api->url('businessdirectory_page_search',array('reset'=>1,"filter"=>1,'search'=>$search_form['search'])))->execute();
 		}
 
-		$cols=$this->add('Columns')->addClass('right-front-page-col');
-		$col_login=$cols->addColumn(8);
+		$cols=$this->add('Columns');
+		$col_login1=$cols->addColumn(2)->setHTML('&nbsp;');
+		$col_login=$cols->addColumn(8)->addClass('right-front-page-col');
+		$col_login2=$cols->addColumn(1);
 		// $col_register=$cols->addColumn(7)->addClass('col');
 
 
@@ -44,14 +49,22 @@ class page_index extends page_base_site {
 		$login_form=$col_login->add('Form');
 		$login_form->addField('line','username');
 		$login_form->addField('password','password');
-		$login_form->addSubmit('Log In')->addClass('shine');
-		$col_login->add('H5')->set('Forget Password')->setStyle('text-decoration','underline')->addStyle('cursor','help')->js('click',$this->js()->univ()->frameURL("Forgot Password !!!",$this->api->url('memberpanel_page_forgetpassword')));
+		$register_btn= $login_form->addButton('Register')->addClass('shine');
+
+		// $register_btn=$auth->add('Button')->set('Register Now Free')->addClass('atk-row span12');
+		$register_btn->js('click')->univ()->frameURL('Register Your Self',$this->api->url('memberpanel_page_register'));
+
+
+		$login_form->addSubmit('Login')->addClass('shine');
+		$col_login->add('H5')->set('Forgot Password')->setStyle('text-decoration','underline')->addStyle('cursor','help')->js('click',$this->js()->univ()->frameURL("Forgot Password !!!",$this->api->url('memberpanel_page_forgetpassword')));
 
 		if($login_form->isSubmitted()){
 			$this->api->auth->setModel('Member','username','password');
+			///TODO Check////
 			if(!$this->api->auth->verifyCredentials($login_form['username'],$login_form['password'])){
-				$login_form->displayError('password','Incorrect login information');
+				$login_form->displayError('username','Incorrect username');
 			}
+			
 			$this->api->auth->loginBy('username',$login_form['username']);
 			$this->js()->univ()->redirect('memberpanel_page_dashboard')->execute();
 		}

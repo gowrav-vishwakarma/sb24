@@ -20,13 +20,13 @@ class page_history_page_search extends page_base_site {
 		$this->memorize("placetype",$_GET['placetype']?:$this->recall('placetype',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 
-		$this->add('View_ModuleHeading');//->set('Find Places')->sub('Search via State, City and Place Type');
+		$this->add('View_ModuleHeading')->set('Find Places ( History )')->sub('Search via State, City and Place Type');
 		$fields = array(
-				'state_id'=>array('type'=>'dropdown', 'model'=>'State', 'emptyText' =>'Please Select State', 'span'=>2),
-				'city_id'=>array('type'=>'dropdown', 'model'=> 'City', 'emptyText' =>'Please Select City', 'span'=>2),
-				'tehsil_id'=>array('type'=>'dropdown', 'model' =>'Tehsil', 'emptyText' =>"Please Select Area", 'span'=>2),
-				'area_id'=>array('type'=>'dropdown', 'model' =>'Area', 'emptyText' =>"Please Select Area", 'span'=>2),
-				'placetype_id'=>array('type'=>'dropdown','model'=>'history/PlaceType', 'emptyText'=>'Please select Place Type'),
+				'state_id'=>array('type'=>'dropdown', 'model'=>'State', 'emptyText' =>'Select State','span'=>2),
+				'city_id'=>array('type'=>'dropdown', 'model'=> 'City', 'emptyText' =>'Select City','span'=>2),
+				'tehsil_id'=>array('type'=>'dropdown', 'model' =>'Tehsil', 'emptyText' =>"Select Tehsil",'span'=>2),
+				'area_id'=>array('type'=>'dropdown', 'model' =>'Area', 'emptyText' =>"Select Area",'span'=>2),
+				'placetype_id'=>array('type'=>'dropdown','model'=>'history/PlaceType', 'emptyText'=>'Select PlaceType','span'=>3),
 				'search'=>array('type'=>'line')
 			);
 
@@ -36,15 +36,12 @@ class page_history_page_search extends page_base_site {
 				'area_id'=>'tehsil_id'
 			);
 
-		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields,null),null,array('form_horizontal'));
-		$form->getElement('search')->setAttr('placeholder','search in description and information')->template->trySet('row_class','span12');
+		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields,null));
+		$form->getElement('search')->setAttr('placeholder','search in description and information');
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
-                // ->move($form->addSeparator('noborder atk-row'),'before','placetype_id')
-                ->move($form->addSeparator('noborder atk-row'),'before','search')
-                ->move($form->addSeparator('noborder atk-row'),'after','search')
-                // ->move($form->addSeparator('noborder span3'),'after','area_id')
+                ->move($form->addSeparator('noborder atk-row'),'after','placetype_id')
                 ->now();
 
 		$list = $this->add('history/View_Lister');
@@ -62,7 +59,7 @@ class page_history_page_search extends page_base_site {
 		}
 
 		if($search = $this->recall('search',false)){
-			$result->addExpression('relevance')->set('MATCH(short_description, about) AGAINST("'.str_replace('"', '\"', $search).'" IN BOOLEAN MODE)');
+			$result->addExpression('relevance')->set('MATCH(search_string) AGAINST("'.str_replace('"', '\"', $search).'" IN BOOLEAN MODE)');
 			$result->addCondition('relevance','<>',0);
 			$result->setOrder('relevance','desc');
 		}

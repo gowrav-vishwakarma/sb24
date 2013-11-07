@@ -4,25 +4,25 @@ class page_distance_page_search extends page_base_site {
 	function init(){
 		parent::init();
 
-		$this->add('View_ModuleHeading');//->set('Find Distance')->sub('Search between to city to from city');
+		$this->add('View_ModuleHeading')->set('Find Distance')->sub('Search between to city to from city');
 		$model=$this->add('distance/Model_City');
 		$model_distance_listing=$this->add('distance/Model_Listing');
 		$cols=$this->add('Columns');
-		$col1=$cols->addColumn(2)->add('Text')->setHTML('&nbsp;');
-		$col2=$cols->addColumn(8);
-		$col3=$cols->addColumn(2);
-		$form=$col2->add('Form');
-		$city_from_field=$form->addField('dropdown','from_city');
+		// $col1=$cols->addColumn(2)->add('Text')->setHTML('&nbsp;');
+		$col2=$cols->addColumn(12);
+		// $col3=$cols->addColumn(2);
+		$form=$col2->add('Form',null,null,array('form_horizontal'));
+		$city_from_field=$form->addField('dropdown','from_city')->setEmptyText('Please Select City');
 		$city_from_field->setModel($model);
 
-		$city_to_field=$form->addField('dropdown','to_city');
+		$city_to_field=$form->addField('dropdown','to_city')->setEmptyText('Please Select City');
 		$city_to_field->setModel($model);
 		// $form->addSubmit('Search');
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Filter Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px','margin-left'=>'30px'))->addClass(' shine1')->js('click')->submit();
 
 
 		$v=$this->add('distance/View_Listing');
-		$heading = $v->add('H3')->set('Distance');
+		$heading = $v->add('H2')->set('Distance')->setAttr('align','center');
 
 		if($_GET['filter']){
 			$city1=$_GET['from_city'];

@@ -1,5 +1,6 @@
 <?php
-class Model_MobileCompany extends Model_Table {
+namespace tracker;
+class Model_MobileCompany extends \Model_Table {
 	var $table= "tracker_mobile_company";
 	function init(){
 		parent::init();

@@ -15,6 +15,8 @@ class Model_Segment extends \Model_Table {
 			return $m->refSQL('businessdirectory/Listing')->count();
 		});
 
+		$this->_dsql()->order('name','asc');
+
 		$this->addHook('beforeDelete',$this);
 
 		$this->add('dynamic_model/Controller_AutoCreator');

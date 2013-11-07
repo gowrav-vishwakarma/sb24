@@ -22,15 +22,15 @@ class page_businessdirectory_page_search extends page_base_site {
 		$this->memorize("segment",$_GET['segment']?:$this->recall('segment',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 
-		$this->add('View_ModuleHeading');//->set('Find Comapnies/Buisness Listing')->sub('Search via State, City, Industry or Major Field');
+		$this->add('View_ModuleHeading')->set('Free Buisness Listing')->sub('Search via State, City, Industry or Major Field');
 		$fields=array(
-			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Please Select State'),
-			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Please Select City'),
+			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Select State','span'=>2),
+			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Select City','span'=>2),
+			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Select Tehsil','span'=>2),
+			'area_id'=>array('type'=>'dropdown','model'=>'Area','emptyText'=>'Select Area','span'=>2),
+			'industry_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Industry','emptyText'=>'Select Industry','span'=>2),
+			'segment_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Segment','emptyText'=>'Select Segment','span'=>2),
 			'search'=>array('type'=>'line'),
-			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Please Select City'),
-			'area_id'=>array('type'=>'dropdown','model'=>'Area','emptyText'=>'Please Select City'),
-			'industry_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Industry','emptyText'=>'Please Select Industry'),
-			'segment_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Segment','emptyText'=>'Please Select Major Field'),
 			);
 
 		$chain_fields=array("city_id"=>'state_id',"tehsil_id"=>"city_id","area_id"=>'tehsil_id','segment_id'=>'industry_id');
@@ -38,10 +38,10 @@ class page_businessdirectory_page_search extends page_base_site {
 
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
-                ->move($form->addSeparator('noborder span4'),'first')
-                ->move($form->addSeparator('noborder span4'),'after','search')
-                ->move($form->addSeparator('noborder span3'),'after','area_id')
+                ->move($form->addSeparator('noborder atk-row'),'first')
+                ->move($form->addSeparator('noborder atk-row'),'after','segment_id')
                 ->now();
+
 
 		$business_listing = $this->add('businessdirectory/View_Listing');
 		$result = $this->add('businessdirectory/Model_Listing');

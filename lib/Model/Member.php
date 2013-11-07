@@ -11,14 +11,19 @@ class Model_Member extends Model_Table {
 		$this->addField('password')->group('base');
 		$this->addField('mobile_no')->hint("Your Password / Activation Codes will be send to this number, Please keep it correct")->mandatory('mobile number is must, your password will be send to this number')->group('base');
 
+		$this->hasOne('Questions','question_id')->group('base')->sortable(true);
 		$this->hasOne('State','state_id')->group('social')->sortable(true);
 		$this->hasOne('City','city_id')->group('social')->sortable(true);
 		$this->hasOne('Tehsil','tehsil_id')->group('social')->sortable(true);
 		$this->hasOne('Area','area_id')->group('social')->sortable(true);
+		$this->hasOne('socialdirectory/Cast','cast_id')->group('social')->sortable(true);
+		$this->hasOne('socialdirectory/SubCast','subcast_id')->group('social')->sortable(true);
 		$this->addField('address')->type('text')->group('social');
+		$this->addField('answer')->group('base');
 		$this->addField('date_of_birth')->type('date')->group('social');
 		$this->addField('gender')->enum(array('Male','Female'))->group('social');
 		$this->addField('interest')->type('text')->caption('About You & Your Interest')->display(array('form'=>'RichText'))->group('social');
+		$this->addField('occupation')->group('social');
 		
 		$this->hasOne('socialdirectory/Religion','religion_id')->group('social')->sortable(true);
 		$this->hasOne('socialdirectory/Cast','cast_id')->group('social')->sortable(true);
@@ -60,7 +65,7 @@ class Model_Member extends Model_Table {
 
 
 		if(!$this->loaded()){
-			$this['password']=rand(100,999);
+			$this['password']=rand(10000,99999);
 			// check for existing username
 			$member=$this->add('Model_Member');
 			$member->addCondition('username',$this['username']);

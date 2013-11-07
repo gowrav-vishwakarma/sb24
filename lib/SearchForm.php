@@ -13,6 +13,7 @@ class SearchForm extends Form {
 			if(isset($options['model'])) $f->setModel($options['model']);
 			if(isset($options['emptyText'])) $f->setEmptyText($options['emptyText']);
 			if(isset($options['mandatory'])) $f->validateNotNull();
+			if(isset($options['valueList'])) $f->setValueList($options['valueList']);
 			if(isset($options['span'])) $f->template->trySet('row_class','span'.$options['span']);
 		}
 
