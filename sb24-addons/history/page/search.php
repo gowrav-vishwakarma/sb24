@@ -22,10 +22,10 @@ class page_history_page_search extends page_base_site {
 
 		$this->add('View_ModuleHeading');//->set('Find Places')->sub('Search via State, City and Place Type');
 		$fields = array(
-				'state_id'=>array('type'=>'dropdown', 'model'=>'State', 'emptyText' =>'Please Select State'),
-				'city_id'=>array('type'=>'dropdown', 'model'=> 'City', 'emptyText' =>'Please Select City'),
-				'tehsil_id'=>array('type'=>'dropdown', 'model' =>'Tehsil', 'emptyText' =>"Please Select Area"),
-				'area_id'=>array('type'=>'dropdown', 'model' =>'Area', 'emptyText' =>"Please Select Area"),
+				'state_id'=>array('type'=>'dropdown', 'model'=>'State', 'emptyText' =>'Please Select State', 'span'=>2),
+				'city_id'=>array('type'=>'dropdown', 'model'=> 'City', 'emptyText' =>'Please Select City', 'span'=>2),
+				'tehsil_id'=>array('type'=>'dropdown', 'model' =>'Tehsil', 'emptyText' =>"Please Select Area", 'span'=>2),
+				'area_id'=>array('type'=>'dropdown', 'model' =>'Area', 'emptyText' =>"Please Select Area", 'span'=>2),
 				'placetype_id'=>array('type'=>'dropdown','model'=>'history/PlaceType', 'emptyText'=>'Please select Place Type'),
 				'search'=>array('type'=>'line')
 			);
@@ -36,13 +36,15 @@ class page_history_page_search extends page_base_site {
 				'area_id'=>'tehsil_id'
 			);
 
-		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields,null));
-		$form->getElement('search')->setAttr('placeholder','search in description and information');
+		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields,null),null,array('form_horizontal'));
+		$form->getElement('search')->setAttr('placeholder','search in description and information')->template->trySet('row_class','span12');
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
-                ->move($form->addSeparator('noborder span4'),'first')
-                ->move($form->addSeparator('noborder span4'),'after','city_id')
-                ->move($form->addSeparator('noborder span3'),'after','area_id')
+                ->move($form->addSeparator('noborder atk-row'),'first')
+                // ->move($form->addSeparator('noborder atk-row'),'before','placetype_id')
+                ->move($form->addSeparator('noborder atk-row'),'before','search')
+                ->move($form->addSeparator('noborder atk-row'),'after','search')
+                // ->move($form->addSeparator('noborder span3'),'after','area_id')
                 ->now();
 
 		$list = $this->add('history/View_Lister');
