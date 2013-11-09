@@ -77,7 +77,7 @@ class page_businessdirectory_page_more extends page_base_site{
 			$subject ="Your got an enquiry from Sabkuch24.com listing";
 
 			try{
-				$tm->send( $_GET['email_to'], "info@sabkuch24.com", $subject, $email_body);
+				$tm->send( $listing['email_id'], "info@sabkuch24.com", $subject, $email_body);
 			}catch( phpmailerException $e ) {
 				throw $e;
 				$this->api->js()->univ()->errorMessage( $e->errorMessage() )->execute();
