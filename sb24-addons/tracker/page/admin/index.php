@@ -10,6 +10,25 @@ class page_tracker_page_admin_index extends Page {
 		$mobile_tab = $tabs->addTab('Mobile');
 		$vehicle_tab = $tabs->addtabURL($this->api->url('./vehicle'),'Vehicle [RTO] Code');
 
+		$mobiletabs=$mobile_tab->add('Tabs');
+		$company=$mobiletabs->addTab('Mobile Company');
+		$listing=$mobiletabs->addTab('Mobile Listing');
+		$company_crud=$company->add('CRUD');
+		$company_crud->setModel('tracker/MobileCompany');
+		if($company_crud->grid){
+			$company_crud->grid->addPaginator(10);
+			$company_crud->grid->addQuickSearch(array('name'));
+			
+		}
+		$listing_crud=$listing->add('CRUD');
+		$listing_crud->setModel('tracker/MobileListing');
+		if($listing_crud->grid){
+			$listing_crud->grid->addPaginator(10);
+			$listing_crud->grid->addQuickSearch(array('series'));
+			
+		}
+
+
 
 	}
 
@@ -60,7 +79,7 @@ class page_tracker_page_admin_index extends Page {
 	function page_vehicle(){
 		$vehicle_crud = $this->add('CRUD');
 		$vehicle_crud->setModel('tracker/RTOListing');
-		$vehicle_crud->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id')));
+		// $vehicle_crud->add('Controller_ChainSelector',array("chain_fields"=>array('area'=>'state_id')));
 		if($vehicle_crud->grid)
 			$vehicle_crud->grid->addPaginator(10);
 	}

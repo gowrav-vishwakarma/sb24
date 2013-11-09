@@ -57,12 +57,15 @@ class page_index extends page_base_site {
 
 		$login_form->addSubmit('Login')->addClass('shine');
 		$col_login->add('H5')->set('Forgot Password')->setStyle('text-decoration','underline')->addStyle('cursor','help')->js('click',$this->js()->univ()->frameURL("Forgot Password !!!",$this->api->url('memberpanel_page_forgetpassword')));
+		$col_login->add('Button')->set('Social Login')->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
 
 		if($login_form->isSubmitted()){
 			$this->api->auth->setModel('Member','username','password');
+			///TODO Check////
 			if(!$this->api->auth->verifyCredentials($login_form['username'],$login_form['password'])){
-				$login_form->displayError('password','Incorrect login information');
+				$login_form->displayError('username','Incorrect username');
 			}
+			
 			$this->api->auth->loginBy('username',$login_form['username']);
 			$this->js()->univ()->redirect('memberpanel_page_dashboard')->execute();
 		}

@@ -33,6 +33,10 @@ class page_event_page_search extends page_base_site {
 
 		$chain_fields=array("city_id"=>'state_id','tehsil_id'=>'city_id');
 		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields));
+		 
+		 $form->getElement('event_from_date')->setAttr('placeholder','Select Date');
+		 $form->getElement('event_to_date')->setAttr('placeholder','Select Date');
+
 		 $form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder span4'),'first')
@@ -44,7 +48,7 @@ class page_event_page_search extends page_base_site {
 			$list->js()->reload(array(
 					'state'=>$form['state_id'],
 					'city'=>$form['city_id'],
-					'tehsil'=>$form['tehsil'],
+					'tehsil'=>$form['tehsil_id'],
 					'event_type'=>$form['event_type_id'],
 					'from_date'=>$form['event_from_date']?:'0',
 					'to_date'=>$form['event_to_date']?:"0",

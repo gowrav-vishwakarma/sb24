@@ -21,6 +21,7 @@ class Model_Listing extends \Model_Table {
  		$this->addField('description')->type('text')->display(array('form'=>'RichText'));
  		// $this->addField('short_description	')->type('text')->display(array('form'=>'RichText'));
  		$this->addField('is_sold')->type('boolean');
+ 		$this->addField('posting_type')->defaultValue('sale')->enum(array('sales','requirement'));
  		$this->addField('sold_date')->type('date');
  		$this->addField('search_string')->system(true);
  		$this->add("filestore/Field_Image","product_image_1_id")->type('image');

@@ -12,7 +12,7 @@ $config['dsn']='mysql://root:winserver@127.0.0.1/sb24';
 */
 $config['url_postfix']='';
 $config['url_prefix']='?page=';
-$config['js']['versions']['jquery'] = "1.8.3.min";
+// $config['js']['versions']['jquery'] = "1.8.3.min";
 
 # Agile Toolkit attempts to use as many default values for config file,
 # and you only need to add them here if you wish to re-define default

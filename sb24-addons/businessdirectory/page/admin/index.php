@@ -17,6 +17,7 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 		}
 
 		$business_listing_crud=$business_listing_tab->add('CRUD');
+		$business_listing_crud->add('misc/Export');
 		$model=$this->add('businessdirectory/Model_Listing');
 
 		$model->getElement('is_paid')->system(false);

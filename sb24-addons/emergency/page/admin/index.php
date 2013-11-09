@@ -9,6 +9,7 @@ class page_emergency_page_admin_index extends page_base_admin{
 		$numbers_tab = $tabs->addTab('Numbers');
 
 		$category_crud = $category_tab->add('CRUD');
+		$category_crud->add('misc/Export');
 		$category_crud->setModel('emergency/Category');
 
 		$crud = $numbers_tab->add('CRUD');

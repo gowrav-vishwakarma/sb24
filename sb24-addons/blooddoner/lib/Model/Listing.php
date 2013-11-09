@@ -7,8 +7,14 @@ class Model_Listing extends \Model_Table {
 	function init(){
 		parent::init();
 
+		$this->hasOne('State','state_id');
+		$this->hasOne('City','city_id');
+		$this->hasOne('Tehsil','tehsil_id');
+		$this->hasOne('Area','area_id');
 		$member = $this->hasOne('Member','member_id');
+		
 		if($this->api->auth->model) $member->defaultValue($this->api->auth->model->id);
+		
 		$this->addField('blood_group')->enum(array('A+','A-','B+','B-','O+','O-','AB+','AB-'));
 		$this->addField('want_to_donate')->type('boolean')->defaultValue(false)->caption(' &nbsp I Am Available to donate my blood');
 		
