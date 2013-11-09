@@ -27,7 +27,7 @@ class page_history_page_search extends page_base_site {
 				'tehsil_id'=>array('type'=>'dropdown', 'model' =>'Tehsil', 'emptyText' =>"Select Tehsil",'span'=>2),
 				'area_id'=>array('type'=>'dropdown', 'model' =>'Area', 'emptyText' =>"Select Area",'span'=>2),
 				'placetype_id'=>array('type'=>'dropdown','model'=>'history/PlaceType', 'emptyText'=>'Select PlaceType','span'=>3),
-				'search'=>array('type'=>'line')
+				'search'=>array('type'=>'line','span'=>9)
 			);
 
 		$chain_fields=array(

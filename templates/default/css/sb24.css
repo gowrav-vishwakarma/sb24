@@ -382,3 +382,7 @@ max-width: 100%;
 .atk-form-row label{
   font-size: 1.2em;
 }
+
+.cap{
+  text-transform: uppercase;
+}

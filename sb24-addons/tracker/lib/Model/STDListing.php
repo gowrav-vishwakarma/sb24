@@ -15,6 +15,8 @@ class Model_STDListing extends \Model_Table {
 
 		$this->addField('search_string')->system(true);
 
+		$this->_dsql()->order('area','asc');
+
 		$this->addHook('beforeSave',$this);
 
 		$this->add('dynamic_model/Controller_AutoCreator');

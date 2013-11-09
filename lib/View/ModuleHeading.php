@@ -17,7 +17,7 @@ class View_ModuleHeading extends View{
 				->setAttr('width','80%%')
 				->addClass('top_left_image')
 				;
-		$left->add('Button',null,null,array('view/mybutton','button'))->set('Go Back')->addStyle(array('margin-top'=>'15px'))->addClass(' shine1')->js('click')->goback();
+		$left->add('Button',null,null,array('view/mybutton','button'))->set('Go Back')->addStyle(array('margin-top'=>'15px'))->addClass(' shine1')->js('click','window.history.back();');
 		// $btn=$this->login_btn_spot=$right->add('View');
 		// $this->login_btn_spot->setAttr('align','right');
 		// $this->login_btn=$this->login_btn_spot->add('View');
@@ -26,7 +26,7 @@ class View_ModuleHeading extends View{
 		// 		->addStyle('padding','18px')
 		// 		->addClass('shine1');
 							
-		$this->heading = $right->add('H4')->setStyle(array('font-family'=> 'Snippet','sans-serif',' font-weight'=>' bold','color'=>'saddlebrown'));
+		$this->heading = $right->add('H3')->setStyle(array('font-family'=>'comic-sans',' font-weight'=>' bold','color'=>'saddlebrown'));
 
 
 		// $btn->js('click',$this->js()->univ()->redirect('memberpanel_page_dashboard'));
@@ -49,6 +49,6 @@ class View_ModuleHeading extends View{
 	}
 
 	function sub($text){
-		$this->heading->sub($text);
+		// $this->heading->sub($text);
 	}
 }

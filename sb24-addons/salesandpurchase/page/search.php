@@ -37,7 +37,7 @@ class page_salesandpurchase_page_search extends page_base_site {
 			'subcategory_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/SubCategory','emptyText'=>'Select SubCategory','span'=>2),
 			'min_amount'=>array('type'=>'line','span'=>2),
 			'type'=>array('type'=>'dropdown','emptyText'=>'Select Type','span'=>2,'valueList'=>array('sales'=>'Sales','requirement'=>'Requirement')),
-			'search'=>array('type'=>'line','span'=>12,),
+			'search'=>array('type'=>'line','span'=>9,),
 			);
 
 		$chain_fields=array("city_id"=>'state_id','tehsil_id'=>'city_id','subcategory_id'=>'category_id');
@@ -48,7 +48,7 @@ class page_salesandpurchase_page_search extends page_base_site {
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
                 ->move($form->addSeparator('noborder atk-row'),'after','type')
-                ->move($form->addSeparator('noborder atk-row'),'after','search')
+                // ->move($form->addSeparator('noborder atk-row'),'after','search')
                 ->now();
 
 

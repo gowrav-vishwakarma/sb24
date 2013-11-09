@@ -38,7 +38,7 @@ class page_memberpanel_page_base extends page_base_site {
 	function setUpMemberMenus(){
 		$this->add('Menu',array('inactive_menu_class'=>'','current_menu_class'=>'active'),'sidebar',array('sidebarmenu'))
 			->addMenuItem('memberpanel_page_dashboard','Home')
-			->addMenuItem('businessdirectory_page_member_index','My Free Listings')
+			->addMenuItem('businessdirectory_page_member_index','My Business Listings')
 			->addMenuItem('blooddoner_page_member_index','Blood Dooner')
 			->addMenuItem('memberpanel_page_profile','Profile')
 			->addMenuItem('socialdirectory_page_member_index','Social Details')

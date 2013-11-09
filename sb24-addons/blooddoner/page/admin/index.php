@@ -6,6 +6,7 @@ class page_blooddoner_page_admin_index extends page_base_admin {
 
 		$crud=$this->add('CRUD');
 		$model=$this->add('blooddoner/Model_Listing');
+		$crud->add('misc/Export');
 		$crud->setModel($model);
 
 		 if($crud->form){

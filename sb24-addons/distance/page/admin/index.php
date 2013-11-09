@@ -9,6 +9,7 @@ class page_distance_page_admin_index extends page_base_admin {
 		$city_tab = $tabs->addTab('Manage Cities');
 
 		$distance_crud=$distance_tab->add('CRUD');
+		$distance_crud->add('misc/Export');
 		$distance_crud->setModel('distance/Listing');
 
 		if($g=$distance_crud->grid){

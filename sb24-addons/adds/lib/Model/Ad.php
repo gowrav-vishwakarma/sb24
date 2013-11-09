@@ -10,6 +10,7 @@ class Model_Ad extends \Model_Table {
 		$this->hasOne('adds/AdBlock');
 		$this->add('filestore/Field_Image','ad_image_id');//->type('files')->display(array('grid'=>'picture'));
 		$this->addField('click_url');
+		$this->addField('email');
 		$this->addField('created_on')->type('date')->defaultValue(date('Y-m-d H:i:s'));
 		$this->addField('valid_till')->type('date');//->defaultValue(date('Y-m-d',strtotime(date('Y-m-d H:i:s')). " +1 year"));
 		$this->addField('last_renewal_on')->type('date')->defaultValue(date('Y-m-d H:i:s'));

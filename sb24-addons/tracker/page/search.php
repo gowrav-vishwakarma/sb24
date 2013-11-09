@@ -9,7 +9,7 @@ class page_tracker_page_search extends page_base_site {
 		$pincode_tab = $tabs->addtabURL($this->api->url('./pincode',array('reset'=>1)),'PIN Code');
 		$mirc_tab = $tabs->addtabURL($this->api->url('./mirc',array('reset'=>1)),'MICR/IFSC');
 		$mobile_tab = $tabs->addtabURL($this->api->url('./mobile',array('reset'=>1)),'Mobile Career Tracer');
-		$vehicle_tab = $tabs->addtabURL($this->api->url('./vehicle'),'Vehicle [RTO] Code');
+		$vehicle_tab = $tabs->addtabURL($this->api->url('./vehicle',array('reset'=>1)),'Vehicle [RTO] Code');
 		// $std_tab->setStyle('color','red');
 	}
 
@@ -45,13 +45,13 @@ class page_tracker_page_search extends page_base_site {
 		$area_field->setModel($distinct_area);
 
 		$search_field=$form->addField('line','search');
-		$search_field->template->trySet('row_class','span12');
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$search_field->template->trySet('row_class','span9');
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'20px','margin-left'=>'20px','font-size'=>'1.5em'))->addClass(' shine1')->js('click')->submit();
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
                 ->move($form->addSeparator('noborder atk-row'),'after','area')
-                ->move($form->addSeparator('noborder atk-row'),'after','search')
+                // ->move($form->addSeparator('noborder atk-row'),'after','search')
                 ->now();
 		if(!$form->isSubmitted())
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id','area'=>'district_id'),'force_selection'=>true));
@@ -119,8 +119,8 @@ class page_tracker_page_search extends page_base_site {
 		$post_field->template->trySet('row_class','span4');
 		$post_field->setModel($post_office);
 		$search_field=$form->addField('line','search');
-		$search_field->template->trySet('row_class','span12');
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$search_field->template->trySet('row_class','span9');
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'20px','margin-left'=>'20px','font-size'=>'1.5em'))->addClass(' shine1')->js('click')->submit();
 		if(!$form->isSubmitted())
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id','post_office'=>'district_id'),'force_selection'=>true));
 
@@ -234,7 +234,17 @@ class page_tracker_page_search extends page_base_site {
 		$mobile_tracker_form->addField('line','search');
 		$mobile_tracker_form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'5%','margin-left'=>'50%'))->addClass(' shine1')->js('click')->submit();
 		$mobile_tracker_grid=$this->add('Grid');
+
 		$mobile_list=$this->add('tracker/Model_MobileListing');
+		$mobile_list=$this->add('tracker/Model_MobileListing');
+		
+		$mobile_list->addExpression('company_logo')->set(function($m,$q){
+			return $m->refSQL('company_id')->fieldQuery('company_logo');
+		});
+
+		 	
+		
+
 		if($search=$this->recall('search')){
 			$model=$this->add('tracker/Model_MobileListing');
 			$series = $model->_dsql()->del('field')->field('distinct(length(series)) l')->field('count(*)')->order('l desc')->group('l')->getAll();
@@ -253,7 +263,22 @@ class page_tracker_page_search extends page_base_site {
 		else{
 			$mobile_list->addCondition('series',-1);
 		}
-		$mobile_tracker_grid->setModel($mobile_list,array('state','company','series'));
+		$mobile_tracker_grid->setModel($mobile_list,array('state','company','company_logo'));
+
+		$mobile_tracker_grid->addMethod('format_memberName',function($grid,$field)use($search){
+			$m=$grid->add('Model_Member');
+			$m->addCondition('mobile_no',$search);
+			$m->tryLoadAny();
+			if($m->loaded())
+				$grid->current_row[$field] = $m['name'];
+			else
+				$grid->current_row[$field] = 'N/A';
+
+		});
+
+		$mobile_tracker_grid->addColumn('memberName','member_name');
+		$mobile_tracker_grid->addFormatter('company_logo','picture');
+ 
 		$mobile_tracker_grid->addPaginator(5);
 		if($mobile_tracker_form->isSubmitted()){
 			$this->forget('search');
@@ -271,21 +296,30 @@ class page_tracker_page_search extends page_base_site {
 			$this->forget('city');
 			$this->forget('search');
 		}
+		$this->memorize("filter",$_GET['filter']?:$this->recall('filter',false));
+		$this->memorize("state",$_GET['state']?:$this->recall('state',false));
+		$this->memorize("city",$_GET['city']?:$this->recall('city',false));
+		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
+
 		$this->add('H3')->set('Get Vehicle RTO Code')->sub('Search via State, City, or Code');
 		$cols=$this->add('Columns');
 		// $col1=$cols->addColumn(2)->add('Text')->setHtml('&nbsp;');
 		$col2=$cols->addColumn(12);
 		// $col3=$cols->addColumn(2);
 
+		$rto_area = $this->add('tracker/Model_RTOListing');//->debug()->_dsql()->del('field')->field('distinct(area) area');
+		$rto_area->title_field = $rto_area->id_field = 'area';
+
 		$fields=array(
-			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Please Select State','span'=>6),
-			'city_id'=>array('type'=>'dropdown','model'=>'Area','emptyText'=>'Please Select City','span'=>6),
+			'state_id'=>array('type'=>'dropdown','model'=>'tracker/RTOState','emptyText'=>'Please Select State','span'=>6),
+			'city_id'=>array('type'=>'dropdown','model'=>$rto_area,'emptyText'=>'Please Select City','span'=>6),
 			'search'=>array('type'=>'line','span'=>12)
 			);
 
 		$chain_fields=array("city_id"=>'state_id');
 		
 		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields));
+		$form->getElement('search')->setAttr('placeholder','Serach Code Like RJ-27')->js(true)->_load('jquery.maskedinput.min')->mask('aa-99');
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
@@ -306,17 +340,22 @@ class page_tracker_page_search extends page_base_site {
 			$this->forget('city');
 			$this->forget('search');
 
-			$vehicle_grid->js()->reload(array(array('state'=>$form['state'],
+			$vehicle_grid->js()->reload(array('state'=>$form['state_id'],
 													'city'=>$form['city_id'],
 													'search'=>$form['search'],
-													'filter'=>1)))->execute();
+													'filter'=>1))->execute();
 				
 		}
 
 		$result = $this->add('tracker/Model_RTOListing');
 		if($this->recall('filter',false)){
+			
 			if($this->recall('state',false)) $result->addCondition('state_id',$this->recall('state',false));
-			if($this->recall('city',false)) $result->addCondition('area_id',$this->recall('city',false));
+			if($this->recall('city',false)) $result->addCondition('area',$this->recall('city',false));
+
+		if($search=$this->recall('search',false)){
+		$result->addCondition('name','like',$search);	
+		}
 		}
 		else{
 		$result->addCondition('state_id',-1);
@@ -324,7 +363,7 @@ class page_tracker_page_search extends page_base_site {
 		}
 
 		$vehicle_grid->add('H4',null,'top_1')->set('Search Result');
-		$vehicle_grid->setModel($result);
+		$vehicle_grid->setModel($result,array('state','area','name'));
 		// $vehicle_grid->addQuickSearch(array('state','area','name'));
 		$vehicle_grid->addPaginator(10);
 	}

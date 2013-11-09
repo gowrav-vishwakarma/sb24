@@ -14,6 +14,10 @@ class View_Ad extends \CompleteLister{
 			$this->current_row['click_url']='#';
 			$this->current_row['target']='';
 		}
+
+		if($this->current_row['email'] != ''){
+			//Email User
+		}
 	}
 
 	function defaultTemplate(){

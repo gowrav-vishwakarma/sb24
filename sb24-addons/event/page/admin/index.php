@@ -10,6 +10,7 @@ class page_event_page_admin_index extends page_base_admin {
 		$event_type_tab = $tabs->addTab('Event Types');
 
 		$event_crud= $event_tab->add('CRUD');
+		$event_crud->add('misc/Export');
 		$event_crud->setModel('event/Listing');
 		$event_crud->add('Controller_ChainSelector',array('chain_fields'=>array('city_id'=>'state_id')));
 		$registration_crud = $event_crud->addRef('event/Registration');

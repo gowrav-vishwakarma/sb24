@@ -33,14 +33,14 @@ class page_emergency_page_search extends page_base_site {
 		$form->getElement('category_id')->template->trySet('row_class','span3');
 		// $form->addSubmit('Filter');
 		$search_field=$form->addField('line','search');
-		$search_field->template->trySet('row_class','span12');
+		$search_field->template->trySet('row_class','span9');
 
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
                 ->move($form->addSeparator('noborder atk-row'),'after','category_id')
                 ->now();
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'20px','margin-left'=>'20px'))->addClass(' shine1')->js('click')->submit();
 		if(!$form->isSubmitted()){
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id','tehsil_id'=>'city_id')));
 		}

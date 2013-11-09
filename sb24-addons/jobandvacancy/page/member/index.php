@@ -7,7 +7,7 @@ class page_jobandvacancy_page_member_index extends page_memberpanel_page_base {
 		$tabs=$this->add('Tabs');
 		$job_tab=$tabs->addTab('Create Job Application');
 		$vacancy_tab=$tabs->addTab('Create Vacancy');
-		$crud=$job_tab->add('CRUD');
+		$crud=$job_tab->add('CRUD', array('entity_name'=>'Job Listing'));
 		$job=$this->add('jobandvacancy/Model_MemberListing');
 		$job->addCondition('posting_type','job');
 		$crud->setModel($job,array('state_id','city_id','tehsil_id','apply_post','min_experience','min_package',

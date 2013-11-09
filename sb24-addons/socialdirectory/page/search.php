@@ -24,7 +24,7 @@ class page_socialdirectory_page_search extends page_base_site {
 		$this->memorize("subcast",$_GET['subcast']?:$this->recall('subcast',false));
 
 		$this->add('View_ModuleHeading')->set('Telephone Web Directory')->sub('Search via State, City, Cast, Age or Interest');
-		$register_btn = $this->add('Button')->setHTML('<span style="color:Orange; font-size:1.5em">*Click Here</span> Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px'));
+		$register_btn = $this->add('Button')->setHTML('<span class="shine"style="color:red; font-size:1.5em">*Click Here</span> Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px'));
 		$register_btn->js('click',$this->js()->univ()->redirect('socialdirectory_page_member_index'));
 
 		$form= $this->add('Form',null,null,array('form_horizontal'));
@@ -48,12 +48,12 @@ class page_socialdirectory_page_search extends page_base_site {
 		$field_subcast->template->trySet('row_class','span2');
 		$field_subcast->setModel('socialdirectory/SubCast');
 		$search_field = $form->addField('line','search')->setAttr('placeholder','like "Mr. Abc in udaipur from Xyz Cast Male"');
-		$search_field->template->trySet('row_class','span12');
+		$search_field->template->trySet('row_class','span9');
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
                 ->move($form->addSeparator('noborder atk-row'),'after','subcast_id')
-                ->move($form->addSeparator('noborder atk-row'),'after','search')
+                // ->move($form->addSeparator('noborder atk-row'),'after','search')
                 ->now();
 
 
@@ -62,7 +62,7 @@ class page_socialdirectory_page_search extends page_base_site {
 			$form->add('Controller_ChainSelector',array('chain_fields'=>array('city_id'=>'state_id','tehsil_id'=>'city_id','area_id'=>'tehsil_id','subcast_id'=>'cast_id'),'force_selection'=>true));
 		}
 
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px','margin-left'=>'20px'))->addClass(' shine1')->js('click')->submit();
 		if($form->isSubmitted()){
 			$this->forget('search');
 			$this->forget('state');

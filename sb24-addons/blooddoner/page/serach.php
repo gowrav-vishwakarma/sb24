@@ -19,7 +19,7 @@ class page_blooddoner_page_serach extends page_base_site {
 		$this->memorize("area",$_GET['area']?:$this->recall('area',false));
 
 		$this->add('View_ModuleHeading')->set('Find Blood Dooner')->sub('Search via State, City, Type of event and date');
-		$register_btn = $this->add('Button')->setHTML('<span style="color:Orange; font-size:1.5em">*Click Here</span> Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px'));
+		$register_btn = $this->add('Button')->setHTML('<span  class ="shine" style="color:red; font-size:1.5em">*Click Here</span> Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px'));
 		$register_btn->js('click',$this->js()->univ()->redirect('memberpanel_page_register'));
 
 		$form = $this->add('Form',null,null,array('form_horizontal'));
@@ -42,16 +42,16 @@ class page_blooddoner_page_serach extends page_base_site {
 		$blood_group_field->template->trySet('row_class','span3');
 
 		$search_field = $form->addField('line','search')->setAttr('placeholder','Filter your search with Area, City, State etc Information');
-		$search_field->template->trySet('row_class','span12');
+		$search_field->template->trySet('row_class','span9');
 		// $search_field->afterField()->add('Button')->set('GO')->js('click',$form->js()->submit());
 		// $form->addSubmit('Search');
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px','margin-left'=>'20px'))->addClass(' shine1')->js('click')->submit();
 
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
                 ->move($form->addSeparator('noborder atk-row'),'after','blood_group')
-                ->move($form->addSeparator('noborder atk-row'),'after','search')
+                // ->move($form->addSeparator('noborder atk-row'),'after','search')
                 ->now();
          if(!$form->isSubmitted()){
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id','tehsil_id'=>'city_id','area_id'=>'tehsil_id'),'force_selection'=>true));

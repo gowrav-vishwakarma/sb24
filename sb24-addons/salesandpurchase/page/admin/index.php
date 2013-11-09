@@ -18,6 +18,8 @@ class page_salesandpurchase_page_admin_index extends page_base_admin {
 
 		$tab_listing=$tabs->addTab('Sales & Purchase');
 		$listing_crud=$tab_listing->add('CRUD');
+		$listing_crud->add('misc/Export');
+
 		$listing_crud->setModel('salesandpurchase/Model_Listing');
 
 		$listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('city_id'=>'state_id','tehsil_id'=>'city_id','area_id'=>'tehsil_id','subcategory_id'=>'category_id'),'force_selection'=>true));

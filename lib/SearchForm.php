@@ -17,7 +17,7 @@ class SearchForm extends Form {
 			if(isset($options['span'])) $f->template->trySet('row_class','span'.$options['span']);
 		}
 
-		$this->addSubmit('Search',null,null,array('view/mybutton','button'))->setStyle('margin-top','20px');
+		$this->addSubmit('Search',null,null,array('view/mybutton','button'))->setStyle(array('margin-top'=>'20px','margin-left'=>'20px'));
 		if(!$this->isSubmitted())
 			$this->add('Controller_ChainSelector',array('chain_fields'=>$this->chain_fields ,'force_selection'=>true));
 	}

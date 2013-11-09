@@ -80,7 +80,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('is_active')->type('boolean')->defaultValue(true);
 
 		// SEARCH
-		$this->addField('search_string')->system(true);
+		$this->addField('search_string')->system(true)->type('text');
 
 		$this->addExpression('payment_received')->set(function($m,$q){
 			return $m->refSQL('businessdirectory/PayAmount')->sum('name');

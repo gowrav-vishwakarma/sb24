@@ -30,7 +30,7 @@ class page_businessdirectory_page_search extends page_base_site {
 			'area_id'=>array('type'=>'dropdown','model'=>'Area','emptyText'=>'Select Area','span'=>2),
 			'industry_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Industry','emptyText'=>'Select Industry','span'=>2),
 			'segment_id'=>array('type'=>'dropdown','model'=>'businessdirectory/Segment','emptyText'=>'Select Segment','span'=>2),
-			'search'=>array('type'=>'line'),
+			'search'=>array('type'=>'line','span'=>9),
 			);
 
 		$chain_fields=array("city_id"=>'state_id',"tehsil_id"=>"city_id","area_id"=>'tehsil_id','segment_id'=>'industry_id');
@@ -71,7 +71,8 @@ class page_businessdirectory_page_search extends page_base_site {
 		$result->setOrder('created_on');
 		$result->setOrder('payment_received','desc');
 		if($search=$this->recall('search',false)){
-			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE)');
+			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION)');
+			// $result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
 			$result->setOrder('Relevance','Desc');
 			$result->addCondition('Relevance','>','0');
 		}

@@ -43,14 +43,14 @@ class page_jobandvacancy_page_search extends page_base_site {
 																'vacancy'=>'Vacancy'))->setEmptyText('Please Select Type');
 		$type_field->template->trySet('row_class','span2');
 		$search_field=$form->addField('line','search');
-		$search_field->template->trySet('row_class','span12');
+		$search_field->template->trySet('row_class','span9');
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
                 ->move($form->addSeparator('noborder atk-row'),'after','type')
-                ->move($form->addSeparator('noborder atk-row'),'after','search')
+                // ->move($form->addSeparator('noborder atk-row'),'after','search')
                 ->now();
-                $form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+                $form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'20px','margin-left'=>'20px'))->addClass(' shine1')->js('click')->submit();
 
 		if(!$form->isSubmitted()){
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id','tehsil_id'=>'city_id'),'force_selection'=>true));
