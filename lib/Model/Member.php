@@ -19,7 +19,7 @@ class Model_Member extends Model_Table {
 		$this->hasOne('socialdirectory/Cast','cast_id')->group('social')->sortable(true);
 		$this->hasOne('socialdirectory/SubCast','subcast_id')->group('social')->sortable(true);
 		$this->addField('address')->type('text')->group('social');
-		$this->addField('answer')->group('base')->mandatory(true);
+		$this->addField('answer')->type('password')->group('base')->mandatory(true);
 		$this->addField('date_of_birth')->type('date')->group('social');
 		$this->addField('gender')->enum(array('Male','Female'))->group('social');
 		$this->addField('interest')->type('text')->caption('About You & Your Interest')->display(array('form'=>'RichText'))->group('social');

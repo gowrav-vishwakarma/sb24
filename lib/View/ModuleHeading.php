@@ -8,16 +8,17 @@ class View_ModuleHeading extends View{
 	function init(){
 		parent::init();
 		$cols = $this->add('Columns');
-		$left = $cols->addColumn(3);
-		$center = $cols->addColumn(5);
+		$left = $cols->addColumn(2);
+		$center = $cols->addColumn(6);
 		$right = $cols->addColumn(4);
 		$center->add('View')
 				->setElement('img')
 				->setAttr('src','sabkuch.png')
-				->setAttr('width','80%%')
+				->setAttr('width','100%')
+				->setStyle('margin-top','-10px')
 				->addClass('top_left_image')
 				;
-		$left->add('Button',null,null,array('view/mybutton','button'))->set('Go Back')->addStyle(array('margin-top'=>'15px'))->addClass(' shine1')->js('click','window.history.back();');
+		$left->add('Button',null,null,array('view/mybutton','button'))->set('Go Back')->addStyle(array('margin-top'=>'0px'))->addClass(' shine1')->js('click','window.history.back();');
 		// $btn=$this->login_btn_spot=$right->add('View');
 		// $this->login_btn_spot->setAttr('align','right');
 		// $this->login_btn=$this->login_btn_spot->add('View');
@@ -27,14 +28,14 @@ class View_ModuleHeading extends View{
 		// 		->addClass('shine1');
 							
 		$this->heading = $right->add('H3')->setStyle(array('font-family'=>'comic-sans',' font-weight'=>' bold','color'=>'saddlebrown'));
-
+		$this->setStyle('margin-bottom','15px');
 
 		// $btn->js('click',$this->js()->univ()->redirect('memberpanel_page_dashboard'));
 		return $this;
 	}
 
 	function set($text){
-		$this->heading->set($text);
+		$this->heading->setHTML($text);
 		$this->is_set=true;
 		return $this;
 	}

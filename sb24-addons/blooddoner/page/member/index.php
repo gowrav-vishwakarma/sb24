@@ -21,7 +21,8 @@ class page_blooddoner_page_member_index extends page_memberpanel_page_base {
 
 		$form->getElement('blood_group')->validateNotNull();
 		$form->add('Button',null,null,array('view/mybutton','button'))->set('Update My Info')->addStyle(array('margin-top'=>'25px','font-size'=>'18px','margin-left'=>'275px'))->addClass(' shine1')->js('click')->submit();
-
+		if(!$form->isSubmitted())
+			$form->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'tehsil_id','tehsil_id'=>'city_id','city_id'=>'state_id')));
 
 		if($form->isSubmitted()){
 

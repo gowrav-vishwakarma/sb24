@@ -7,19 +7,19 @@
 				<div class="row">
 					<div class="col-sm-12"><h2><?name?>Company Name<?/name?></h2></div>
 				</div>
-				<div class="row">
+				<div class="row" style="margin-bottom:5px;">
 					<div class="col-sm-6">( <?$industry?> )</div>
 					<div class="col-sm-6">( <?$segment?> )</div>
 				</div>
 			</div>
-			<div class="col-sm-1 btn shine1" onclick="<?$more?>">More</div>
+			<div class="col-sm-1 btn shine1" onclick="<?$more?>" style="margin-top:10px;">More</div>
 		</div>
-		<div class="row main-block-body">
+		<div class="row main-block-body top-space">
 			<div class="buisness_listing_logo col-sm-4" >
 				<div  class="well" align="center"><img src="<?$company_logo?>" alt="No Picture Available" class='top_left_image'/></div>
 			</div>
 			<div class="col-sm-8" >
-				<div class="row">
+				<div class="row bottom-space">
 					<div class="col-sm-12" >
 						<div class="row">
 							<div class="col-sm-4 info-title"><?designation?>designation<?/designation?></div>
@@ -38,29 +38,21 @@
 							<div class="col-sm-8 info-vlaue"><?email_id?>N/A<?/email_id?></div>
 						</div>
 						<div class="row">
-							<div class="col-sm-4 info-title">Website</div>
-							<div class="col-sm-8 info-vlaue"><a href="http://<?$website?>" target="_blank"><?website?>N/A<?/website?></a></div>
-						</div>
-						<div class="row">
 							<div class="col-sm-4 info-title">Address</div>
 							<div class="col-sm-8 info-vlaue"><?company_address?>N/A<?/company_address?></div>
-						</div>
-						<div class="row">
-							<div class="col-sm-2 info-title">State</div>
-							<div class="col-sm-4 info-vlaue"><?state?>N/A<?/state?></div>
-							<div class="col-sm-2 info-title">City</div>
-							<div class="col-sm-4 info-vlaue"><?city?>N/A<?/city?></div>
-							<div class="col-sm-2 info-title">Tehsil</div>
-							<div class="col-sm-4 info-vlaue"><?tehsil?>N/A<?/tehsil?></div>
-							<div class="col-sm-2 info-title">Area</div>
-							<div class="col-sm-4 info-vlaue"><?area?>N/A<?/area?></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class='row'>
-			<div class='col-sm-12'>
+		<div class="row bottom-space">
+			<div class="col-sm-3 info-title">State<br/><span class="info-value"><?state?>N/A<?/state?></span></div>
+			<div class="col-sm-3 info-title">City<br/><span class="info-value"><?city?>N/A<?/city?></span></div>
+			<div class="col-sm-3 info-title">Tehsil<br/><span class="info-value"><?tehsil?>N/A<?/tehsil?></span></div>
+			<div class="col-sm-3 info-title">Area<br/><span class="info-value"><?area?>N/A<?/area?></span></div>
+		</div>
+		<div class='row main-block'>
+			<div class='col-sm-12 top-space'>
 				<?$short_description?>
 			</div>
 		</div>
@@ -69,6 +61,6 @@
 	<?/rows?>
 	<?$paginator?>
 	<?not_found?>
-    <div class="atk-grid-notfound ui-state-highlight ui-corner-all clearfix"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
+    <div class="ui-widget-content ui-corner-all main-block no-data"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
   <?/not_found?></h3>
 </div>

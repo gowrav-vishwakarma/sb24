@@ -3,68 +3,60 @@
 	<?row?>
 	<div class="ui-widget-content ui-corner-all main-block">
 		<div class=" row ui-widget-content header">
-		<div class="col-sm-9 company_name"><h2><?name?>Company Name<?/name?></h2></div>
-		<div class="col-sm-1 btn shine1" onclick="<?$more?>">More</div>
+			<div class="col-sm-9 company_name"><h2><?name?>Company Name<?/name?></h2></div>
+			<div class="col-sm-1 btn top-space shine1" onclick="<?$more?>">More</div>
 		</div>
-		<div class="row main-block-body">
+		<div class="row top-space main-block-body">
 			<div class="buisness_listing_logo col-sm-4" >
 				<div  class="well" align="center"><img src="<?$profile_pic?>" alt="No Profile Picture Uploaded"/></div>
 			</div>
-	<div class="col-sm-8" >
-		<div class="row">
-			<div class="col-sm-12" >
+			<div class="col-sm-8" >
 				<div class="row">
-					<div class="col-sm-4 info-title">Name</div>
-					<div class="col-sm-8 info-vlaue"><?name?>N/A<?/name?></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4 info-title">Father's Name</div>
-					<div class="col-sm-8 info-vlaue"><?father_name?>N/A<?/father_name?></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4 info-title">Mobile No.</div>
-					<div class="col-sm-8 info-vlaue"><?mobile_no?>N/A<?/mobile_no?></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4 info-title">Phone No.</div>
-					<div class="col-sm-8 info-vlaue"><?ph_no?>N/A<?/ph_no?></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4 info-title">E-mail</div>
-					<div class="col-sm-8 info-vlaue"><?email?>email <?/email?></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4 info-title">Address</div>
-					<div class="col-sm-8 info-vlaue"><?address?>N/A <?/address?></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-4 info-title">Occupation</div>
-					<div class="col-sm-8 info-vlaue"><?occupation?>N/A<?/occupation?></div>
-				</div>
-				
+					<div class="col-sm-12" >
+						<div class="row">
+							<div class="col-sm-4 info-title">Name</div>
+							<div class="col-sm-8 info-vlaue"><?name?>N/A<?/name?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">Father's Name</div>
+							<div class="col-sm-8 info-vlaue"><?father_name?>N/A<?/father_name?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">Mobile No.</div>
+							<div class="col-sm-8 info-vlaue"><?mobile_no?>N/A<?/mobile_no?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">Phone No.</div>
+							<div class="col-sm-8 info-vlaue"><?ph_no?>N/A<?/ph_no?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">E-mail</div>
+							<div class="col-sm-8 info-vlaue"><?email?>email <?/email?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">Address</div>
+							<div class="col-sm-8 info-vlaue"><?address?>N/A <?/address?></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4 info-title">Occupation</div>
+							<div class="col-sm-8 info-vlaue"><?occupation?>N/A<?/occupation?></div>
+						</div>
+						
+					</div>
 				</div>
 			</div>
-
 		</div>
-		<div class="row">
-						<div class="row">
-							<div class="col-sm-2 info-title">City</div>
-							<div class="col-sm-4 info-vlaue"><?city?>N/A<?/city?></div>
-							<div class="col-sm-2 info-title">State</div>
-							<div class="col-sm-4 info-vlaue"><?state?>N/A<?/state?></div>
-						</div>
-							<div class="col-sm-2 info-title">Area</div>
-							<div class="col-sm-4 info-vlaue"><?area?>N/A<?/area?></div>
-							<div class="col-sm-2 info-title">Tehsil</div>
-							<div class="col-sm-4 info-vlaue"><?tehsil?>N/A<?/tehsil?></div>
-						</div>
+		<div class="row bottom-space">
+			<div class="col-sm-3 info-title">State<br/><span class="info-value"><?state?>N/A<?/state?></span></div>
+			<div class="col-sm-3 info-title">City<br/><span class="info-value"><?city?>N/A<?/city?></span></div>
+			<div class="col-sm-3 info-title">Tehsil<br/><span class="info-value"><?tehsil?>N/A<?/tehsil?></span></div>
+			<div class="col-sm-3 info-title">Area<br/><span class="info-value"><?area?>N/A<?/area?></span></div>
 		</div>
-
-	</div>	
+	</div>
 	<?/row?>
 	<?/rows?>
 	<?$paginator?>
 	<?not_found?>
-    <div class="atk-grid-notfound ui-state-highlight ui-corner-all clearfix"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
-  <?/not_found?></h3>
+	<div class="ui-widget-content ui-corner-all main-block no-data"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
+	<?/not_found?></h3>
 </div>
