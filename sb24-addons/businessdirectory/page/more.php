@@ -25,23 +25,14 @@ class page_businessdirectory_page_more extends page_base_site{
 
 		//gallary start//
 		$gallary->add('H2')->set("Gallary");
+		$gallary->add('businessdirectory/View_Gallary')->setModel("businessdirectory/GallaryImages");
 
-		$gallary_cols=$gallary->add('Columns');
-		for ($i=1; $i<=5; $i++) { 
-			$col=$gallary_cols->addColumn(2);			
-			$col->add('HtmlElement')->setElement('img')->setAttr('src',$listing["gallery_image_".$i])->addClass('gallary');
-			$col->add('View')->set($listing["gallery_image_".$i."_info"]);
-		}
-		//gallary end//
+		// /gallary end//
 
 		//products and services start//
 		$p_and_s->add('H2')->set("Products & Services");
-		$p_and_s_cols=$p_and_s->add('Columns');
-		for ($i=1; $i<=5; $i++) { 
-			$col=$p_and_s_cols->addColumn(2);			
-			$col->add('HtmlElement')->setElement('img')->setAttr('src',$listing["products_image_".$i])->addClass('gallary');
-			$col->add('View')->set($listing["products_image_".$i."_info"]);
-		}
+		$p_and_s->add('businessdirectory/View_Product')->setModel("businessdirectory/ProductImages");
+		
 		//products and services end//
 
 		//map//
