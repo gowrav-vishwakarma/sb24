@@ -14,7 +14,8 @@ class page_admin_modules_index extends page_base_admin {
 				'emergency/page_admin_index' => 'Emergency',
 				'event/page_admin_index' => 'Events',
 				'blooddoner/page_admin_index' => 'Blood Doner',
-				'salesandpurchase/page_admin_index' => 'Sales & Purchase'
+				'salesandpurchase/page_admin_index' => 'Sales & Purchase',
+				'memberhelper/page_admin_index' => 'Public Helper'
 			);
 
 		$tabs=$this->add('Tabs');

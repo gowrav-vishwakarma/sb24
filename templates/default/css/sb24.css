@@ -386,3 +386,9 @@ max-width: 100%;
 .cap{
   text-transform: uppercase;
 }
+
+div.gallary-image{
+  border: 2px solid black;
+  margin:2px;
+  padding:2px;
+}

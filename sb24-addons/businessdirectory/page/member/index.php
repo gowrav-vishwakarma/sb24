@@ -21,6 +21,24 @@ class page_businessdirectory_page_member_index extends page_memberpanel_page_bas
 		if($paid_listing_crud->form)
 		$paid_model_listing->getElement('is_active')->system(true);
 		$paid_listing_crud->setModel($paid_model_listing,null,array('name','mobile_no','is_paid'));
+		
+		$gallary_crud = $paid_listing_crud->addRef('businessdirectory/GallaryImages',array('label'=>'Gallary'));
+		$product_crud = $paid_listing_crud->addRef('businessdirectory/ProductImages',array('label'=>'Product'));
+		
+
+		if($gallary_crud AND $gallary_crud->form){
+			$gallary_crud->form->template->tryDel('button_row');
+			 $gallary_crud->form->add('Button',null,null,array('view/mybutton','button'))->set('Save')->addStyle(array('margin-bottom'=>'20px','margin-left'=>'390px','font-size'=>'18px'))->addClass('shine1')->js('click')->submit();
+
+		}
+
+		if($product_crud and $product_crud->form){
+			$product_crud->form->template->tryDel('button_row');
+			 $product_crud->form->add('Button',null,null,array('view/mybutton','button'))->set('Save')->addStyle(array('margin-bottom'=>'20px','margin-left'=>'390px','font-size'=>'18px'))->addClass('shine1')->js('click')->submit();
+
+		}
+
+
 		$paid_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'tehsil_id','tehsil_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id')));
 
 		// if($f=$paid_listing_crud->form){
@@ -49,7 +67,7 @@ class page_businessdirectory_page_member_index extends page_memberpanel_page_bas
 		$business_listing_crud->setModel($freelisting_model_listing,'free',array('name','mobile_no','is_active'));
 		if($business_listing_crud->form){
 			$business_listing_crud->form->template->tryDel('button_row');
-			 $business_listing_crud->form->add('Button',null,null,array('view/mybutton','button'))->set('Save')->addStyle(array('margin-top'=>'25px','margin-left'=>'390px'))->addClass('shine1')->js('click')->submit();
+			 $business_listing_crud->form->add('Button',null,null,array('view/mybutton','button'))->set('Save')->addStyle(array('margin-bottom'=>'20px','margin-left'=>'390px','font-size'=>'18px'))->addClass('shine1')->js('click')->submit();
 			
 		}
 

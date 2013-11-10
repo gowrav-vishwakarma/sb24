@@ -45,6 +45,7 @@ class page_memberpanel_page_base extends page_base_site {
 			->addMenuItem('jobandvacancy_page_member_index','My Job & Vacancy')
 			->addMenuItem('salesandpurchase_page_member_index','My Sales & Purchase')
 			->addMenuItem('event_page_member_index','Registered Events')
+			->addMenuItem('memberhelper_page_member_index','Member Helper')
 			->addMenuItem('logout');
 		;
 	}
