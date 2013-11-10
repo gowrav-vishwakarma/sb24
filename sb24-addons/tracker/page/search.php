@@ -3,13 +3,13 @@
 class page_tracker_page_search extends page_base_site {
 	function page_index(){
 
-		$this->add('View_ModuleHeading')->set('Find Code( Tracker )')->sub('Search via State, City, Area or STD Code');
+		$this->add('View_ModuleHeading')->set('Tracker')->sub('Search via State, City, Area or STD Code');
 		$tabs = $this->add('Tabs');
 		$std_tab = $tabs->addtabURL($this->api->url('./std',array('reset'=>1)),'STD');
 		$pincode_tab = $tabs->addtabURL($this->api->url('./pincode',array('reset'=>1)),'PIN Code');
-		$mirc_tab = $tabs->addtabURL($this->api->url('./mirc',array('reset'=>1)),'MICR/IFSC');
-		$mobile_tab = $tabs->addtabURL($this->api->url('./mobile',array('reset'=>1)),'Mobile Career Tracer');
-		$vehicle_tab = $tabs->addtabURL($this->api->url('./vehicle',array('reset'=>1)),'Vehicle [RTO] Code');
+		$mirc_tab = $tabs->addtabURL($this->api->url('./mirc',array('reset'=>1)),'MICR / IFSC');
+		$mobile_tab = $tabs->addtabURL($this->api->url('./mobile',array('reset'=>1)),'Mobile Tracker');
+		$vehicle_tab = $tabs->addtabURL($this->api->url('./vehicle',array('reset'=>1)),'Vehicle [ RTO ] Code');
 		// $std_tab->setStyle('color','red');
 	}
 
@@ -27,7 +27,8 @@ class page_tracker_page_search extends page_base_site {
 		$this->memorize("city",$_GET['city']?:$this->recall('city',false));
 		$this->memorize("area",$_GET['area']?:$this->recall('area',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
-		
+		$this->add('H3')->set('Find STD Code')->sub('Search by State, City, Area or STD Code');
+
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$std_grid = $this->add('Grid');
 		
@@ -57,6 +58,15 @@ class page_tracker_page_search extends page_base_site {
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id','area'=>'district_id'),'force_selection'=>true));
 
 		if($form->isSubmitted()){
+
+			if($form['search'] == "" AND $form['area']=="")
+				$form->displayError('area','Area is must to define');
+
+			$this->forget('filter');
+			$this->forget('state');
+			$this->forget('city');
+			$this->forget('area');
+			$this->forget('search');
 			$std_grid->js()->reload(array(
 									'state'=>$form['state_id'],
 									'city'=>$form['district_id'],
@@ -74,16 +84,14 @@ class page_tracker_page_search extends page_base_site {
 		if($this->recall('city',false)) $result->addCondition('district_id',$this->recall('city'));
 		if($this->recall('area',false)) $result->addCondition('area',$this->recall('area'));
 
-		if($search=$this->recall('search',false)){
-		$result->addCondition('STD_code','like',$search);		
-		}
 
-		}else{
-			$result->addCondition('state_id',-1);	
+		}
+		if($this->recall('reset',false)){
+				$result->addCondition('state_id',-1);	
 		}
 		
 		$std_grid->setModel($result);
-		// $std_grid->addQuickSearch(array('state','district','area','STD_code'));
+		$std_grid->addQuickSearch(array('state','district','area','STD_code'));
 		$std_grid->addPaginator(50);
 	}
 
@@ -101,7 +109,7 @@ class page_tracker_page_search extends page_base_site {
 		$this->memorize("post_office",$_GET['post_office']?:$this->recall('post_office',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 		
-		$this->add('H3')->set('Find PIN Code')->sub('Search via State, City, Post Office or PIN Code');
+		$this->add('H3')->set('Find PIN Code')->sub('Search by State, City, Post Office or PIN Code');
 
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$pincode_grid = $this->add('Grid');
@@ -125,6 +133,11 @@ class page_tracker_page_search extends page_base_site {
 			$form->add('Controller_ChainSelector',array("chain_fields"=>array('district_id'=>'state_id','post_office'=>'district_id'),'force_selection'=>true));
 
 		if($form->isSubmitted()){
+			$this->forget('filter');
+			$this->forget('state');
+			$this->forget('district');
+			$this->forget('post_office');
+			$this->forget('search');
 			$pincode_grid->js()->reload(array(
 									'state'=>$form['state_id'],
 									'district'=>$form['district_id'],
@@ -166,7 +179,7 @@ class page_tracker_page_search extends page_base_site {
 		$this->memorize("city",$_GET['city']?:$this->recall('city',false));
 		$this->memorize("bank",$_GET['bank']?:$this->recall('bank',false));
 		$this->memorize("branch",$_GET['branch']?:$this->recall('branch',false));
-		$this->add('H3')->set('Get MICR/IFSC Code')->sub('Search via State, City, Bank, Branch, MICR  or IFSC');
+		$this->add('H3')->set('Get MICR / IFSC Code')->sub('Search by State, City, Bank, Branch, MICR  or IFSC');
 
 		
 		$form=$this->add('Form',null,null,array('form_horizontal'));
@@ -197,6 +210,11 @@ class page_tracker_page_search extends page_base_site {
 		}
 
 		if($form->isSubmitted()){
+			$this->forget('filter');
+			$this->forget('state');
+			$this->forget('city');
+			$this->forget('bank');
+			$this->forget('branch');
 			$mirc_grid->js()->reload(array(
 									'state'=>$form['state_id'],
 									'city'=>$form['city_id'],
@@ -231,8 +249,14 @@ class page_tracker_page_search extends page_base_site {
 
 		$this->add('H3')->set('Mobile Tracker Code')->sub('Search Mobile Number');
 		$mobile_tracker_form=$this->add('Form');
-		$mobile_tracker_form->addField('line','search');
-		$mobile_tracker_form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'5%','margin-left'=>'50%'))->addClass(' shine1')->js('click')->submit();
+		$mobile_tracker_form->addField('line','search')->template->trySet('row_class','span9');
+		$mobile_tracker_form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->setStyle(array('margin-top'=>'20px','margin-left'=>'10px'))->addClass(' shine1')->js('click')->submit();
+		
+		$mobile_tracker_form->setFormClass('stacked atk-row');
+            $o=$mobile_tracker_form->add('Order')
+                ->move($mobile_tracker_form->addSeparator('noborder atk-row'),'first')
+                // ->move($mobile_tracker_form->addSeparator('noborder atk-row'),'after','search')
+                ->now();
 		$mobile_tracker_grid=$this->add('Grid');
 
 		$mobile_list=$this->add('tracker/Model_MobileListing');
@@ -301,10 +325,10 @@ class page_tracker_page_search extends page_base_site {
 		$this->memorize("city",$_GET['city']?:$this->recall('city',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 
-		$this->add('H3')->set('Get Vehicle RTO Code')->sub('Search via State, City, or Code');
-		$cols=$this->add('Columns');
+		$this->add('H3')->set('Get Vehicle RTO Code')->sub('Search by State, City or Code');
+		// $cols=$this->add('Columns');
 		// $col1=$cols->addColumn(2)->add('Text')->setHtml('&nbsp;');
-		$col2=$cols->addColumn(12);
+		// $col2=$cols->addColumn(12);
 		// $col3=$cols->addColumn(2);
 
 		$rto_area = $this->add('tracker/Model_RTOListing');//->debug()->_dsql()->del('field')->field('distinct(area) area');
@@ -313,13 +337,13 @@ class page_tracker_page_search extends page_base_site {
 		$fields=array(
 			'state_id'=>array('type'=>'dropdown','model'=>'tracker/RTOState','emptyText'=>'Please Select State','span'=>6),
 			'city_id'=>array('type'=>'dropdown','model'=>$rto_area,'emptyText'=>'Please Select City','span'=>6),
-			'search'=>array('type'=>'line','span'=>12)
+			'search'=>array('type'=>'line','span'=>9)
 			);
 
 		$chain_fields=array("city_id"=>'state_id');
 		
 		$form = $this->add('SearchForm',array('fields'=>$fields,'chain_fields'=>$chain_fields));
-		$form->getElement('search')->setAttr('placeholder','Serach Code Like RJ-27')->js(true)->_load('jquery.maskedinput.min')->mask('aa-99');
+		$form->getElement('search')->setAttr('placeholder','Serach Code Like RJ-27')->js(true)->_load('jquery.maskedinput.min')->mask('aa-99-aa-9999');
 		$form->setFormClass('stacked atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
@@ -354,7 +378,7 @@ class page_tracker_page_search extends page_base_site {
 			if($this->recall('city',false)) $result->addCondition('area',$this->recall('city',false));
 
 		if($search=$this->recall('search',false)){
-		$result->addCondition('name','like',$search);	
+			$result->addCondition('name','like',substr($search,0,5));
 		}
 		}
 		else{

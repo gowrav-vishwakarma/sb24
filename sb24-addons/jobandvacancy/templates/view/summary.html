@@ -4,9 +4,9 @@
 	<div class="ui-widget-content ui-corner-all main-block">
 		<div class=" row ui-widget-content header">
 		<div class="col-sm-9 company_name"><h2><?name?>Company Name<?/name?></h2></div>
-		<div class="col-sm-1 btn shine1" onclick="<?$more?>">More</div>
+		<div class="col-sm-1 btn shine1" style="margin-top:5px" onclick="<?$more?>">More</div>
 		</div>
-		<div class="row main-block-body">
+		<div class="row main-block-body top-space">
 			<div class="buisness_listing_logo col-sm-4" >
 				<div  class="well" align="center"><h1><img src="<?$company_logo?>" alt="Your Company Logo "/></h1></div>
 			</div>
@@ -55,6 +55,6 @@
 	<?/rows?>
 <?$paginator?>
 <?not_found?>
-    <div class="atk-grid-notfound ui-state-highlight ui-corner-all clearfix"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
+    <div class="ui-widget-content ui-corner-all main-block no-data"><i class="ui-icon ui-icon-alert float-left"></i><h3><?not_found_message?>No Records Found<?/?></div>
   <?/not_found?></h3>
 </div>

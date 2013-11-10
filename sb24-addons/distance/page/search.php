@@ -12,13 +12,13 @@ class page_distance_page_search extends page_base_site {
 		$col2=$cols->addColumn(12);
 		// $col3=$cols->addColumn(2);
 		$form=$col2->add('Form',null,null,array('form_horizontal'));
-		$city_from_field=$form->addField('dropdown','from_city')->setEmptyText('Please Select City');
+		$city_from_field=$form->addField('dropdown','from_city')->setEmptyText('Please Select City')->validateNotNull();
 		$city_from_field->setModel($model);
 
-		$city_to_field=$form->addField('dropdown','to_city')->setEmptyText('Please Select City');
+		$city_to_field=$form->addField('dropdown','to_city')->setEmptyText('Please Select City')->validateNotNull();
 		$city_to_field->setModel($model);
 		// $form->addSubmit('Search');
-		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px','margin-left'=>'30px'))->addClass(' shine1')->js('click')->submit();
+		$form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'30px','margin-left'=>'30px'))->addClass(' shine1')->js('click')->submit();
 
 
 		$v=$this->add('distance/View_Listing');

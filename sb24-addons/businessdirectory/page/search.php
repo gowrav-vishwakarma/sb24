@@ -22,7 +22,7 @@ class page_businessdirectory_page_search extends page_base_site {
 		$this->memorize("segment",$_GET['segment']?:$this->recall('segment',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 
-		$this->add('View_ModuleHeading')->set('Free Buisness Listing')->sub('Search via State, City, Industry or Major Field');
+		$this->add('View_ModuleHeading')->set('<center>View Buisness Listing <br/> <a href="?page=businessdirectory_page_member_index">ADD YOUR BUSINESS</a></center>')->sub('Search via State, City, Industry or Major Field');
 		$fields=array(
 			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Select State','span'=>2),
 			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Select City','span'=>2),

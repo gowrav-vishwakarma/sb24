@@ -19,7 +19,7 @@ class page_emergency_page_search extends page_base_site {
 		$this->memorize("category",$_GET['category']?:$this->recall('category',false));
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 
-		$this->add('View_ModuleHeading')->set('Get Emergency/Important Numbers')->sub('Search via State, City, Tehsil or Category');
+		$this->add('View_ModuleHeading')->set('Emergency / Important Numbers')->sub('Search via State, City, Tehsil or Category');
 
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$grid = $this->add('Grid');
@@ -74,10 +74,11 @@ class page_emergency_page_search extends page_base_site {
 
 		}
 		else{
-			$result->addCondition('state_id',-1);
+			// $result->addCondition('state_id',-1);
 		}
 
 		$grid->addPaginator(10);
+		// $grid->addQuickSearch(array('state','city','tehsil','category','name','number'));
 		$grid->setModel($result);
 
 	}

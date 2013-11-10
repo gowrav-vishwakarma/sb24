@@ -1,6 +1,6 @@
 // Activates the Carousel
 $('.carousel').carousel({
-  interval: 2000
+  interval: 20000
 })
 
 // Activates Tooltips for Social Links

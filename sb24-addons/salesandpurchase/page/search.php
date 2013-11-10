@@ -26,7 +26,7 @@ class page_salesandpurchase_page_search extends page_base_site {
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 		$this->memorize("type",$_GET['type']?:$this->recall('type',false));
 
-		$this->add('View_ModuleHeading')->set('Find Sales And Purchase  Listing')->sub('Search via State, City, Category or Subcategory Field');
+		$this->add('View_ModuleHeading')->set('<center>Sales & Purchase <br/> <a href="?page=businessdirectory_page_member_index">ADD YOUR Listing</a></center>');
 		
 		
 		$fields=array(

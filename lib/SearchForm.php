@@ -9,7 +9,7 @@ class SearchForm extends Form {
 
 		foreach ($this->fields as $field => $options) {
 
-			$f=$this->addField($options['type'],$field,ucwords(str_replace("_"," ",rtrim($field,'_id'))));
+			$f=$this->addField($options['type'],$field,$options['caption']?:ucwords(str_replace("_"," ",rtrim($field,'_id'))));
 			if(isset($options['model'])) $f->setModel($options['model']);
 			if(isset($options['emptyText'])) $f->setEmptyText($options['emptyText']);
 			if(isset($options['mandatory'])) $f->validateNotNull();

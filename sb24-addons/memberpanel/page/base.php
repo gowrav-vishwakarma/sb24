@@ -19,18 +19,18 @@ class page_memberpanel_page_base extends page_base_site {
 		$this->api->auth->check();
 		$this->setUpMemberMenus();
 
-		$this->add('View_ModuleHeading',null,'welcome')->set("Welcome " . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
+		$this->add('View_ModuleHeading',null,'welcome')->set("Welcome....<br/>" . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
 	}
 
 	function update_login_form($auth){
 
 		$title = $auth->form->add('H2')->set('Login to your account');
 
-		// $register_btn=$auth->add('Button')->set('Register Now Free')->addClass('atk-row span12');
-		// $register_btn->js('click')->univ()->frameURL('Register Your Self',$this->api->url('memberpanel_page_register'));
+		$register_btn=$auth->add('Button')->set('Register Now Free')->addClass('atk-row span12');
+		$register_btn->js('click')->univ()->frameURL('Register Your Self',$this->api->url('memberpanel_page_register'));
 
-		// $auth->form->add('H4')->set("Don't have account...");
-		// $auth->form->add($register_btn);
+		$auth->form->add('H4')->set("Don't have account...");
+		$auth->form->add($register_btn);
 		$auth->form->add('Order')->move($title,'first')->now();
 
 	}

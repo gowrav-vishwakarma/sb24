@@ -23,7 +23,7 @@ class page_jobandvacancy_page_search extends page_base_site {
 		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 		$this->memorize("type",$_GET['type']?:$this->recall('type',false));
 
-		$this->add('View_ModuleHeading')->set('Find Job & Vacancy')->sub('Search via State, City, Minimum Package');
+		$this->add('View_ModuleHeading')->set('Job & Vacancy')->sub('Search via State, City, Minimum Package');
 		$form=$this->add('Form',null,null,array('form_horizontal'));
 		$segment_field=$form->addField('dropdown','segment')->setEmptyText("Please Select Segment");
 		$segment_field->template->trySet('row_class','span2');
