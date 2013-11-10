@@ -68,10 +68,10 @@ class page_businessdirectory_page_more extends page_base_site{
 			$tm=$this->add( 'TMail_Transport_PHPMailer' );
 			$msg=$this->add( 'SMLite' );
 			$msg->loadTemplate( 'mail/enquiry' );
-			$msg->trySet( 'name', $form['name'] );
-			$msg->trySet( 'mobile_no', $form['mobile_no'] );
-			$msg->trySet( 'email_id', $form['email_id'] );
-			$msg->trySet( 'message', $form['messge'] );
+			$msg->trySet( 'name', $contact_form['name'] );
+			$msg->trySet( 'mobile_no', $contact_form['mobile_no'] );
+			$msg->trySet( 'email_id', $contact_form['email_id'] );
+			$msg->trySet( 'message', $contact_form['messge'] );
 			$email_body=$msg->render();
 
 			$subject ="Your got an enquiry from Sabkuch24.com listing";
@@ -84,7 +84,7 @@ class page_businessdirectory_page_more extends page_base_site{
 			}catch( Exception $e ) {
 				throw $e;
 			}
-			$contact_form->js()->univ()->successMessage('Under Construction, Contact You soon...')->execute();
+			$contact_form->js(null,$contact_form->js()->reload())->univ()->successMessage('Enquiry has been submitted')->execute();
 		}
 	}
 }
