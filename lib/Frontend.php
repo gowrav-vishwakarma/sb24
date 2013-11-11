@@ -61,7 +61,7 @@ class Frontend extends ApiFrontend {
 
         // If you are using a complex menu, you can re-define
         // it and place in a separate class
-
+        $this->add('visitorcounter/View_Counter',null,'visitor');
         $this->sb24_config = $this->add('Model_Config')->tryLoadAny();
     }
 
