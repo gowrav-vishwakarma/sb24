@@ -6,6 +6,7 @@ class page_base_admin extends Page {
 
 		$this->api->jquery->addStaticInclude('elrte/js/elrte.min');
 		$this->api->jquery->addStaticStyleSheet('elrte/css/elrte.min');
+		$this->api->jquery->addStaticInclude('tinymce/jquery.tinymce.min');
 
 		$this->api->template->tryDel('top_advert_position');
 		$this->api->template->tryDel('left_advert_position');

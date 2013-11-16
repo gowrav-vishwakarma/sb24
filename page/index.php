@@ -57,7 +57,11 @@ class page_index extends page_base_site {
 
 		$login_form->addSubmit('Login')->addClass('shine');
 		$col_login->add('H5')->set('Forgot Password')->setStyle('text-decoration','underline')->addStyle('cursor','help')->js('click',$this->js()->univ()->frameURL("Forgot Password !!!",$this->api->url('memberpanel_page_forgetpassword')));
+<<<<<<< HEAD
 		$col_login->add('Button')->set("Friend's Book")->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
+=======
+		$col_login->add('Button')->set('Friend\'s Book')->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
+>>>>>>> 60230068b72cb9fa63ffb4083032a33a5027ee94
 
 		if($login_form->isSubmitted()){
 			$this->api->auth->setModel('Member','username','password');

@@ -9,7 +9,7 @@ class Model_Counter extends \Model_Table {
 
 
 		$this->addField('on_date')->type('date')->defaultValue(date('Y-m-d'));
-		$this->addField('visits');
+		$this->addField('visits')->defaultValue(0);
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

@@ -475,3 +475,9 @@ div.gallary-image{
   /*height: 100px;*/
   padding-top: 10px;
 }
+
+.visitors_counter{
+  font-size: 20px;
+  border: 2px dotted red;
+  width: 300px;
+}
