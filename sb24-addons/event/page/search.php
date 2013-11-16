@@ -23,11 +23,11 @@ class page_event_page_search extends page_base_site {
 		$this->memorize("from_date",$_GET['from_date']?:$this->recall('from_date',false));
 		$this->add('View_ModuleHeading')->set('Find Events')->sub('Search via State, City, Type of event and date');
 		$fields=array(
-			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Please Select State'),
+			'state_id'=>array('type'=>'dropdown','model'=>'State','emptyText'=>'Select State'),
 			'event_from_date'=>array('type'=>'DatePicker'),
-			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Please Select City'),
-			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Please Select Tehsil'),
-			'event_type_id'=>array('type'=>'dropdown','model'=>'event/Type','emptyText'=>'Please Select Event Type'),
+			'city_id'=>array('type'=>'dropdown','model'=>'City','emptyText'=>'Select City'),
+			'tehsil_id'=>array('type'=>'dropdown','model'=>'Tehsil','emptyText'=>'Select Tehsil'),
+			'event_type_id'=>array('type'=>'dropdown','model'=>'event/Type','emptyText'=>'Select Event Type'),
 			'event_to_date'=>array('type'=>'DatePicker'),
 			);
 

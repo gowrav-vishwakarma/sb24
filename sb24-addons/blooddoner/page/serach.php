@@ -19,7 +19,7 @@ class page_blooddoner_page_serach extends page_base_site {
 		$this->memorize("area",$_GET['area']?:$this->recall('area',false));
 
 		$this->add('View_ModuleHeading')->set('Find Blood Dooner')->sub('Search via State, City, Type of event and date');
-		$register_btn = $this->add('Button')->setStyle('padding','15px')->addClass('shine')->setHTML('<span class="shine"style="color:red; font-size:1em">*Click Here</span>&nbsp; Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px','padding'=>'10px'));
+		$register_btn = $this->add('Button')->setStyle('padding','15px')->addClass('shine')->setHTML('<span class="shine"style="color:red; font-size:1em">*Click Here</span>&nbsp; Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px','padding'=>'10px','font-size'=>'87%'));
 		$register_btn->js('click',$this->js()->univ()->redirect('memberpanel_page_register'));
 
 		$form = $this->add('Form',null,null,array('form_horizontal'));

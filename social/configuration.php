@@ -15,7 +15,7 @@ class JConfig {
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = 'winserver';
-	public $db = 'sb24social';
+	public $db = 'sb24';
 	public $dbprefix = 'jos_';
 	public $live_site = '';
 	public $secret = 'VLTCwjcp4tzYnB7k';

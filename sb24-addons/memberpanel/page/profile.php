@@ -6,7 +6,7 @@ class page_memberpanel_page_profile extends page_memberpanel_page_base {
 
 
 		$this->add('H3')->set('Update your profile')
-		->sub('SMS Authentication is needed for each updation, So first send your self an Verification Code')
+		
 		;
 
 		$form=$this->add('Form');

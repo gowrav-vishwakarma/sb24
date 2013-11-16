@@ -7,14 +7,16 @@ class page_base_site extends page_base_null {
 	}
 
 	function setUpSiteMenus(){
-		$sb=$this->api->menu
+		$this->api->menu
 					->addMenuItem('index','Home')
 					->addMenuItem($this->api->url('history_page_search',array('reset'=>1)),'History');
-		$sb=$this->api->menu->addSubMenu('sdfsd','sdfdsf');
-					$sb->addMenuItem('sdfsd','p1');
-					$sb->addMenuItem('sdfsd','p2');
-					$sb->addMenuItem('sdfsd','p3');
-					
+		// $sb=$this->api->menu->addSubMenu('sdfsd','sdfdsf');
+		// 			$sb->addMenuItem('sdfsd','p1');
+		// 			$sb->addMenuItem('sdfsd','p2');
+		// 			$sb->addMenuItem('sdfsd','p3');
+
+		// $this->api->menu->add('Menu')->addMenuItem('P1','PD1')->addMenuItem('P2','PD2');
+						
 		$this->api->menu
 					->addMenuItem($this->api->url('businessdirectory_page_search',array('reset'=>1)),'Free Business Listing')
 					->addMenuItem($this->api->url('socialdirectory_page_search',array('reset'=>1)),'Telephone Web Directory')

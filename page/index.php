@@ -14,14 +14,14 @@ class page_index extends page_base_site {
 		$this->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center')->setStyle('margin-bottom','10px');
 		$search_form=$this->add('Form')->addClass('stacked');
 		$search_form->addField('line','search','')->validateNotNull("Please Search")->setClass('highlight span10');
-		$search_form->add('Button')->set('Search')->addClass('shine atk-form-row atk-form-row-dropdown  ')->js('click')->submit();
+		$search_form->add('Button')->set('Search')->addClass('shinev atk-form-row atk-form-row-dropdown ')->js('click')->submit();
 		$search_form->add('View')->set('A Rajasthan Local Search Engine & Telephone Web Directory')->setStyle(array('margin-top'=>'20px',
-																												'font-family'=> 'Snippet','sans-serif',' font-weight'=>' bold','color'=>'saddlebrown'));
+																												'font-family'=> 'Snippet','sans-serif',' font-weight'=>' bold','color'=>'saddlebrown','font-size'=>'18px'));
 
 		if($search_form->isSubmitted()){
 			$search_form->js()->univ()->redirect($this->api->url('businessdirectory_page_search',array('reset'=>1,"filter"=>1,'search'=>$search_form['search'])))->execute();
 		}
-
+		$this->add('View')->addClass('left-col');
 		$cols=$this->add('Columns');
 		$col_login1=$cols->addColumn(2)->setHTML('&nbsp;');
 		$col_login=$cols->addColumn(8)->addClass('right-front-page-col');
@@ -57,7 +57,7 @@ class page_index extends page_base_site {
 
 		$login_form->addSubmit('Login')->addClass('shine');
 		$col_login->add('H5')->set('Forgot Password')->setStyle('text-decoration','underline')->addStyle('cursor','help')->js('click',$this->js()->univ()->frameURL("Forgot Password !!!",$this->api->url('memberpanel_page_forgetpassword')));
-		$col_login->add('Button')->set('India Book')->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
+		$col_login->add('Button')->set("Friend's Book")->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
 
 		if($login_form->isSubmitted()){
 			$this->api->auth->setModel('Member','username','password');

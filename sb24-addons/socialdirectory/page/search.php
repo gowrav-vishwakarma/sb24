@@ -24,7 +24,7 @@ class page_socialdirectory_page_search extends page_base_site {
 		$this->memorize("subcast",$_GET['subcast']?:$this->recall('subcast',false));
 
 		$this->add('View_ModuleHeading')->set('Telephone Directory')->sub('Search via State, City, Cast, Age or Interest');
-		$register_btn = $this->add('Button')->setStyle('padding','15px')->addClass('shine')->setHTML('<span class="shine"style="color:red; font-size:1em">*Click Here</span>&nbsp; Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px','padding'=>'10px'));
+		$register_btn = $this->add('Button')->setStyle('padding','15px')->addClass('shine')->setHTML('<span class="shine"style="color:red; font-size:1em">*Click Here</span>&nbsp; Register Your self on SabKuch24.com ... And Expand your social coverage')->addClass('atk-row span12 btn')->setStyle(array('background'=>'green','color'=>'white','margin-bottom'=>'20px','padding'=>'10px','font-size'=>'87%'));
 		$register_btn->js('click',$this->js()->univ()->redirect('socialdirectory_page_member_index'));
 
 		$form= $this->add('Form',null,null,array('form_horizontal'));
