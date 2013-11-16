@@ -203,6 +203,21 @@ border-radius:40px;
 
 }
 
+.left-col{
+  background-image:url('../images/joinus.jpg'); 
+  width: 50%;
+  height: 70%;
+  background-color: white;
+    border: 10px solid burlywood;
+    /*border-radius: 40px 40px 40px 40px;*/
+    /*box-shadow: 0 0 15px white;*/
+    float: right;
+    margin: -140px -345px;
+    padding:9% 16%;
+
+
+}
+
 .atk-form-field ins{
   color:red !important;
 }

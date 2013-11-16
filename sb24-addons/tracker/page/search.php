@@ -85,13 +85,18 @@ class page_tracker_page_search extends page_base_site {
 		if($this->recall('area',false)) $result->addCondition('area',$this->recall('area'));
 
 
+		
+		if($search=$this->recall('search',false)){
+				$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)')->system(true);
+			// $result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
+			$result->setOrder('Relevance','Desc');
+			$result->addCondition('Relevance','>','0');	
 		}
-		if($this->recall('reset',false)){
-				$result->addCondition('state_id',-1);	
+		}else{
+			$result->addCondition('state_id',-1);
 		}
 		
 		$std_grid->setModel($result);
-		$std_grid->addQuickSearch(array('state','district','area','STD_code'));
 		$std_grid->addPaginator(50);
 	}
 
@@ -155,7 +160,10 @@ class page_tracker_page_search extends page_base_site {
 			if($xpost_office = $this->recall('post_office',false)) $result->addCondition('post_office',$xpost_office);
 		
 			if($search=$this->recall('search',false)){
-			$result->addCondition('pin_code','like',$search);
+			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
+			// $result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
+			$result->setOrder('Relevance','Desc');
+			$result->addCondition('Relevance','>','0');
 		}
 		}else{
 			$result->addCondition('state_id',-1);	
@@ -173,12 +181,14 @@ class page_tracker_page_search extends page_base_site {
 			$this->forget('city');
 			$this->forget('bank');
 			$this->forget('branch');
+			$this->forget('search');
 		}
 		$this->memorize("filter",$_GET['filter']?:$this->recall('filter',false));
 		$this->memorize("state",$_GET['state']?:$this->recall('state',false));
 		$this->memorize("city",$_GET['city']?:$this->recall('city',false));
 		$this->memorize("bank",$_GET['bank']?:$this->recall('bank',false));
 		$this->memorize("branch",$_GET['branch']?:$this->recall('branch',false));
+		$this->memorize("search",$_GET['search']?:$this->recall('search',false));
 		$this->add('H3')->set('Get MICR / IFSC Code')->sub('Search by State, City, Bank, Branch, MICR  or IFSC');
 
 		
@@ -186,22 +196,31 @@ class page_tracker_page_search extends page_base_site {
 
 		$mirc_grid = $this->add('Grid');
 		
-		$form->addField('dropdown','state_id','State')->setEmptyText("Any State")->setModel('State');
-		$form->addField('dropdown','city_id','City')->setEmptyText("Any City")->setModel('City');
+		$state_field=$form->addField('dropdown','state_id','State')->setEmptyText("Any State");
+		$state_field->setModel('State');
+		$state_field->template->trySet('row_class','span3');
+		$city_field=$form->addField('dropdown','city_id','City')->setEmptyText("Any City");
+		$city_field->setModel('City');
+		$city_field->template->trySet('row_class','span3');
 		$bank_model=$this->add('tracker/Model_MIRCListing');
 		$bank_model->title_field='bank';
 		$bank_model->id_field='bank_id';
-		$form->addField('dropdown','bank_id')->setEmptyText("Any Bank")->setModel($bank_model);
+		$bank_field=$form->addField('dropdown','bank_id')->setEmptyText("Any Bank");
+		$bank_field->setModel($bank_model);
+		$bank_field->template->trySet('row_class','span3');
 		$bank_branch = $this->add('tracker/Model_MIRCListing');//->debug()->_dsql()->del('field')->field('distinct(area) area');
 		$bank_branch->title_field = $bank_branch->id_field = 'branch';
-		$form->addField('dropdown','branch')->setEmptyText("Any Branch")->setModel($bank_branch	);
-		// $form->setFormClass('stacked atk-row');
-  //           $o=$form->add('Order')
-  //               ->move($form->addSeparator('noborder span4'),'first')
-  //               ->move($form->addSeparator('noborder span4'),'after','city_id')
-  //               ->move($form->addSeparator('noborder span3'),'after','branch')
-  //               ->now();
-		$submit_btn = $form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'25px'))->addClass(' shine1')->js('click')->submit();
+		$field_branch=$form->addField('dropdown','branch')->setEmptyText("Any Branch");
+		$field_branch->setModel($bank_branch);
+		$field_branch->template->trySet('row_class','span3');
+		$search_field=$form->addField('line','search');
+		$search_field->template->trySet('row_class','span9');
+		$form->setFormClass('stacked atk-row');
+            $o=$form->add('Order')
+                ->move($form->addSeparator('noborder atk-row'),'first')
+                // ->move($form->addSeparator('noborder atk-row'),'after','search')
+                ->now();
+		$submit_btn = $form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addStyle(array('margin-top'=>'20px','margin-left'=>'10px'))->addClass(' shine1')->js('click')->submit();
 		// $submit_btn->template->trySet('row_class','span12');
 		$submit_btn->js('click')->submit();
 		if(!$form->isSubmitted()){
@@ -215,11 +234,13 @@ class page_tracker_page_search extends page_base_site {
 			$this->forget('city');
 			$this->forget('bank');
 			$this->forget('branch');
+			$this->forget('search');
 			$mirc_grid->js()->reload(array(
 									'state'=>$form['state_id'],
 									'city'=>$form['city_id'],
 									'bank'=>$form['bank_id'],
 									'branch'=>$form['branch'],
+									'search'=>$form['search'],
 									'filter'=>1
 									)
 								)->execute();	
@@ -231,6 +252,13 @@ class page_tracker_page_search extends page_base_site {
 		if($this->recall('city',false)) $result->addCondition('city_id',$this->recall('city',false));
 		if($this->recall('bank',false)) $result->addCondition('bank_id',$this->recall('bank',false));
 		if($this->recall('branch',false)) $result->addCondition('branch',$this->recall('branch',false));
+		
+		if($search=$this->recall('search',false)){
+			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE )');
+			// $result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
+			$result->setOrder('Relevance','Desc');
+			$result->addCondition('Relevance','>','0');
+		} 
 		}else{
 			$result->addCondition('state_id',-1);	
 		}
@@ -387,8 +415,8 @@ class page_tracker_page_search extends page_base_site {
 		}
 
 		$vehicle_grid->add('H4',null,'top_1')->set('Search Result');
-		$vehicle_grid->setModel($result,array('state','area','name'));
 		// $vehicle_grid->addQuickSearch(array('state','area','name'));
+		$vehicle_grid->setModel($result,array('state','area','name'));
 		$vehicle_grid->addPaginator(10);
 	}
 }

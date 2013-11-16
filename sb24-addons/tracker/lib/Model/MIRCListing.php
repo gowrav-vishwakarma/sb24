@@ -14,6 +14,7 @@ class Model_MIRCListing extends \Model_Table {
 		$this->addField('branch');
 		$this->addField('mirc');
 		$this->addField('ifsc');
+		$this->addField('search_string');
 
 		$this->addHook('beforeSave',$this);
 
@@ -21,6 +22,15 @@ class Model_MIRCListing extends \Model_Table {
 	}
 
 	function beforeSave(){
+
+		$this['search_string']=
+								$this->ref('state_id')->get('name') . " ".
+								$this->ref('city_id')->get('name'). " ".
+								$this->ref('bank_id')->get('name'). " ".
+								$this["branch"]. " ".
+								$this['mirc']. " ".
+								$this["ifsc"]
+							;
 		if($this['state_id']=="")
 			throw $this->exception('State cannot be empty','ValidityCheck')->setField('state_id');
 		if($this['city_id']=="")

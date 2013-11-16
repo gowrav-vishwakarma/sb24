@@ -17,6 +17,9 @@ class Model_RTOListing extends \Model_Table {
 	}
 
 	function beforeSave(){
+
+		
+		
 		if($this['state_id']=="")
 			throw $this->exception('State Must be Selected','ValidityCheck')->setField('state_id');
 	}
