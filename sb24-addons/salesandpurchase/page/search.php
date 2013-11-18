@@ -77,8 +77,8 @@ class page_salesandpurchase_page_search extends page_base_site {
 
 			
 		}else{
-			
 		$result->addCondition('state_id',-1);
+			$salesandpurchase_listing->template->tryDel('not_found');
 		}
 
 

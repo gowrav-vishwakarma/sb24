@@ -21,6 +21,7 @@ class page_index extends page_base_site {
 		if($search_form->isSubmitted()){
 			$search_form->js()->univ()->redirect($this->api->url('businessdirectory_page_search',array('reset'=>1,"filter"=>1,'search'=>$search_form['search'])))->execute();
 		}
+<<<<<<< HEAD
 		// $v=$this->add('View')->addClass('left-col');
 		
 		$cols=$this->add('Columns')->addClass('right-front-page-col');
@@ -31,6 +32,14 @@ class page_index extends page_base_site {
 		$col_register->add('H5')->setHTML("<span style='color:burlywood'>Login To Your Friend's Book Account</span>");
 		$col_register->add('HtmlElement')->setElement("img")->setAttr('src','joining-hands.jpg');
 		$col_register->add('Button')->set("Friend's Book")->addClass('shine')->setStyle('margin-top','17px')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
+=======
+		$this->add('View')->addClass('left-col');
+		$cols=$this->add('Columns');
+		$col_login1=$cols->addColumn(2)->setHTML('&nbsp;');
+		$col_login=$cols->addColumn(8)->addClass('right-front-page-col');
+		$col_login2=$cols->addColumn(1);
+		// $col_register=$cols->addColumn(7)->addClass('col');
+>>>>>>> 9b6de0831f09ed347c80a66dc6bdb05b11b78260
 
 
 		// $col_register->add('H3')->set('Register Now, Its Free ...')
@@ -61,10 +70,18 @@ class page_index extends page_base_site {
 
 		$login_form->addSubmit('Login')->addClass('shine');
 		$col_login->add('H5')->set('Forgot Password')->setStyle('text-decoration','underline')->addStyle('cursor','help')->js('click',$this->js()->univ()->frameURL("Forgot Password !!!",$this->api->url('memberpanel_page_forgetpassword')));
+<<<<<<< HEAD
 
 		// $col_login->add('Button')->set("Friend's Book")->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
 
 
+=======
+<<<<<<< HEAD
+		$col_login->add('Button')->set("Friend's Book")->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
+=======
+		$col_login->add('Button')->set('Friend\'s Book')->addClass('shine')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
+>>>>>>> 60230068b72cb9fa63ffb4083032a33a5027ee94
+>>>>>>> 9b6de0831f09ed347c80a66dc6bdb05b11b78260
 
 		if($login_form->isSubmitted()){
 			$this->api->auth->setModel('Member','username','password');

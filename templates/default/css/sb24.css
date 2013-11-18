@@ -207,6 +207,8 @@ border-radius:40px;
    background-color: white;
     background-image: url("../images/joinus.jpg") ;
     border: 10px solid burlywood;
+    /*border-radius: 40px 40px 40px 40px;*/
+    /*box-shadow: 0 0 15px white;*/
     float: right;
     height: 70%;
     margin: -140px -345px;
@@ -239,6 +241,29 @@ border-radius:40px;
   font-family:'comic-sans',comic-sans;
   font-size:20px;
   font-weight:bold;
+  border:2px solid white;
+ box-shadow: 0 0 15px white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    /*border-radius: 5px;*/
+border-radius:13px 13px 13px 13px;
+}
+
+.shinev{
+     background:burlywood;
+  background:-moz-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,burlywood),color-stop(100%,burlywood));
+  background:-webkit-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-o-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-ms-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:linear-gradient(top,burlywood 0%,burlywood 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='burlywood',endColorstr='#burlywood',GradientType=0);
+  padding:0px 0px;   
+  color:white;
+  /*font-family:'comic-sans',comic-sans;*/
+  font-size:18px;
+  font-weight:bold;
+  width: 100px;
   border:2px solid white;
  box-shadow: 0 0 15px white;
     -moz-border-radius: 5px;
@@ -425,6 +450,23 @@ max-width: 100%;
 .cap{
   text-transform: uppercase;
   font-size: 1.2em;
+}
+.small{
+  text-transform: capitalize;
+
+}
+.small1{
+  text-transform: lowercase;
+  
+}
+.image-set{
+  width:40%;
+  height:100%;
+}
+
+.text-size{
+  font-size: 50%;
+
 }
 
 div.gallary-image{

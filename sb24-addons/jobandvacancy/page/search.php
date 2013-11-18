@@ -25,22 +25,22 @@ class page_jobandvacancy_page_search extends page_base_site {
 
 		$this->add('View_ModuleHeading')->set('Job & Vacancy')->sub('Search via State, City, Minimum Package');
 		$form=$this->add('Form',null,null,array('form_horizontal'));
-		$segment_field=$form->addField('dropdown','segment')->setEmptyText("Please Select Segment");
+		$segment_field=$form->addField('dropdown','segment')->setEmptyText("Select Segment");
 		$segment_field->template->trySet('row_class','span2');
 		$segment_field->setModel('jobandvacancy/Segment');
-		$state_field=$form->addField('dropdown','state_id','State')->setEmptyText("Please Select State");
+		$state_field=$form->addField('dropdown','state_id','State')->setEmptyText("Select State");
 		$state_field->template->trySet('row_class','span2');
 		$state_field->setModel('State');
-		$city_field=$form->addField('dropdown','city_id','City')->setEmptyText("Please Select City");
+		$city_field=$form->addField('dropdown','city_id','City')->setEmptyText("Select City");
 		$city_field->template->trySet('row_class','span2');
 		$city_field->setModel('City');
-		$tehsil_field=$form->addField('dropdown','tehsil_id','Tehsil')->setEmptyText("Please Select Tehsil");
+		$tehsil_field=$form->addField('dropdown','tehsil_id','Tehsil')->setEmptyText("Select Tehsil");
 		$tehsil_field->template->trySet('row_class','span2');
 		$tehsil_field->setModel('Tehsil');
 		$min_package_field=$form->addField('Number','min_package')->setFieldHint('Package/Annum ie 250000');
 		$min_package_field->template->trySet('row_class','span2');
 		$type_field=$form->addField('dropdown','type')->setValueList(array('job_application'=>'Job Application',
-																'vacancy'=>'Vacancy'))->setEmptyText('Please Select Type');
+																'vacancy'=>'Vacancy'))->setEmptyText('Select Type');
 		$type_field->template->trySet('row_class','span2');
 		$search_field=$form->addField('line','search');
 		$search_field->template->trySet('row_class','span9');

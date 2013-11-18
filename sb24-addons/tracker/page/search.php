@@ -94,6 +94,7 @@ class page_tracker_page_search extends page_base_site {
 		}
 		}else{
 			$result->addCondition('state_id',-1);
+			$std_grid->template->tryDel('not_found');
 		}
 		
 		$std_grid->setModel($result);
@@ -166,6 +167,7 @@ class page_tracker_page_search extends page_base_site {
 			$result->addCondition('Relevance','>','0');
 		}
 		}else{
+			$pincode_grid->template->tryDel('not_found');
 			$result->addCondition('state_id',-1);	
 		}
 
@@ -260,6 +262,7 @@ class page_tracker_page_search extends page_base_site {
 			$result->addCondition('Relevance','>','0');
 		} 
 		}else{
+			$mirc_grid->template->tryDel('not_found');
 			$result->addCondition('state_id',-1);	
 		}
 
@@ -313,6 +316,7 @@ class page_tracker_page_search extends page_base_site {
 
 		}
 		else{
+			$mobile_list->template->tryDel('not_found');
 			$mobile_list->addCondition('series',-1);
 		}
 		$mobile_tracker_grid->setModel($mobile_list,array('state','company','company_logo'));
@@ -410,6 +414,7 @@ class page_tracker_page_search extends page_base_site {
 		}
 		}
 		else{
+			$vehicle_grid->template->tryDel('not_found');
 		$result->addCondition('state_id',-1);
 
 		}
