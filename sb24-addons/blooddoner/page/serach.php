@@ -80,6 +80,7 @@ class page_blooddoner_page_serach extends page_base_site {
 				$doners->addCondition('Relevance','>','0.8');
 				}
 			}else{
+				$grid->template->tryDel('not_found');
 				$doners->addCondition('id','-1');
 
 			}

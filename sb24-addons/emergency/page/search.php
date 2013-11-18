@@ -74,7 +74,8 @@ class page_emergency_page_search extends page_base_site {
 
 		}
 		else{
-			// $result->addCondition('state_id',-1);
+			$grid->template->tryDel('not_found');
+			$result->addCondition('state_id',-1);
 		}
 
 		$grid->addPaginator(10);

@@ -64,6 +64,7 @@ class page_event_page_search extends page_base_site {
 			if($this->recall('to_date',false)) $result->addCondition('event_date','<=',$this->recall('to_date',false));
 			if($this->recall('from_date',false)) $result->addCondition('event_date','>=',$this->recall('from_date',false));
 		}else{
+			$list->template->tryDel('not_found');
 			$result->addCondition('state_id',-1);
 		}
 

@@ -63,6 +63,7 @@ class page_businessdirectory_page_search extends page_base_site {
 				$result->addCondition('segment_id',$this->recall('segment',false));
 
 		}else{
+				$business_listing->template->tryDel('not_found');
 				$result->addCondition('state_id',-1);
 		}
 				

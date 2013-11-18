@@ -23,5 +23,7 @@ class page_adds_page_email extends page_base_null{
 		}catch( Exception $e ) {
 			throw $e;
 		}
+
+		$this->js(true)->univ()->successMessage("Done")->execute();
 	}
 }

@@ -35,6 +35,7 @@ class page_distance_page_search extends page_base_site {
 				$model2->tryLoadAny();
 			$heading->sub('From ' . $model2['city_1']. " to " . $model2['city_2']);
 		}else{
+			$model_distance_listing->template->tryDel('not_found');
 			$model_distance_listing->addCondition('city_1_id',-1);
 		}		
 		

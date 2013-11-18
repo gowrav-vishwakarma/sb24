@@ -87,6 +87,7 @@ class page_jobandvacancy_page_search extends page_base_site {
 			}
 		}
 		else{
+			$v->template->tryDel('not_found');
 				$model_jobandvacancy->addCondition('state_id',-1);
 
 		}

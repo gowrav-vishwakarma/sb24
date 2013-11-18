@@ -18,6 +18,7 @@ class Model_Place extends \Model_Table {
 		$this->addField('about')->type('text')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
 		$this->addField('search_string')->type('text')->system(true);
 		$this->addHook('beforeSave',$this);
+		$this->hasMany('history/Images','place_id');
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}
 

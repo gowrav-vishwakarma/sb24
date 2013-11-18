@@ -55,8 +55,10 @@ class page_history_page_search extends page_base_site {
 		}
 
 		if(!$filter = $this->recall('filter',false)) {
+			$list->template->tryDel('not_found');
 			$result->addCondition('id',-1);
 		}
+
 
 		if($search = $this->recall('search',false)){
 			$result->addExpression('relevance')->set('MATCH(search_string) AGAINST("'.str_replace('"', '\"', $search).'" IN BOOLEAN MODE)');

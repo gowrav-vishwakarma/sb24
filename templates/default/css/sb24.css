@@ -204,18 +204,22 @@ border-radius:40px;
 }
 
 .left-col{
-  background-image:url('../images/joinus.jpg'); 
-  width: 50%;
-  height: 70%;
-  background-color: white;
+   background-color: white;
+    background-image: url("../images/joinus.jpg") ;
     border: 10px solid burlywood;
-    /*border-radius: 40px 40px 40px 40px;*/
-    /*box-shadow: 0 0 15px white;*/
     float: right;
+    height: 70%;
     margin: -140px -345px;
-    padding:9% 16%;
+    padding: 80px;
+    width: 58%;
 
 
+}
+.left{
+  float: right;
+    height: 70%;
+    margin: -140px -345px;
+    padding: 80px;
 }
 
 .atk-form-field ins{
@@ -434,4 +438,10 @@ div.gallary-image{
   text-align: center;
   /*height: 100px;*/
   padding-top: 10px;
+}
+
+.visitors_counter{
+  font-size: 20px;
+  border: 2px dotted red;
+  width: 300px;
 }
