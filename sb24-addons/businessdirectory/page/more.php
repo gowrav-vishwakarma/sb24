@@ -25,13 +25,13 @@ class page_businessdirectory_page_more extends page_base_site{
 
 		//gallary start//
 		$gallary->add('H2')->set("Gallary");
-		$gallary->add('businessdirectory/View_Gallary')->setModel("businessdirectory/GallaryImages");
+		$gallary->add('businessdirectory/View_Gallary')->setModel($listing->ref("businessdirectory/GallaryImages"));
 
 		// /gallary end//
 
 		//products and services start//
 		$p_and_s->add('H2')->set("Products & Services");
-		$p_and_s->add('businessdirectory/View_Product')->setModel("businessdirectory/ProductImages");
+		$p_and_s->add('businessdirectory/View_Product')->setModel($listing->ref("businessdirectory/ProductImages"));
 		
 		//products and services end//
 

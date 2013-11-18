@@ -16,6 +16,11 @@ class View_Gallary extends \CompleteLister{
  //        return $this;
  //    }
 
+	function formatRow(){
+		$js = $this->js()->univ()->frameURL($this->model['name'], $this->api->url('businessdirectory_page_gallarypic',array('image_id'=>$this->model->id)));
+		$this->current_row['click_action'] = "javascript:".$js;
+	}
+
 	function defaultTemplate(){
 		$l=$this->api->locate('addons',__NAMESPACE__, 'location');
 		$this->api->pathfinder->addLocation(

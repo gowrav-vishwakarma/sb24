@@ -3,6 +3,8 @@
 class page_history_page_search extends page_base_site {
 	function init(){
 		parent::init();
+
+
 		if($_GET['reset']){
 			$this->forget('filter');
 			$this->forget('state');

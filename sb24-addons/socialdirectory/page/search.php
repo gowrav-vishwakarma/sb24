@@ -29,22 +29,22 @@ class page_socialdirectory_page_search extends page_base_site {
 
 		$form= $this->add('Form',null,null,array('form_horizontal'));
 		$list = $this->add('socialdirectory/View_Lister');
-		$field_state=$form->addField('dropdown','state_id','State')->setEmptyText('Please select State');
+		$field_state=$form->addField('dropdown','state_id','State')->setEmptyText('select State');
 		$field_state->template->trySet('row_class','span2');
 		$field_state->setModel('State');
-		$field_city=$form->addField('dropdown','city_id','City')->setEmptyText('Please select City');
+		$field_city=$form->addField('dropdown','city_id','City')->setEmptyText('select City');
 		$field_city->template->trySet('row_class','span2');
 		$field_city->setModel('City');
-		$field_tehsil=$form->addField('dropdown','tehsil_id','Tehsil')->setEmptyText('Please select Tehsil');
+		$field_tehsil=$form->addField('dropdown','tehsil_id','Tehsil')->setEmptyText('select Tehsil');
 		$field_tehsil->template->trySet('row_class','span2');
 		$field_tehsil->setModel('Tehsil');
-		$field_area=$form->addField('dropdown','area_id','Area')->setEmptyText('Please select Area');
+		$field_area=$form->addField('dropdown','area_id','Area')->setEmptyText('select Area');
 		$field_area->template->trySet('row_class','span2');
 		$field_area->setModel('Area');
-		$field_cast=$form->addField('dropdown','cast_id','Cast')->setEmptyText('Please select Cast');
+		$field_cast=$form->addField('dropdown','cast_id','Cast')->setEmptyText('select Cast');
 		$field_cast->template->trySet('row_class','span2');
 		$field_cast->setModel('socialdirectory/Cast');
-		$field_subcast=$form->addField('dropdown','subcast_id','Sub Cast')->setEmptyText('Please select Sub Cast');
+		$field_subcast=$form->addField('dropdown','subcast_id','Sub Cast')->setEmptyText('select Sub Cast');
 		$field_subcast->template->trySet('row_class','span2');
 		$field_subcast->setModel('socialdirectory/SubCast');
 		$search_field = $form->addField('line','search')->setAttr('placeholder','like "Mr. Abc in udaipur from Xyz Cast Male"');

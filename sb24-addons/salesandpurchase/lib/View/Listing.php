@@ -26,6 +26,7 @@ class View_Listing extends \CompleteLister{
 		if($model->count()->getOne() > 0) $this->template->tryDel('not_found');
 		parent::setModel($model);
 	}
+	
 
 	function defaultTemplate(){
 		$l=$this->api->locate('addons',__NAMESPACE__, 'location');
