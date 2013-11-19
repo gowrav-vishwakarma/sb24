@@ -482,8 +482,56 @@ div.gallary-image{
   padding-top: 10px;
 }
 
-.visitors_counter{
+/*.visitors_counter{
   font-size: 20px;
   border: 2px dotted red;
   width: 300px;
+}*/
+
+.visitors_counter{
+  font-size: 20px;
+  border: 2px dotted red;
+  width: 195px;
+    background:burlywood;
+  background:-moz-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,burlywood),color-stop(100%,burlywood));
+  background:-webkit-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-o-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-ms-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:linear-gradient(top,burlywood 0%,burlywood 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='burlywood',endColorstr='#burlywood',GradientType=0);
+  padding:4px 10px;
+  color:white;
+  font-family:'comic-sans',comic-sans;
+  font-size:20px;
+  font-weight:bold;
+  border:2px solid white;
+ box-shadow: 0 0 15px white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    /*border-radius: 5px;*/
+border-radius:13px 13px 13px 13px;
+}
+
+.shinev{
+     background:burlywood;
+  background:-moz-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,burlywood),color-stop(100%,burlywood));
+  background:-webkit-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-o-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:-ms-linear-gradient(top,burlywood 0%,burlywood 100%);
+  background:linear-gradient(top,burlywood 0%,burlywood 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='burlywood',endColorstr='#burlywood',GradientType=0);
+  padding:0px 0px;   
+  color:white;
+  /*font-family:'comic-sans',comic-sans;*/
+  font-size:18px;
+  font-weight:bold;
+  width: 100px;
+  border:2px solid white;
+ box-shadow: 0 0 15px white;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    /*border-radius: 5px;*/
+border-radius:13px 13px 13px 13px;195px
 }

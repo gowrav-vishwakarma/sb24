@@ -16,6 +16,8 @@ class Model_Place extends \Model_Table {
 		$this->addField('name')->display(array('grid'=>'grid/inline'));
 		$this->addField('short_description')->type('text')->display(array('grid'=>'shorttext,grid/inline'));
 		$this->addField('about')->type('text')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
+		$this->addField('video')->type('line')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
+		$this->addField('audio')->type('line')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
 		$this->addField('search_string')->type('text')->system(true);
 		$this->addHook('beforeSave',$this);
 		$this->hasMany('history/Images','place_id');

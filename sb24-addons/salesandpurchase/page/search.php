@@ -36,7 +36,7 @@ class page_salesandpurchase_page_search extends page_base_site {
 			'category_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/Category','emptyText'=>'Select Category','span'=>2),
 			'subcategory_id'=>array('type'=>'dropdown','model'=>'salesandpurchase/SubCategory','emptyText'=>'Select SubCategory','span'=>2),
 			'min_amount'=>array('type'=>'line','span'=>2),
-			'type'=>array('type'=>'dropdown','emptyText'=>'Select Type','span'=>2,'valueList'=>array('sales'=>'Sales','requirement'=>'Requirement')),
+			'type'=>array('type'=>'dropdown','emptyText'=>'Select Type','span'=>3,'valueList'=>array('sales'=>'Sales','requirement'=>'Requirement')),
 			'search'=>array('type'=>'line','span'=>9,),
 			);
 
