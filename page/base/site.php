@@ -3,7 +3,7 @@ class page_base_site extends page_base_null {
 	function init(){
 		parent::init();
 		$this->setUpSiteMenus();
-		$this->setUpAdds();
+		// $this->setUpAdds();
 	}
 
 	function setUpSiteMenus(){
