@@ -236,7 +236,7 @@ border-radius:40px;
   background:-ms-linear-gradient(top,burlywood 0%,burlywood 100%);
   background:linear-gradient(top,burlywood 0%,burlywood 100%);
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='burlywood',endColorstr='#burlywood',GradientType=0);
-  padding:4px 10px;
+  padding:2px 4px;
   color:white;
   font-family:'comic-sans',comic-sans;
   font-size:20px;
@@ -270,6 +270,8 @@ border-radius:13px 13px 13px 13px;
     -webkit-border-radius: 5px;
     /*border-radius: 5px;*/
 border-radius:13px 13px 13px 13px;
+margin-left: 425px;
+margin-top:10px;
 }
 .shine1{
     background: rgba(183,222,237,1) !important;
@@ -491,15 +493,15 @@ div.gallary-image{
 .visitors_counter{
   font-size: 20px;
   border: 2px dotted red;
-  width: 195px;
-    background:burlywood;
-  background:-moz-linear-gradient(top,burlywood 0%,burlywood 100%);
-  background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,burlywood),color-stop(100%,burlywood));
-  background:-webkit-linear-gradient(top,burlywood 0%,burlywood 100%);
-  background:-o-linear-gradient(top,burlywood 0%,burlywood 100%);
-  background:-ms-linear-gradient(top,burlywood 0%,burlywood 100%);
-  background:linear-gradient(top,burlywood 0%,burlywood 100%);
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='burlywood',endColorstr='#burlywood',GradientType=0);
+  /*width: 195px;*/
+    background:#1E5799;
+  background: -moz-radial-gradient(center, ellipse cover, #7db9e8 0%, #1e5799 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#7db9e8), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, #7db9e8 0%,#1e5799 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, #7db9e8 0%,#1e5799 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=1 ); 
   padding:4px 10px;
   color:white;
   font-family:'comic-sans',comic-sans;
@@ -534,4 +536,12 @@ border-radius:13px 13px 13px 13px;
     -webkit-border-radius: 5px;
     /*border-radius: 5px;*/
 border-radius:13px 13px 13px 13px;195px
+}
+
+.leftmargin{
+  margin-left: 216px;
+}
+
+.member_logo{
+   margin-left:-103px
 }

@@ -14,7 +14,7 @@ class page_index extends page_base_site {
 		$this->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center')->setStyle('margin-bottom','10px');
 		$search_form=$this->add('Form')->addClass('stacked');
 		$search_form->addField('line','search','')->validateNotNull("Please Search")->setClass('highlight span10');
-		$search_form->add('Button')->set('Search')->addClass('shinev atk-form-row atk-form-row-dropdown ')->js('click')->submit();
+		$search_form->add('Button')->set('Search')->addClass('shine atk-form-row atk-form-row-dropdown ')->js('click')->submit();
 		$search_form->add('View')->set('A Rajasthan Local Search Engine & Telephone Web Directory')->setStyle(array('margin-top'=>'20px',
 																												'font-family'=> 'Snippet','sans-serif',' font-weight'=>' bold','color'=>'saddlebrown','font-size'=>'18px'));
 
@@ -30,7 +30,7 @@ class page_index extends page_base_site {
 		$col_register=$cols->addColumn(5)->addClass('col');
 		$col_register->add('H5')->setHTML("<span style='color:burlywood'>Login To Your Friend's Book Account</span>");
 		$col_register->add('HtmlElement')->setElement("img")->setAttr('src','joining-hands.jpg');
-		$col_register->add('Button')->set("Friend's Book")->addClass('shine')->setStyle('margin-top','17px')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
+		$col_register->add('Button')->setHTML("<span style='color:saddlebrown; font-size:1.5em'>F</span>riend's <span style='color:saddlebrown;font-size:1.5em'>B</span>ook")->addClass('shine')->setStyle('margin-top','17px')->js('click',$this->js()->univ()->redirect("socialsite_page_index"));
 
 
 		// $col_register->add('H3')->set('Register Now, Its Free ...')

@@ -17,14 +17,14 @@ class Form_Field_RichText extends Form_Field_Text{
 
 	function render(){
 
-		$this->js(true)->tinymce(array('script_url' => 'templates/js/tinymce/tinymce.min.js'));
+		// $this->js(true)->tinymce(array('script_url' => 'templates/js/tinymce/tinymce.min.js'));
 
-		// $this->js(true)->univ()->createRTE(array(
-		// 									'toolbar'=>'basic',
-		// 									'width' => '600',
-		// 									'height'=>'300'
-		// 									)
-		// 						);
+		$this->js(true)->_load('rte')->univ()->createRTE(array(
+											'toolbar'=>'basic',
+											'width' => '600',
+											'height'=>'300'
+											)
+								);
 		parent::render();
 	}
 

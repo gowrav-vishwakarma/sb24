@@ -21,8 +21,12 @@ class View_Counter extends \View{
 		}
 
 		$counter_total = $this->add('visitorcounter/Model_Counter');
+		$counter_today = $this->add('visitorcounter/Model_Counter');
+		$counter_today->addCondition('on_date',date('Y-m-d'));
+		$counter_today->tryLoadAny();
 
-		$this->set("Total Visitors : " . $counter_total->sum('visits')->getOne());
+		$this->add('View')->set("Total Visitors : " . $counter_total->sum('visits')->getOne());
+		$this->add('View')->set("Todays Visitors : " . $counter_today['visits']);
 		$this->addClass('visitors_counter');
 
 	}

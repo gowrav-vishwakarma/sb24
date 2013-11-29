@@ -19,6 +19,7 @@ class page_history_page_admin_index extends page_base_admin {
 		$place_crud->add('Controller_ChainSelector',array('chain_fields'=>array('city_id'=>'state_id','tehsil_id'=>'city_id','area_id'=>'tehsil_id'),'force_selection'=>false));
 		if($pg=$place_crud->grid){
 			$pg->addFormatter('place_image','picture');
+			$ptg->add('misc/Export');;
 		}
 
 	}

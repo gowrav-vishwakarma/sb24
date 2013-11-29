@@ -3,7 +3,7 @@
 class page_tracker_page_search extends page_base_site {
 	function page_index(){
 
-		$this->add('View_ModuleHeading')->set('Tracker')->sub('Search via State, City, Area or STD Code');
+		// $this->add('View_ModuleHeading')->set('Tracker')->sub('Search via State, City, Area or STD Code');
 		$tabs = $this->add('Tabs');
 		$std_tab = $tabs->addtabURL($this->api->url('./std',array('reset'=>1)),'STD');
 		$pincode_tab = $tabs->addtabURL($this->api->url('./pincode',array('reset'=>1)),'PIN Code');
@@ -316,7 +316,7 @@ class page_tracker_page_search extends page_base_site {
 
 		}
 		else{
-			$mobile_list->template->tryDel('not_found');
+			$mobile_tracker_grid->template->tryDel('not_found');
 			$mobile_list->addCondition('series',-1);
 		}
 		$mobile_tracker_grid->setModel($mobile_list,array('state','company','company_logo'));

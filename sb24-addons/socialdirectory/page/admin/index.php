@@ -35,6 +35,7 @@ class page_socialdirectory_page_admin_index extends page_base_admin {
 			$mg->columns['password']['thparam']='data-hide="all"';
 			$mg->addQuickSearch(array('name','username','mobile_no'));
 			$mg->addPaginator(20);
+			$mg->add('misc/Export');;
 		}
 		$manage_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'tehsil_id','tehsil_id'=>'city_id','city_id'=>'state_id'),'force_selection'=>false));
 	}

@@ -1,9 +1,11 @@
 <div class="cap row col-md-12"><?welcome?><?/welcome?></div>
 <div class="row">
-	<div class="col-md-3 sidebar">
-		<?$sidebar?>
-	</div>
-	<div class="col-md-9">
+	<?side_column?>
+		<div class="col-md-3 sidebar">
+			<?$sidebar?>
+		</div>
+	<?/side_column?>
+	<div class="col-md-<?right_span?>12<?/right_span?>">
 		<?$Content?>
 	</div>
 </div>

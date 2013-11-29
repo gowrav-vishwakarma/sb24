@@ -1,9 +1,12 @@
 <?php
 
 class page_memberpanel_page_base extends page_base_site {
+
+	public $skip_decoratives =false;
 	function init(){
 		parent::init();
 
+			// $this->template->tryDel('side_column');
 		$this->api->jquery->addStaticInclude('elrte/js/elrte.min');
 		$this->api->jquery->addStaticStyleSheet('elrte/css/elrte.min');
 
@@ -17,9 +20,21 @@ class page_memberpanel_page_base extends page_base_site {
 			$this->api->template->trySet('center_span',12);
 		}
 		$this->api->auth->check();
-		$this->setUpMemberMenus();
+		$this->add('H3')->setHTML("<span style='color:red;'>Welcome....</span><br/>" . $this->api->auth->model['name'] );
+		
+	}
 
-		$this->add('View_ModuleHeading',null,'welcome')->set("Welcome....<br/>" . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
+	function recursiveRender(){
+		if(!$this->skip_decoratives and $this->api->auth->isLoggedIn()){
+			$this->setUpMemberMenus();
+			// $v=$this->add('View_ModuleHeading',null,'welcome')->addClass('member_logo')->setHTML("<span style='color:red;'>Welcome....</span><br/>" . $this->api->auth->model['name'] )->sub(str_replace("page", "", str_replace("_", "/", $_GET['page'])));
+			// $this->template->tryDel('side_column');
+			$this->template->trySet('right_span',9);	
+		}else{
+			$this->template->tryDel('side_column');
+			$this->template->trySet('right_span',12);
+		}
+		parent::recursiveRender();
 	}
 
 	function update_login_form($auth){

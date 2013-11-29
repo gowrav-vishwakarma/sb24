@@ -40,6 +40,9 @@ class page_admin_master extends page_base_admin{
 		$question_tabs=$tabs->addTab('Question');
 		$question_crud=$question_tabs->add('CRUD');
 		$question_crud->setModel('Questions');
+		$contact_tab=$tabs->addTab('Feedback Info');
+		$feedback_grid=$contact_tab->add('Grid');
+		$feedback_grid->setModel('Contact');
 
 	}
 }

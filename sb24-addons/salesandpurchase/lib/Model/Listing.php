@@ -39,7 +39,8 @@ class Model_Listing extends \Model_Table {
 								$this->ref('subcategory_id')->get('name') . " ".
 								$this->ref('state_id')->get('name') . " ".
 								$this->ref('city_id')->get('name'). " ".
-								$this->ref('member_id')->get('name'). " "
+								$this->ref('member_id')->get('name'). " ".
+								$this['price']
 							;
 
 	}

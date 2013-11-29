@@ -29,9 +29,10 @@ class page_base_site extends page_base_null {
 		// 			->addMenuItem($this->api->url('salesandpurchase_page_search',array('reset'=>1)),'Sales & Purchase')
 		// 			->addMenuItem($this->api->url('memberpanel_page_dashboard',array('reset'=>1)),'My Account')
 		// 			;
-
+		$this->api->stickyGET('search');
 		$this->api->menu->destroy();
-		$this->api->add('View',null,'Menu',array('view/sitemenu'));
+		$v=$this->api->add('View',null,'Menu',array('view/sitemenu'));
+		$v->template->trySet('search',$_GET['search']);
 	}
 
 	// function setUpSiteMenus(){

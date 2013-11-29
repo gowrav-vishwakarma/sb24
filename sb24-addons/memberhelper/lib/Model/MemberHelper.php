@@ -14,6 +14,7 @@ class Model_MemberHelper extends \Model_Table {
 		$this->add('filestore/Field_Image','document_2_id')->type('image');
 		$this->add('filestore/Field_Image','document_3_id')->type('image');
 		$this->add('filestore/Field_Image','document_4_id')->type('image');
+		$this->hasMany('memberhelper/Messages','memberhelper_id');
 
 		$this->add('dynamic_model/Controller_AutoCreator');
 	}

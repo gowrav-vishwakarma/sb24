@@ -33,7 +33,7 @@ class Model_Listing extends \Model_Table {
 		$this->addField('tags')->type('text')->caption('Keywords to search')->group('free')->display(array('grid'=>'grid/inline'));
 
 		// Paid Informations
-		$this->addField('about_us')->type('text')->group('paid')->display(array("form"=>"Text",'grid'=>'shorttext,grid/inline'));
+		$this->addField('about_us')->type('text')->group('paid')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
 		$this->addField('contact_person')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('designation')->setValueList(array(	
 															'Proprietor'=>'Proprietor',

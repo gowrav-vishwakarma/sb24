@@ -18,6 +18,7 @@ class page_tracker_page_admin_index extends Page {
 		if($company_crud->grid){
 			$company_crud->grid->addPaginator(10);
 			$company_crud->grid->addQuickSearch(array('name'));
+			$company_crud->grid->add('misc/Export');
 			
 		}
 		$listing_crud=$listing->add('CRUD');
@@ -46,15 +47,18 @@ class page_tracker_page_admin_index extends Page {
 
 		if($std_crud->grid) $std_crud->grid->addPaginator(50);
 		if($std_crud->grid) $std_crud->grid->addQuickSearch(array('area'));
+		if($std_crud->grid) $std_crud->grid->add('misc/Export');
 
 		$district_crud = $district_tab->add('CRUD');
 		$district_crud->setModel('tracker/STDDistrict');
 		if($district_crud->grid) $district_crud->grid->addPaginator(50);
 		if($district_crud->grid) $district_crud->grid->addQuickSearch(array('area','name','state','district'));
+		if($district_crud->grid) $district_crud->grid->add('misc/Export');
 
 		$state_crud = $state_tab->add('CRUD');
 
 		$state_crud->setModel('tracker/STDState');
+		if($state_crud->grid) $state_crud->grid->add('misc/Export');
 
 
 	}
@@ -67,12 +71,14 @@ class page_tracker_page_admin_index extends Page {
 			
 			$pincode_crud->grid->addPaginator(50);
 			$pincode_crud->grid->addQuickSearch(array('pin_code','district'));
+			$pincode_crud->grid->add('misc/Export');
 		}
 	}
 
 	function page_mirc(){
 		$mirc_crud = $this->add('CRUD');
 		$mirc_crud->setModel('tracker/MIRCListing');
+		$mirc_crud->grid->add('misc/Export');
 		$mirc_crud->add('Controller_ChainSelector',array("chain_fields"=>array('city_id'=>'state_id')));
 	}
 
@@ -82,6 +88,7 @@ class page_tracker_page_admin_index extends Page {
 		// $vehicle_crud->add('Controller_ChainSelector',array("chain_fields"=>array('area'=>'state_id')));
 		if($vehicle_crud->grid)
 			$vehicle_crud->grid->addPaginator(10);
+			$vehicle_crud->grid->add('misc/Export');
 	}
 
 

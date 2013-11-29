@@ -15,9 +15,10 @@ class SearchForm extends Form {
 			if(isset($options['mandatory'])) $f->validateNotNull();
 			if(isset($options['valueList'])) $f->setValueList($options['valueList']);
 			if(isset($options['span'])) $f->template->trySet('row_class','span'.$options['span']);
+			// $f->set($_GET['search']);
 		}
 
-		$this->addSubmit('Search',null,null,array('view/mybutton','button'))->setStyle(array('margin-top'=>'20px','margin-left'=>'20px'));
+		$this->addSubmit('Search',null,null,array('view/mybutton','button'));
 		if(!$this->isSubmitted())
 			$this->add('Controller_ChainSelector',array('chain_fields'=>$this->chain_fields ,'force_selection'=>true));
 	}

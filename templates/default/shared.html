@@ -46,7 +46,10 @@
     <?top_advert_position?>
     <div class="row top_ad_block_outer">
       <div class="container">
-        <div class="row well"><?$top_advert_spot?></div>
+        <div class="row" align="center">
+        <div class="col-md-9 "><?$top_advert_spot?>&nbsp;</div>
+        <div class="col-md-3" align="left"><?$visitor?>&nbsp;</div>
+    </div>
       </div>
     </div>
     <?/top_advert_position?>
@@ -56,17 +59,14 @@
         <div class="col-md-2 well"><?$left?></div>
       <?/left_advert_position?>
       <?center_position?>
-        <div  class="col-md-<?center_span?>8<?/center_span?> content <?content_class?>main-content main  <?shrink?>shrink<?/shrink?> ui-widget-content ui-corner-all<?/content_class?>"><?$Content?></div>
+        <div  class="col-md-<?center_span?>8<?/center_span?> main1 content <?content_class?>main-content1 <?shrink?>shrink<?/shrink?> ui-widget-content1 ui-corner-all<?/content_class?>"><?$Content?></div>
       <?/center_position?>
       <?right_advert_position?>
         <div class="col-md-2 well"><?$right?></div>
       <?/right_advert_position?>
     </div>
     <footer>
-    <div class="row" align="center">
-      <div class="col-lg-6" align="right"><a >--X--</a></div>
-      <div class="col-lg-6" align="left"><?$visitor?></div>
-    </div>
+   
     </footer>
     <script src="<?template?>js/bootstrap.js<?/?>"></script>
     <script src="<?template?>js/modern-business.js<?/?>"></script>
