@@ -47,7 +47,7 @@ class page_businessdirectory_page_more extends page_base_site{
 		$contact_col2->add('HtmlElement')->setElement('img')->setAttr('src',$listing["company_logo"]);
 		$contact_col2->add('View')->set($listing['company_address'])->setClass('text');
 
-		$contact_col1->add('H2')->set('Enquiry Form');
+		$contact_col1->add('H2')->set('Feedback Form');
 		$contact_form=$contact_col1->add('Form');
 		$contact_form->addField('line','name');
 		$contact_form->addField('line','mobile_no');

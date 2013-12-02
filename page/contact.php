@@ -17,7 +17,8 @@ class page_contact extends page_base_site{
 
 
 		$col2->add('H3')->setHtml('<span style="color:firebrick;">For more Information Contact us </span>');
-		$col2->add('LoremIpsum')->setLength('1','50');
+		$col2->add('H3')->setHTML('<span style="color:green; align:center">Safal Sansthan</span>');
+		$col2->add('View')->setHTML('<span style="color:green; align:center">Contact Details of SabKuch24.com</span>');
 
 		if($form->isSubmitted()){
 			$form->update();

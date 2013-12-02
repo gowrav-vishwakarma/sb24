@@ -76,10 +76,10 @@ class page_businessdirectory_page_search extends page_base_site {
 		$result->setOrder('created_on');
 		$result->setOrder('payment_received','desc');
 		if($search=$_GET['search']){
-			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION)');
-			// $result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
+			// $result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION)');
+			$result->addExpression('Relevance')->set('MATCH(search_string) AGAINST ("'.$search.'" IN BOOLEAN MODE)');
 			$result->setOrder('Relevance','Desc');
-			$result->addCondition('Relevance','>','0');
+			$result->addCondition('Relevance','<>','0');
 		}else{
 			$business_listing->template->tryDel('not_found');
 				$result->addCondition('state_id',-1);

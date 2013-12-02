@@ -54,7 +54,7 @@ class page_businessdirectory_page_admin_index extends page_base_admin {
 		$business_listing_crud->addRef('businessdirectory/PayAmount');
 		$business_listing_crud->addRef('businessdirectory/ProductImages');
 		$business_listing_crud->addRef('businessdirectory/GallaryImages');
-		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id'),'force_selection'=>false));
+		$business_listing_crud->add('Controller_ChainSelector',array('chain_fields'=>array('area_id'=>'tehsil_id','tehsil_id'=>'city_id','city_id'=>'state_id','segment_id'=>'industry_id'),'force_selection'=>false));
 		
 		// if($f=$business_listing_crud->form){
 		// 	if($f=$business_listing_crud->form){
