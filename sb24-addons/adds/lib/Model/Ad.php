@@ -8,6 +8,7 @@ class Model_Ad extends \Model_Table {
 		parent::init();
 
 		$this->hasOne('adds/AdBlock');
+		$this->hasOne('businessdirectory/Listing','listing_id')->display(array('form'=>'autocomplete/Basic'));
 		$this->add('filestore/Field_Image','ad_image_id');//->type('files')->display(array('grid'=>'picture'));
 		$this->addField('click_url');
 		$this->addField('email');

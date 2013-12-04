@@ -18,10 +18,26 @@ class page_businessdirectory_page_member_index extends page_memberpanel_page_bas
 		$tab_paid->add('H3')->set('Your Business Listings')->sub("Manage Paid listings for your business");
 		
 		$paid_listing_crud = $tab_paid->add('CRUD',array('allow_add'=>false));
-		if($paid_listing_crud->form)
-		$paid_model_listing->getElement('is_active')->system(true);
+		if($f=$paid_listing_crud->form){
+
+			$paid_model_listing->getElement('is_active')->system(true);
+			
+		}
 		$paid_listing_crud->setModel($paid_model_listing,null,array('name','mobile_no','is_paid'));
 		
+		if($f=$paid_listing_crud->form){
+			$map_field=$f->getElement('map');
+			$bs=$map_field->afterField()->add('ButtonSet');
+			$bs->add('Button')
+	            ->set('Map Help')
+	            ->add('VirtualPage')
+	            ->bindEvent('Map Help', 'click')
+	                ->set(function($page) {
+	                	$page->add('View')->setElement('img')->setAttr('src','new.png');
+	                });
+			
+		}
+
 		$gallary_crud = $paid_listing_crud->addRef('businessdirectory/GallaryImages',array('label'=>'Gallary'));
 		$product_crud = $paid_listing_crud->addRef('businessdirectory/ProductImages',array('label'=>'Product'));
 		
@@ -65,9 +81,21 @@ class page_businessdirectory_page_member_index extends page_memberpanel_page_bas
 		$freelisting_model_listing->addCondition('is_paid',false);
 
 		$business_listing_crud->setModel($freelisting_model_listing,'free',array('name','mobile_no','is_active'));
-		if($business_listing_crud->form){
+		// if($business_listing_crud->form)
+
+		if($f= $business_listing_crud->form){
 			$business_listing_crud->form->template->tryDel('button_row');
-			 $business_listing_crud->form->add('Button',null,null,array('view/mybutton','button'))->set('Save')->addStyle(array('margin-bottom'=>'20px','margin-left'=>'390px','font-size'=>'18px'))->addClass('shine1')->js('click')->submit();
+			$business_listing_crud->form->add('Button',null,null,array('view/mybutton','button'))->set('Save')->addStyle(array('margin-bottom'=>'20px','margin-left'=>'390px','font-size'=>'18px'))->addClass('shine1')->js('click')->submit();
+			
+			$map_field=$f->getElement('map');
+			$bs=$map_field->afterField()->add('ButtonSet');
+			$bs->add('Button')
+	            ->set('Map Help')
+	            ->add('VirtualPage')
+	            ->bindEvent('Map Help', 'click')
+	                ->set(function($page) {
+	                	$page->add('View')->setElement('img')->setAttr('src','new.png');
+	                });
 			
 		}
 

@@ -61,6 +61,7 @@ class page_memberpanel_page_base extends page_base_site {
 			->addMenuItem('salesandpurchase_page_member_index','My Sales & Purchase')
 			->addMenuItem('event_page_member_index','Registered Events')
 			->addMenuItem('memberhelper_page_member_index','Member Helper')
+			->addMenuItem('memberpanel_page_todo','Member Remainder')
 			->addMenuItem('logout');
 		;
 	}

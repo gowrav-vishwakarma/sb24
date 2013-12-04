@@ -46,6 +46,7 @@ class Model_Member extends Model_Table {
 		$this->hasMany('event/Registration','member_id');
 		$this->hasMany('salesandpurchase/Listing','member_id');
 		$this->hasMany('memberhelper/MemberHelper','member_id');
+		$this->hasMany('TODO','member_id');
 
 		$this->addHook('beforeSave',$this);
 		$this->addHook('afterInsert',$this);

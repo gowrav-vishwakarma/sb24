@@ -33,6 +33,7 @@ class page_base_site extends page_base_null {
 		$this->api->menu->destroy();
 		$v=$this->api->add('View',null,'Menu',array('view/sitemenu'));
 		$v->template->trySet('search',$_GET['search']);
+		$v->template->trySet(($_GET['page']?:'index'),'current_menu_class');
 	}
 
 	// function setUpSiteMenus(){

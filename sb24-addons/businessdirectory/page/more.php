@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 class page_businessdirectory_page_more extends page_base_site{
 	function init(){
@@ -17,7 +17,7 @@ class page_businessdirectory_page_more extends page_base_site{
 		$about=$tabs->addTab('About Company');
 		$gallary=$tabs->addTab('Gallary');
 		$p_and_s=$tabs->addTab('Products & Services');
-		// $map=$tabs->addTab('Map');
+		$map=$tabs->addTab('Map');
 		$contact=$tabs->addTab('Contact Us');
 
 		$about->add('H2')->set('About '.$listing['name']);
@@ -36,7 +36,7 @@ class page_businessdirectory_page_more extends page_base_site{
 		//products and services end//
 
 		//map//
-		// $map->add('google/View_Map');
+		$map->add('View')->setHTML($listing['map']);
 
 		//contact us
 

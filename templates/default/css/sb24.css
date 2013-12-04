@@ -15,13 +15,14 @@ body{
 	background: url('../images/bg-body.jpg');
 }
 
+.navbar-inverse .navbar-nav > li.menu_class > a {
+  color: black;
+}
+
 .navbar-inverse .navbar-nav > li.current_menu_class > a, .navbar-inverse .navbar-nav > li.menu_class > a:hover{
   color: red;
 }
 
-.navbar-inverse .navbar-nav > li.menu_class > a {
-  color: black;
-}
 
 .navbar-inverse {
   background-color: #FFFFFF;
@@ -539,7 +540,11 @@ border-radius:13px 13px 13px 13px;195px
 }
 
 .leftmargin{
-  margin-left: 216px;
+  margin-left: 215px;
+}
+
+.leftmargin1{
+  margin-left: 78px;
 }
 
 .member_logo{

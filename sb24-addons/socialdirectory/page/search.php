@@ -49,13 +49,13 @@ class page_socialdirectory_page_search extends page_base_site {
 		// $field_subcast->setModel('socialdirectory/SubCast');
 		$search_field = $form->addField('line','search',' ')->setAttr('placeholder','like "Mr. Abc in udaipur from Xyz Cast Male"');
 		$search_field->template->trySet('row_class','span9');
-		$search_field->addClass('leftmargin span9');
+		$search_field->addClass('leftmargin1 span12');
 		$search_field->set($_GET['search']);
-		$form->setFormClass('stacked atk-row');
+		$form->setFormClass('stacked1 atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row'),'first')
                 // ->move($form->addSeparator('noborder atk-row'),'after','subcast_id')
-                ->move($form->addSeparator('noborder atk-row1'),'after','search')
+                ->move($form->addSeparator('noborder atk-row1'),'before','search')
                 ->now();
 
 

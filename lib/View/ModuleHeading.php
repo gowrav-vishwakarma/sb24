@@ -27,8 +27,9 @@ class View_ModuleHeading extends View{
 		// 		->addStyle('padding','18px')
 		// 		->addClass('shine1');
 							
-		$center->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center')->setStyle(array('margin-bottom'=>'-28px','margin-left'=>'237px'));
-		$this->setStyle('margin-bottom','15px');
+		$center->add('HtmlElement')->setElement('img')->setAttr('src',$this->api->sb24_config['front_image'])->setAttr('align','center')->setStyle(array('margin-left'=>'217px'));
+		$this->setStyle(array('margin-bottom'=>'-8px','margin-top'=>'75px'));
+		// $this->setStyle('margin-top','75px');
 
 		// $btn->js('click',$this->js()->univ()->redirect('memberpanel_page_dashboard'));
 		return $this;

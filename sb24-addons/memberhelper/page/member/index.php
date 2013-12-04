@@ -17,6 +17,7 @@ class page_memberhelper_page_member_index extends page_memberpanel_page_base {
 			$blg->columns['document_1']['thparam']='data-hide="all"';
 			$blg->columns['document_2']['thparam']='data-hide="all"';
 			$blg->columns['document_3']['thparam']='data-hide="all"';
+			$blg->columns['document_4']['thparam']='data-hide="all"';
 			$blg->addColumn('expander','messges');
 			
 		}
@@ -27,7 +28,7 @@ class page_memberhelper_page_member_index extends page_memberpanel_page_base {
 		$this->api->stickyGET('member_helper_id');
 		$memberhelper=$this->add('memberhelper/Model_MemberHelper');
 		$memberhelper->load($_GET['member_helper_id']);
-		$crud=$this->add('CRUD');
-		$crud->setMOdel($memberhelper->ref('memberhelper/Messages'));
+		$crud=$this->add('CRUD',array('allow_edit'=>false,'allow_del'=>false));
+		$crud->setModel($memberhelper->ref('memberhelper/Messages'));
 	}
 }

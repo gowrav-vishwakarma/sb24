@@ -45,13 +45,13 @@ class page_jobandvacancy_page_search extends page_base_site {
 		// $type_field->template->trySet('row_class','span2');
 		$search_field=$form->addField('line','search','');
 		$search_field->template->trySet('row_class','span9');
-		$search_field->setAttr('placeholder','like "Abc Company in udaipur from Xyz Job"')->addClass('leftmargin span9');
+		$search_field->setAttr('placeholder','like "Abc Company in udaipur from Xyz Job"')->addClass('leftmargin1 span12');
 		$search_field->set($_GET['search']);
-		$form->setFormClass('stacked atk-row');
+		$form->setFormClass('stacked1 atk-row');
             $o=$form->add('Order')
                 ->move($form->addSeparator('noborder atk-row1'),'first')
                 // ->move($form->addSeparator('noborder atk-row'),'after','type')
-                ->move($form->addSeparator('noborder atk-row1'),'after','search')
+                // ->move($form->addSeparator('noborder atk-row1'),'after','search')
                 ->now();
                 $form->add('Button',null,null,array('view/mybutton','button'))->set('Search')->addClass(' shinev')->js('click')->submit();
 

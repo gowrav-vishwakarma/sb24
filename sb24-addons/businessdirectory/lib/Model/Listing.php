@@ -34,6 +34,7 @@ class Model_Listing extends \Model_Table {
 
 		// Paid Informations
 		$this->addField('about_us')->type('text')->group('paid')->display(array("form"=>"RichText",'grid'=>'shorttext,grid/inline'));
+		$this->addField('map')->group('free')->type('text');
 		$this->addField('contact_person')->group('free');//->display(array('grid'=>'grid/inline'));
 		$this->addField('designation')->setValueList(array(	
 															'Proprietor'=>'Proprietor',
@@ -100,6 +101,7 @@ class Model_Listing extends \Model_Table {
 		$this->hasMany('businessdirectory/PayAmount','listing_id');
 		$this->hasMany('businessdirectory/ProductImages','listing_id');
 		$this->hasMany('businessdirectory/GallaryImages','listing_id');
+		$this->hasMany('adds/Add','listing_id');
 		
 		$this->addHook('beforeSave',$this);
 		$this->addHook('beforeDelete',$this);
